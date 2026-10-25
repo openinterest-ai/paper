@@ -78,3 +78,5 @@ nav.oid a { color: #a8a69e; text-decoration: none } nav.oid a:hover { color: #e8
 nav.oid .on { margin-left: auto; color: #c25663 }
 
 nav.oi .ext { color: #828287 } nav.oi .ext:hover { color: #0d0d0f }
+
+.oi-toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); background: #0d0d0f; color: #f2efe8; border: 1px solid #6b1f2a; border-radius: 3px; padding: 12px 18px; font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; z-index: 50; max-width: min(90vw, 480px); text-align: center }

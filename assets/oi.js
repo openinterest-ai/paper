@@ -28,3 +28,16 @@
   render();
   setInterval(() => { synced++; if (synced > 9 + Math.random() * 4) synced = 0; render(); }, 1000);
 })();
+
+document.addEventListener('click', function (e) {
+  const el = e.target.closest('[data-soon]');
+  if (!el) return;
+  e.preventDefault();
+  const old = document.querySelector('.oi-toast');
+  if (old) old.remove();
+  const t = document.createElement('div');
+  t.className = 'oi-toast';
+  t.innerHTML = 'coming soon &middot; ' + el.getAttribute('data-soon');
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3500);
+});
