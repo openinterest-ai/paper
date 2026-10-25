@@ -85,7 +85,6 @@ nav.oi .ext { color: #828287 } nav.oi .ext:hover { color: #0d0d0f }
 .topbar > span:first-child { flex-wrap: wrap }
 @media (max-width: 640px) {
   .topbar { justify-content: center; text-align: center; letter-spacing: .12em; font-size: 9px }
-  .topbar .chip { display: none }
   .mast { padding-top: 18px }
   nav.oi { gap: 6px 16px }
   nav.oi .er { margin-left: 0 }
