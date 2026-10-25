@@ -76,3 +76,5 @@ body.dark .ticker-in { color: #a8a69e }
 nav.oid { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; font-family: "Geist Mono", ui-monospace, monospace }
 nav.oid a { color: #a8a69e; text-decoration: none } nav.oid a:hover { color: #e8e6dd }
 nav.oid .on { margin-left: auto; color: #c25663 }
+
+nav.oi .ext { color: #828287 } nav.oi .ext:hover { color: #0d0d0f }
