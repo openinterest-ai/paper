@@ -1,0 +1,28 @@
+name: bake-data
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: bake
+  cancel-in-progress: false
+jobs:
+  bake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bake data.json
+        run: python3 bake.py
+      - name: Commit if changed
+        run: |
+          if ! git diff --quiet data.json; then
+            git config user.name "Open Interest"
+            git config user.email "newsroom@theopeninterest.eth"
+            git add data.json
+            git commit -m "The wire refreshes itself (scheduled bake)"
+            git push
+          else
+            echo "no change"
+          fi
