@@ -6,7 +6,7 @@
   "rationale_url": "https://variant.fund/articles/crypto-assets-as-stores-of-value/",
   "cited_by_url": "https://www.tokenpost.com/news/investing/26251",
   "flags": "project-affiliated:Variant",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -16,7 +16,7 @@
   "rationale_url": "https://www.iheart.com/podcast/1333-the-starting-block-338874222/episode/exploring-the-origins-of-defi-protocols-341683919/",
   "cited_by_url": "https://www.cryptonexa.com/andre-cronje-onchain-finance-thesis-gets-ecb-backing/",
   "flags": "project-affiliated:Flying-Tulip",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -26,7 +26,7 @@
   "rationale_url": "https://ceointerviews.ai/interview/3118523/",
   "cited_by_url": "https://techflowpost.com/en-US/article/34807",
   "flags": "project-affiliated:a16z-Frontier",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -36,7 +36,7 @@
   "rationale_url": "https://cryptohayes.substack.com/p/atencion",
   "cited_by_url": "https://coinpaper.com/35227/arthur-hayes-targets-10k-ethereum-as-ena-and-ethfi-face-200-upside",
   "flags": "project-affiliated:Maelstrom",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -46,7 +46,7 @@
   "rationale_url": "https://haseebq.com/silicon-valley-doesnt-punish-failure/",
   "cited_by_url": "https://www.bankless.com/podcast/rollup-robinhoods-meme-economy-solana-cuts-issuance-saylors-comeback-ai-alarm",
   "flags": "project-affiliated:Dragonfly",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -56,7 +56,7 @@
   "rationale_url": "https://finance.yahoo.com/markets/crypto/articles/onchain-finance-coming-wall-street-120000001.html",
   "cited_by_url": "https://www.linkedin.com/pulse/key-onchain-perpetual-futures-may-just-traders-farmers-melinek-4neze",
   "flags": "project-affiliated:Hyperliquid-Policy-Center",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -66,7 +66,7 @@
   "rationale_url": "https://www.ar.ca/blog/crypto-is-acting-strangely-rational",
   "cited_by_url": "https://www.opalesque.com/716724/The_Four_Areas_of_Crypto_Investments672.html",
   "flags": "project-affiliated:Arca",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -76,8 +76,8 @@
   "rationale_url": "https://www.lynalden.com/june-2026-newsletter/",
   "cited_by_url": "https://www.kitco.com/news/article/2026-09-29/lyn-alden-holding-gold-says-fed-bailing-boat-leaking-bucket",
   "flags": "project-affiliated:Ego-Death-Capital",
-  "named_by": 2,
-  "sources": "aprime-p1,aprime-p2"
+  "named_by": "3",
+  "sources": "aprime-p1,aprime-p2,runA-1113"
  },
  {
   "handle": "@mert",
@@ -86,7 +86,7 @@
   "rationale_url": "https://defi-planet.com/2026/10/helius-and-ledger-leaders-challenge-fears-that-ai-could-soon-break-bitcoins-security/",
   "cited_by_url": "https://ground.news/article/ethereum-researchers-ai-security-warning-stirs-debate-as-bitcoin-extends-slide-crypto-markets-today_ba618f",
   "flags": "project-affiliated:Helius",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -96,7 +96,7 @@
   "rationale_url": "https://www.citationneeded.news/mapping-trumps-crypto-empire/",
   "cited_by_url": "https://www.youtube.com/watch?v=A9iZ10yIRwM",
   "flags": "-",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -106,7 +106,7 @@
   "rationale_url": "https://murmurationstwo.substack.com/p/stablecoins-are-private-money-theres",
   "cited_by_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-13/html/2026-20888.htm",
   "flags": "project-affiliated:Castle-Island-Ventures",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -116,7 +116,7 @@
   "rationale_url": "https://www.bankless.com/podcast/rollup-robinhoods-meme-economy-solana-cuts-issuance-saylors-comeback-ai-alarm",
   "cited_by_url": "https://www.bankless.com/podcast/rollup-the-bull-market-test-clarity-dies-sec-opens-the-door-hyperliquid-comes-onshore",
   "flags": "project-affiliated:Bankless",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -126,7 +126,7 @@
   "rationale_url": "https://ethresear.ch/t/mempool-account-transaction-capacity-from-historical-activity-matcha/25949",
   "cited_by_url": "https://collective.flashbots.net/t/the-mev-letter-153/6025",
   "flags": "-",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p2,runA-1113"
  },
  {
@@ -136,7 +136,7 @@
   "rationale_url": "https://www.cryptotimes.io/2026/09/24/aave-founder-criticizes-morphos-non-custodial-vault-classification/",
   "cited_by_url": "https://www.theblock.co/news/defi/2026-09-16-aave-founder-pitches-uber-path-defi-clarity-act-fails-senate-vote-415278",
   "flags": "project-affiliated:Aave",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -146,7 +146,7 @@
   "rationale_url": "https://cryptobriefing.com/solana-toly-validator-stake-weighted-oracle/",
   "cited_by_url": "https://multicoin.capital/2026/02/10/ace-is-the-place-with-the-helpful-value-capture/",
   "flags": "project-affiliated:Solana",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -156,7 +156,7 @@
   "rationale_url": "https://www.bankless.com/podcast/rollup-black-october-uptober-lasted-4-hours-jpmorgan-s-bitcoin-forecast-gold-alchemyst",
   "cited_by_url": "https://ceointerviews.ai/interview/3069574/",
   "flags": "project-affiliated:Bankless",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -166,7 +166,7 @@
   "rationale_url": "https://coincenter.org/peter-van-valkenburghs-speech-at-the-coin-center-annual-dinner-2026/",
   "cited_by_url": "https://www.kucoin.com/news/insight/BTC/6a8f74df8d481c0007b81238",
   "flags": "project-affiliated:Coin-Center",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -176,8 +176,8 @@
   "rationale_url": "https://vitalik.eth.limo/general/2026/09/27/the_cryptographic_world_computer.html",
   "cited_by_url": "https://press.vgdh.io/article/final_20260927_1002_The_cryptographic_world_computer",
   "flags": "project-affiliated:Ethereum",
-  "named_by": 2,
-  "sources": "aprime-p1,aprime-p2"
+  "named_by": "3",
+  "sources": "aprime-p1,aprime-p2,runA-1113"
  },
  {
   "handle": "@zachxbt",
@@ -186,7 +186,7 @@
   "rationale_url": "https://investigations.co/cases/bybit-laundering-network-infiltration",
   "cited_by_url": "https://cryptoslate.com/zachxbt-infiltrates-1b-crypto-syndicate-to-expose-lazarus-group/",
   "flags": "anon",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p1,aprime-p2"
  },
  {
@@ -196,7 +196,7 @@
   "rationale_url": "https://ethresear.ch/t/ethereum-propamms-today-and-tomorrow/26129",
   "cited_by_url": "https://memos.azfuller.com/propamms/",
   "flags": "project-affiliated:Ritual",
-  "named_by": 2,
+  "named_by": "2",
   "sources": "aprime-p2,runA-1113"
  },
  {
@@ -206,7 +206,7 @@
   "rationale_url": "https://ceointerviews.ai/interview/3069574/",
   "cited_by_url": "https://tradingstrategynews.com/balajis-farcaster-takeover-sparks-backlash-over-bans/",
   "flags": "project-affiliated:Network-School",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -216,8 +216,8 @@
   "rationale_url": "https://ethlabs.org/writings/quick-slots-ecosystem.html",
   "cited_by_url": "https://ethereum-magicians.org/t/all-core-devs-consensus-acdc-188-october-1-2026/29737",
   "flags": "project-affiliated:Ethlabs",
-  "named_by": 1,
-  "sources": "aprime-p1"
+  "named_by": "2",
+  "sources": "aprime-p1,runA-1113"
  },
  {
   "handle": "@ben_mckenzie",
@@ -226,7 +226,7 @@
   "rationale_url": "https://www.theatlantic.com/podcasts/2026/10/crypto-influence-politics-ben-mckenzie/688946/",
   "cited_by_url": "https://inreviewonline.com/2026/05/07/everyone-is-lying-to-you-for-money-review/",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -236,18 +236,8 @@
   "rationale_url": "https://github.com/ethereum/EIPs/pull/12566",
   "cited_by_url": "https://tech.yahoo.com/science/articles/ethereum-researchers-draft-consensus-overhaul-160845364.html",
   "flags": "project-affiliated:Ethereum-Foundation",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
- },
- {
-  "handle": "@brian_armstrong",
-  "platform_url": "https://x.com/brian_armstrong",
-  "category": "founders-builders",
-  "rationale_url": "https://andrewmarshall604834.substack.com/p/clarity-fallout-what-next-for-brian",
-  "cited_by_url": "https://andrewmarshall604834.substack.com/p/clarity-fallout-what-next-for-brian",
-  "flags": "project-affiliated:Coinbase",
-  "named_by": 1,
-  "sources": "aprime-p2"
  },
  {
   "handle": "@Checkmatey",
@@ -256,7 +246,7 @@
   "rationale_url": "https://techflowpost.com/en-US/article/34187",
   "cited_by_url": "https://coinmarketcap.com/academy/article/has-bitcoin-bottomed-us-funds-selling",
   "flags": "project-affiliated:Checkonchain",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -266,8 +256,8 @@
   "rationale_url": "https://ethresear.ch/t/wen-fast-payload-broadcast-segment-code-push-pull-and-everything-in-between/25913",
   "cited_by_url": "https://collective.flashbots.net/t/the-mev-letter-153/6025",
   "flags": "-",
-  "named_by": 1,
-  "sources": "aprime-p2"
+  "named_by": "2",
+  "sources": "aprime-p2,runA-1113"
  },
  {
   "handle": "@danrobinson",
@@ -276,7 +266,7 @@
   "rationale_url": "https://www.paradigm.xyz/writing/pacts-protecting-your-bitcoin-from-a-quantum-sunset",
   "cited_by_url": "https://news.bitcoin.com/paradigm-researcher-proposes-pacts-to-shield-dormant-bitcoin-from-quantum-computing-risk/",
   "flags": "project-affiliated:Paradigm",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -286,7 +276,7 @@
   "rationale_url": "https://www.ignasdefi.com/p/how-to-yield-farm-like-a-degen-in",
   "cited_by_url": "https://www.aicoin.com/en/article/551210",
   "flags": "anon",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -296,7 +286,7 @@
   "rationale_url": "https://bitcoinsuisse.com/uae/industry-blog/justin-drake-bunker-mode-us-government-btc-transfer",
   "cited_by_url": "https://www.bankless.com/podcast/rollup-ai-threatens-crypto-security-tom-lee-stops-buying-eth-ethereum-l2s-shut-down-zcash-etfs",
   "flags": "project-affiliated:Ethereum-Foundation",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -306,7 +296,7 @@
   "rationale_url": "https://podcastrex.com/shows/the-rollup/dan-romero-how-stablecoin-growth-is-setting-the-stage-for-an-explosive-bull-market-bull-case/transcript",
   "cited_by_url": "https://podwise.ai/episodes/9126413",
   "flags": "project-affiliated:Tempo",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -316,7 +306,7 @@
   "rationale_url": "https://forklog.com/en/starknet-considers-transition-to-l1-due-to-quantum-threat/",
   "cited_by_url": "https://www.bidclub.ai/e/it-s-worse-than-you-think-w-tulip-king-eli-ben-s",
   "flags": "project-affiliated:StarkWare",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -326,7 +316,7 @@
   "rationale_url": "https://ericyakes.substack.com/p/why-zcash-will-never-be-bitcoin",
   "cited_by_url": "https://podcastrex.com/shows/what-bitcoin-did/bitcoins-next-rally-could-break-the-cycle-eric-yakes/transcript",
   "flags": "project-affiliated:Epoch",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -336,7 +326,7 @@
   "rationale_url": "https://podscripts.co/podcasts/unchained/uneasy-money-why-erik-voorhees-calls-ais-hidden-filter-deceptive",
   "cited_by_url": "https://unchainedcrypto.com/uneasy-money-why-erik-voorhees-calls-ais-hidden-filter-deceptive/",
   "flags": "project-affiliated:Venice",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -346,7 +336,7 @@
   "rationale_url": "https://evanss6.substack.com/p/have-fun-staying-poor",
   "cited_by_url": "https://en.theblockbeats.news/news/63799",
   "flags": "anon",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -356,7 +346,7 @@
   "rationale_url": "https://spoken.md/episode/e188-crypto-trading-expert-why-no-amount-of-crypto-1000792585178",
   "cited_by_url": "https://www.bidclub.ai/e/is-bottom-what-lads-are-buying",
   "flags": "project-affiliated:Selini",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -366,7 +356,7 @@
   "rationale_url": "https://collective.flashbots.net/t/a-take-on-quick-slots/5979",
   "cited_by_url": "https://collective.flashbots.net/t/the-mev-letter-152/5984",
   "flags": "anon,project-affiliated:Flashbots",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -376,7 +366,7 @@
   "rationale_url": "https://blog.uniswap.org/correlated-pairs-how-amms-win-the-biggest-markets",
   "cited_by_url": "https://techflowpost.com/en-US/article/33433",
   "flags": "project-affiliated:Uniswap",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -386,7 +376,7 @@
   "rationale_url": "https://ceointerviews.ai/interview/3069574/",
   "cited_by_url": "https://www.theblock.co/news/ecosystems/2026-07-20-ai-assisted-hacking-outpacing-traditional-code-reviews-near-co-founder-says-408943",
   "flags": "project-affiliated:NEAR",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -396,7 +386,7 @@
   "rationale_url": "https://www.bankless.com/podcast/ben-cowen-says-you-have-permission-to-be-bullish",
   "cited_by_url": "https://www.bankless.com/podcast/rollup-the-bull-market-is-on-zcash-near-kalshi-wash-trading-blackrock-goes-onchain",
   "flags": "project-affiliated:Into-The-Cryptoverse",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -406,7 +396,7 @@
   "rationale_url": "https://podscan.fm/podcasts/this-week-in-fintech-spotlight/episodes/why-crypto-could-become-the-payment-rail-for-ai-agents-with-coinbases-jesse-pollak",
   "cited_by_url": "https://ceointerviews.ai/entity/151160-jesse-pollak-coinbase-global/",
   "flags": "project-affiliated:Base",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -416,7 +406,7 @@
   "rationale_url": "https://variant.fund/articles/variant-4-autonomy/",
   "cited_by_url": "https://spoken.md/episode/jesse-walden-variant-fund-1000797449377",
   "flags": "project-affiliated:Variant",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -426,7 +416,7 @@
   "rationale_url": "https://visserlabs.substack.com/p/when-wealth-becomes-money-why-crypto",
   "cited_by_url": "https://www.tftc.io/jordi-visser-economy-is-an-ai-trade",
   "flags": "project-affiliated:22V",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -436,7 +426,7 @@
   "rationale_url": "https://www.tokenpost.com/news/investing/28492",
   "cited_by_url": "https://cryptobriefing.com/kain-warwick-hype-token-investor-protections/",
   "flags": "project-affiliated:Infinex",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -446,7 +436,7 @@
   "rationale_url": "https://coinness.com/en/news/1172691",
   "cited_by_url": "https://coinmarketcap.com/academy/article/has-bitcoin-bottomed-us-funds-selling",
   "flags": "project-affiliated:CryptoQuant",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -456,7 +446,7 @@
   "rationale_url": "https://kylesamani.com/posts/backpack/",
   "cited_by_url": "https://cryptobriefing.com/backpack-us-kyle-samani-board-appointment/",
   "flags": "project-affiliated:Backpack",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -466,7 +456,7 @@
   "rationale_url": "https://www.sec.gov/comments/S7-2026-27/s7202627-1073359-3717666.pdf",
   "cited_by_url": "https://www.sec.gov/comments/S7-2026-27/s7202627-1098679-3869546.pdf",
   "flags": "project-affiliated:MetaLeX",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -476,7 +466,7 @@
   "rationale_url": "https://lightclient.io/blog/frames-are-all-you-need/",
   "cited_by_url": "https://collective.flashbots.net/t/the-mev-letter-153/6025",
   "flags": "project-affiliated:Ethereum",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -486,7 +476,7 @@
   "rationale_url": "https://blog.lopp.net/bitcoin-quantum-migration-debate/",
   "cited_by_url": "https://podcasts.apple.com/nl/podcast/ai-came-for-bitcoin-first-jameson-lopp/id1482455669?i=1000789808546",
   "flags": "project-affiliated:Casa",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -496,7 +486,7 @@
   "rationale_url": "https://podscripts.co/podcasts/btc-sessions/were-past-the-point-of-no-return-luke-gromen-and-lyn-alden",
   "cited_by_url": "https://www.listennotes.com/podcasts/infi-the-future-of/ep-156-are-fed-rate-hikes-dI6vgHyflX7/",
   "flags": "project-affiliated:FFTT",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -506,7 +496,7 @@
   "rationale_url": "https://experts.bitwiseinvestments.com/cio-memos/why-crypto-rallied-when-clarity-failed",
   "cited_by_url": "https://coincentral.com/hougan-explains-why-crypto-rose-after-the-clarity-act-failed/",
   "flags": "project-affiliated:Bitwise",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -516,8 +506,8 @@
   "rationale_url": "https://ethresear.ch/t/ethereum-propamms-today-and-tomorrow/26129",
   "cited_by_url": "https://memos.azfuller.com/propamms/",
   "flags": "-",
-  "named_by": 1,
-  "sources": "aprime-p2"
+  "named_by": "2",
+  "sources": "aprime-p2,runA-1113"
  },
  {
   "handle": "@misilva73",
@@ -526,7 +516,7 @@
   "rationale_url": "https://ethresear.ch/t/how-hegota-should-approach-gas-repricing/25935",
   "cited_by_url": "https://collective.flashbots.net/t/the-mev-letter-153/6025",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -536,8 +526,8 @@
   "rationale_url": "https://nitter.rdrama.net/nero_eth",
   "cited_by_url": "https://www.bankless.com/read/bigger-blocks-are-coming-to-ethereum",
   "flags": "project-affiliated:Ethereum-Foundation",
-  "named_by": 1,
-  "sources": "aprime-p1"
+  "named_by": "2",
+  "sources": "aprime-p1,runA-1113"
  },
  {
   "handle": "@NoelleInMadrid",
@@ -546,18 +536,8 @@
   "rationale_url": "https://www.cryptoismacro.com/p/weekly-why-the-next-crypto-cycle",
   "cited_by_url": "https://finance.yahoo.com/video/bitcoin-headwinds-sign-monetary-tightening-194105249.html",
   "flags": "-",
-  "named_by": 1,
-  "sources": "aprime-p2"
- },
- {
-  "handle": "@PaulFrambot",
-  "platform_url": "https://x.com/PaulFrambot",
-  "category": "founders-builders",
-  "rationale_url": "https://www.cryptotimes.io/2026/09/24/aave-founder-criticizes-morphos-non-custodial-vault-classification/",
-  "cited_by_url": "https://www.cryptotimes.io/2026/09/24/aave-founder-criticizes-morphos-non-custodial-vault-classification/",
-  "flags": "project-affiliated:Morpho",
-  "named_by": 1,
-  "sources": "aprime-p1"
+  "named_by": "2",
+  "sources": "aprime-p1,aprime-p2"
  },
  {
   "handle": "@pmarca",
@@ -566,7 +546,7 @@
   "rationale_url": "https://www.a16z.news/p/marc-andreessen-and-chris-dixon-why",
   "cited_by_url": "https://www.digitaltoday.co.kr/en/view/90393/a16z-co-founder-says-crypto-resilience-shifted-us-political-view",
   "flags": "project-affiliated:a16z",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -576,7 +556,7 @@
   "rationale_url": "https://www.potuz.net/posts/hegota-faster-blocks/",
   "cited_by_url": "https://collective.flashbots.net/t/the-mev-letter-152/5984",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -586,8 +566,8 @@
   "rationale_url": "https://www.fortune.com/2026/09/18/onchain-finance-is-coming-to-wall-street-and-ignoring-it-is-no-longer-an-option/",
   "cited_by_url": "https://www.kaupr.io/en/news/kaupr-weekly-12-is-finance-finally-going-onchain",
   "flags": "project-affiliated:Jito",
-  "named_by": 1,
-  "sources": "aprime-p2"
+  "named_by": "2",
+  "sources": "aprime-p1,aprime-p2"
  },
  {
   "handle": "@RyanWatkins_",
@@ -596,7 +576,7 @@
   "rationale_url": "https://www.syncracy.io/writing/social-trading-and-the-garden-of-eden",
   "cited_by_url": "https://podcastrex.com/shows/the-rollup/ryan-watkins-hyperliquid-will-dominate-global-finance-its-coming-to-usa",
   "flags": "project-affiliated:Syncracy",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -606,7 +586,7 @@
   "rationale_url": "https://cryptobriefing.com/samczsun-steps-back-seal-org-interim-ceo/",
   "cited_by_url": "https://www.linkedin.com/posts/pashov_i-made-600000-in-20-months-of-doing-solo-activity-7409203381745004545-4AeQ",
   "flags": "anon / project-affiliated:SEAL",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -616,7 +596,7 @@
   "rationale_url": "https://www.stephendiehl.com/posts/bad_place_2026/",
   "cited_by_url": "https://committees.parliament.uk/writtenevidence/163642/pdf/",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -626,7 +606,7 @@
   "rationale_url": "https://multicoin.capital/2026/09/24/defi-2-0/",
   "cited_by_url": "https://www.coinage.media/2026/why-hyperliquid-can-still-surge-250-higher-according-to-multicoin",
   "flags": "project-affiliated:Multicoin",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -636,7 +616,7 @@
   "rationale_url": "https://panteraresearchlab.xyz/research/2026-h1-report-flash-boys-or-superforecasters/",
   "cited_by_url": "https://collective.flashbots.net/t/the-mev-letter-152/5984",
   "flags": "project-affiliated:Pantera",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -646,7 +626,7 @@
   "rationale_url": "https://terencechain.com/writing/very-early-glamsterdam-scaling-results/",
   "cited_by_url": "https://collective.flashbots.net/t/the-mev-letter-156/6072",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -656,7 +636,7 @@
   "rationale_url": "https://www.kanaandkatana.com/blog/september-2026-monthly-market-update",
   "cited_by_url": "https://podscripts.co/podcasts/unchained/why-travis-kling-thinks-not-looking-at-ai-agents-would-be-a-big-mistake-ep-763",
   "flags": "project-affiliated:Ikigai",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -666,7 +646,7 @@
   "rationale_url": "https://beincrypto.com/bitcoin-google-searches-willy-woo-buy/",
   "cited_by_url": "https://www.enkidu.uk/willy-woo",
   "flags": "project-affiliated:Bitcoin-Vector",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -676,7 +656,7 @@
   "rationale_url": "https://memos.azfuller.com/propamms/",
   "cited_by_url": "https://collective.flashbots.net/t/the-mev-letter-152/5984",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -686,7 +666,7 @@
   "rationale_url": "https://www.sec.gov/comments/S7-2026-27/s7202627-1103240-3882927.pdf",
   "cited_by_url": "https://www.gibsondunn.com/wp-content/uploads/2024/12/gibson-dunn-digital-assets-recent-updates-december-2024.pdf",
   "flags": "project-affiliated:DeFi-Education-Fund",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -696,7 +676,7 @@
   "rationale_url": "https://ethresear.ch/t/accountability-for-encrypted-mempools/26123",
   "cited_by_url": "",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "runA-1113"
  },
  {
@@ -706,17 +686,7 @@
   "rationale_url": "https://ethresear.ch/t/reveal-optionality-in-encrypted-mempools-how-big-is-the-sender-s-free-option-and-a-post-quantum-way-to-remove-it/26169",
   "cited_by_url": "",
   "flags": "-",
-  "named_by": 1,
-  "sources": "runA-1113"
- },
- {
-  "handle": "Atis Elsts ( atiselsts )",
-  "platform_url": "",
-  "category": "infra-defi-engineering",
-  "rationale_url": "",
-  "cited_by_url": "",
-  "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "runA-1113"
  },
  {
@@ -726,7 +696,7 @@
   "rationale_url": "https://www.bankless.com/podcast/the-new-economics-of-crypto-tokens",
   "cited_by_url": "https://therollup.co/podcast/austin-barack-my-ai-bull-thesis-and-what-im-holding",
   "flags": "project-affiliated:Relayer-Capital",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -736,18 +706,8 @@
   "rationale_url": "https://finance.yahoo.com/video/stablecoins-causing-bank-deposit-flight-144541576.html",
   "cited_by_url": "https://unchainedcrypto.com/after-the-ledger-reseller-hack-austin-campbell-says-self-custody-users-should-be-over-solving-for-simplicity/",
   "flags": "project-affiliated:Zero-Knowledge-Group",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
- },
- {
-  "handle": "Barnab\u00e9 Monnot ( barnabe )",
-  "platform_url": "",
-  "category": "protocol-research",
-  "rationale_url": "",
-  "cited_by_url": "",
-  "flags": "-",
-  "named_by": 1,
-  "sources": "runA-1113"
  },
  {
   "handle": "boz1",
@@ -756,7 +716,7 @@
   "rationale_url": "https://arxiv.org/abs/2609.28115",
   "cited_by_url": "https://collective.flashbots.net/t/the-mev-letter-156/6072",
   "flags": "project-affiliated:Flashbots",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -766,17 +726,7 @@
   "rationale_url": "https://ethresear.ch/t/who-cleans-up-the-code-setcodefroms-dangling-bytecode-and-futureproof-design-choices/26127",
   "cited_by_url": "",
   "flags": "-",
-  "named_by": 1,
-  "sources": "runA-1113"
- },
- {
-  "handle": "Csaba Kiraly ( cskiraly )",
-  "platform_url": "https://ethresear.ch/t/seacast-fast-lean-broadcast-for-ethereum-with-an-executable-spec-and-a-formal-model/26167.",
-  "category": "infra-defi-engineering",
-  "rationale_url": "https://ethresear.ch/t/seacast-fast-lean-broadcast-for-ethereum-with-an-executable-spec-and-a-formal-model/26167.",
-  "cited_by_url": "",
-  "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "runA-1113"
  },
  {
@@ -786,7 +736,7 @@
   "rationale_url": "https://ethresear.ch/t/measuring-priority-fees-positions-and-transaction-classification-of-ethereum-blocks-july-2025-to-october-2026/26156",
   "cited_by_url": "https://ethresear.ch/t/letting-the-base-fee-be-a-midpoint-a-temporal-liquidity-authorization-for-eip-1559/25958",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "runA-1113"
  },
  {
@@ -796,7 +746,7 @@
   "rationale_url": "https://variant.fund/articles/onchain-geofencing-tokenized-securities/",
   "cited_by_url": "https://www.cryptolawtactics.com/faqs-reg-s-compliance-vs-us-jurisdiction-minimization/",
   "flags": "project-affiliated:Variant",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -806,17 +756,17 @@
   "rationale_url": "https://ethereum-magicians.org/t/erc-8004-trustless-agents/25098",
   "cited_by_url": "",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "runA-1113"
  },
  {
-  "handle": "Hern\u00e1n Erasmo",
+  "handle": "Hernán Erasmo",
   "platform_url": "https://devilsintheopcodes.substack.com",
   "category": "security-mev",
   "rationale_url": "https://devilsintheopcodes.substack.com/p/millions-flowing-through-20-bytes",
   "cited_by_url": "https://collective.flashbots.net/t/the-mev-letter-153/6025",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
  },
  {
@@ -826,7 +776,7 @@
   "rationale_url": "https://www.sec.gov/newsroom/speeches-statements/peirce-statement-proposed-amendments-custody-rules-100126",
   "cited_by_url": "https://www.defieducationfund.org/defi-debrief-week-of-september-28-2026/",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -836,18 +786,8 @@
   "rationale_url": "https://arxiv.org/abs/2609.28115",
   "cited_by_url": "https://collective.flashbots.net/t/the-mev-letter-155/6068",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p2"
- },
- {
-  "handle": "Lyn Alden (lynalden.com)",
-  "platform_url": "https://www.lynalden.com/orange-juice/",
-  "category": "macro-economics",
-  "rationale_url": "https://www.lynalden.com/orange-juice/",
-  "cited_by_url": "",
-  "flags": "-",
-  "named_by": 1,
-  "sources": "runA-1113"
  },
  {
   "handle": "matt (Magicians)",
@@ -856,7 +796,7 @@
   "rationale_url": "https://ethereum-magicians.org/t/eip-8141-frame-transaction/27617",
   "cited_by_url": "https://ethereum-magicians.org/t/eip-8250-keyed-nonces-for-frame-transactions/28437",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "runA-1113"
  },
  {
@@ -866,18 +806,8 @@
   "rationale_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7343938",
   "cited_by_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-13/html/2026-20888.htm",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
- },
- {
-  "handle": "Mike Neuder ( mikeneuder , ethresear.ch)",
-  "platform_url": "https://ethresear.ch/t/ethereum-propamms-today-and-tomorrow/26129",
-  "category": "security-mev",
-  "rationale_url": "https://ethresear.ch/t/ethereum-propamms-today-and-tomorrow/26129",
-  "cited_by_url": "https://ethresear.ch/t/proprietary-amms-and-ethereum/25543",
-  "flags": "-",
-  "named_by": 1,
-  "sources": "runA-1113"
  },
  {
   "handle": "Miles Jennings",
@@ -886,7 +816,7 @@
   "rationale_url": "https://www.sec.gov/files/ctf-written-input-andreessen-horowitz-a16z-091426.pdf",
   "cited_by_url": "https://www.cryptotimes.io/2026/09/15/a16zs-miles-jennings-urges-senate-to-advance-clarity-act/",
   "flags": "project-affiliated:a16z-Frontier",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -896,18 +826,8 @@
   "rationale_url": "https://trailofbits.com/2026/07/30/building-secure-uniswap-v4-hooks/",
   "cited_by_url": "",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "runA-1113"
- },
- {
-  "handle": "Noelle Acheson",
-  "platform_url": "https://www.cryptoismacro.com/",
-  "category": "macro-economics",
-  "rationale_url": "https://www.cryptoismacro.com/p/weekly-coldcard-brca",
-  "cited_by_url": "https://finance.yahoo.com/video/bitcoin-headwinds-sign-monetary-tightening-194105249.html",
-  "flags": "-",
-  "named_by": 1,
-  "sources": "aprime-p1"
  },
  {
   "handle": "Omid Malekan",
@@ -916,7 +836,7 @@
   "rationale_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7343938",
   "cited_by_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-13/html/2026-20888.htm",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
@@ -926,28 +846,18 @@
   "rationale_url": "https://trailofbits.com/2026/09/25/dont-let-tees-break-your-mpc/",
   "cited_by_url": "",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "runA-1113"
  },
  {
-  "handle": "Pawe\u0142 P\u0142atek and Denys Pakizh (Trail of Bits)",
+  "handle": "Paweł Płatek and Denys Pakizh (Trail of Bits)",
   "platform_url": "https://trailofbits.com/2026/08/25/state-divergence-enables-unauthorized-access/",
   "category": "security-mev",
   "rationale_url": "https://trailofbits.com/2026/08/25/state-divergence-enables-unauthorized-access/",
   "cited_by_url": "",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "runA-1113"
- },
- {
-  "handle": "Rebecca Rettig",
-  "platform_url": "https://x.com/RebeccaRettig1",
-  "category": "governance-policy",
-  "rationale_url": "https://finance.yahoo.com/markets/crypto/articles/onchain-finance-coming-wall-street-120000001.html",
-  "cited_by_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-13/html/2026-20888.htm",
-  "flags": "-",
-  "named_by": 1,
-  "sources": "aprime-p1"
  },
  {
   "handle": "Shayon Sengupta",
@@ -956,37 +866,17 @@
   "rationale_url": "https://multicoin.capital/2026/10/08/compute-capital-markets/",
   "cited_by_url": "https://www.coinage.media/2026/why-hyperliquid-can-still-surge-250-higher-according-to-multicoin",
   "flags": "project-affiliated:Multicoin",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "aprime-p1"
  },
  {
-  "handle": "Toni Wahrst\u00e4tter ( Nerolation )",
-  "platform_url": "https://ethereum-magicians.org/t/erc-5564-stealth-addresses/10614",
-  "category": "data-analysis",
-  "rationale_url": "https://ethereum-magicians.org/t/erc-5564-stealth-addresses/10614",
-  "cited_by_url": "",
-  "flags": "-",
-  "named_by": 1,
-  "sources": "runA-1113"
- },
- {
-  "handle": "Vitalik Buterin (blog; X: VitalikButerin)",
-  "platform_url": "https://vitalik.eth.limo/general/2026/09/27/the_cryptographic_world_computer.html",
-  "category": "protocol-research",
-  "rationale_url": "https://vitalik.eth.limo/general/2026/09/27/the_cryptographic_world_computer.html",
-  "cited_by_url": "",
-  "flags": "-",
-  "named_by": 1,
-  "sources": "runA-1113"
- },
- {
-  "handle": "Zsolt Felf\u00f6ldi ( zsfelfoldi )",
+  "handle": "Zsolt Felföldi ( zsfelfoldi )",
   "platform_url": "https://ethereum-magicians.org/t/eip-8304-trustless-log-and-transaction-index/28824",
   "category": "infra-defi-engineering",
   "rationale_url": "https://ethereum-magicians.org/t/eip-8304-trustless-log-and-transaction-index/28824",
   "cited_by_url": "",
   "flags": "-",
-  "named_by": 1,
+  "named_by": "1",
   "sources": "runA-1113"
  }
 ]
