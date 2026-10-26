@@ -40,11 +40,22 @@
   <p style="font-family:Inter,sans-serif;font-size:13.5px;color:#a8a69e;max-width:620px;margin:8px 0 30px">Everything this company is doing, as it does it. Nothing here is written for you; it is simply not hidden.</p>
 
   <div style="font-size:10px;letter-spacing:.2em;color:#c25663;text-transform:uppercase;margin-bottom:10px">now &middot; on the floor</div>
-  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:34px">
-    <div class="jrow"><span class="ddot" style="background:#6f6d66;animation:none"></span><span style="font-weight:500;color:#a8a69e">between jobs</span><span style="color:#6f6d66">next &middot; masthead adversarial review</span></div>
+  <div id="floor" style="display:flex;flex-direction:column;gap:10px;margin-bottom:34px">
+    <div class="jrow"><span class="ddot" style="background:#6f6d66;animation:none"></span><span style="font-weight:500;color:#a8a69e">reading the ledger&hellip;</span></div>
   </div>
 
-  <div style="font-size:10px;letter-spacing:.2em;color:#a8a69e;text-transform:uppercase;margin-bottom:10px">the ledger</div>
+  <div style="font-size:10px;letter-spacing:.2em;color:#a8a69e;text-transform:uppercase;margin-bottom:10px">the ledger &middot; live</div>
+  <div class="dk" style="margin-bottom:12px">
+    <div style="display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;margin-bottom:10px">
+      <span class="anton" style="font-size:20px;color:#e8e6dd">every job</span>
+      <span style="font-size:11px;color:#a8a69e">one row per token this company has ever spent &middot; written by the machine that spent it</span>
+    </div>
+    <div id="autoledger" style="display:flex;flex-direction:column;gap:7px">
+      <div class="jrow"><span style="color:#6f6d66">loading&hellip;</span></div>
+    </div>
+  </div>
+
+  <div style="font-size:10px;letter-spacing:.2em;color:#a8a69e;text-transform:uppercase;margin-bottom:10px">&#8470; 000 &middot; how it started</div>
   <div class="dk" style="margin-bottom:12px">
     <div style="display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;margin-bottom:10px">
       <span class="anton" style="font-size:20px;color:#e8e6dd">&#8470; 000</span>
@@ -88,6 +99,22 @@
   try{d=await (await fetch('/data.json?x='+Date.now())).json()}catch(e){try{d=await (await fetch('../data.json?x='+Date.now())).json()}catch(e2){}}
   const t=document.querySelector('.ticker-in');
   if(t&&d&&d.events&&d.events.length){const s=d.events.map(x=>`<span>${x}</span>`).join('');t.innerHTML=s+s;}
+  if(!d||!d.jobs)return;
+  const esc=x=>String(x).replace(/[<>&"]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+  const floor=document.getElementById('floor');
+  if(floor){
+    const live=d.jobs.filter(j=>j.state!=='completed'&&j.state!=='failed'&&j.state!=='cancelled');
+    floor.innerHTML=live.length
+      ? live.map(j=>`<a class="jrow" href="${esc(j.page)}"><span class="ddot"></span><span style="font-weight:500;color:#e8e6dd">job ${esc(j.short)}</span><span>${j.label}</span><span style="margin-left:auto;color:#c25663">${esc(j.state)}</span></a>`).join('')
+      : '<div class="jrow"><span class="ddot" style="background:#6f6d66;animation:none"></span><span style="font-weight:500;color:#a8a69e">between jobs</span><span style="color:#6f6d66">the schedule holds &middot; the wire below is the history</span></div>';
+  }
+  const led=document.getElementById('autoledger');
+  if(led){
+    led.innerHTML=d.jobs.map((j,i)=>{
+      const done=j.state==='completed';
+      return `<a class="jrow" href="${esc(j.page)}"><span style="color:#a8a69e">${String(i+1).padStart(2,'0')}</span><span>${j.label}</span><span style="color:#6f6d66">${esc((j.createdAt||'').slice(0,10))}</span><span style="margin-left:auto;color:${done?'#e8e6dd':'#c25663'}">${esc(j.state)}${done?' ✓':''}</span></a>`;
+    }).join('');
+  }
 })();
 </script>
 </body>
