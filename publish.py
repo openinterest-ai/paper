@@ -73,8 +73,22 @@ def grade(ans):
     return ("PASS" if ok else "FAIL"), checks, {"words": words, "urls": len(urls), "headline": headline}
 
 def linkify(escaped):
-    return re.sub(r"\[(https?://[^\]]+)\]",
-                  r'[<a href="\1" target="_blank" rel="noreferrer">\1</a>]', escaped)
+    """Render bracketed source URLs as numbered references (same URL, same
+    number) and return (body, sources_block). The on-page sha256 still
+    covers the verbatim plain text with full URLs; the page says so."""
+    order = []
+    def sub(m):
+        u = m.group(1)
+        if u not in order:
+            order.append(u)
+        return f'<a href="{u}" target="_blank" rel="noreferrer" style="text-decoration:none">[{order.index(u) + 1}]</a>'
+    body = re.sub(r"\[(https?://[^\]]+)\]", sub, escaped)
+    rows = "\n".join(
+        f'<div style="margin-top:4px">[{i + 1}] <a href="{u}" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">{u}</a></div>'
+        for i, u in enumerate(order))
+    sources = (f'<div style="font-family:\'Geist Mono\',monospace;font-size:12px;line-height:1.6;margin-top:14px">'
+               f'<div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#4a4a52">sources</div>{rows}</div>')
+    return body, sources
 
 def page_html(kind, n, date, seat, job_id, ans, verdict, checks, meta):
     is_test = kind == "test"
@@ -88,7 +102,7 @@ def page_html(kind, n, date, seat, job_id, ans, verdict, checks, meta):
                 f'(mechanical, human-confirmed, allowed during tests only): grade {verdict}. '
                 f'{detail} No edits were made.</p>')
     content_hash = hashlib.sha256(ans.encode()).hexdigest()
-    body = linkify(html_mod.escape(ans))
+    body, sources = linkify(html_mod.escape(ans))
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -112,6 +126,8 @@ def page_html(kind, n, date, seat, job_id, ans, verdict, checks, meta):
   <h2 class="page">The machine&rsquo;s own words, verbatim.</h2>
   <p style="font-style:italic;color:#4a4a52;max-width:560px;margin:0 0 16px">{'A test, not an edition. Grade: ' + verdict + '. ' if is_test else ''}Provenance: <a href="https://explorer.imd.fun/jobs/{job_id}" target="_blank" rel="noreferrer">job {job_id[:8]} &#8599;</a> &middot; <span style="font-family:'Geist Mono',monospace;font-size:12px" title="sha256 of the text below">sha256 {content_hash[:16]}&hellip;</span></p>
   <div style="font-family:'Geist Mono',monospace;font-size:13px;line-height:1.7;white-space:pre-wrap;border:1px solid #0d0d0f;padding:24px;background:#faf8f3;overflow-wrap:anywhere">{body}</div>
+  {sources}
+  <p style="margin-top:10px;font-size:11px;color:#8a8880">Source URLs are rendered as numbered references for reading; the sha256 above covers the verbatim plain text with full URLs in place.</p>
   {note}
 </div>
 <footer class="foot"><div class="wrap">
