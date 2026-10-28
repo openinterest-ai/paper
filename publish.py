@@ -48,6 +48,13 @@ def fetch_answer(job_id):
         if i > 300:
             ans = ans[:i]
     ans = re.sub(r"\[\s*\n?(https?://[^\]\s]+)\s*\n?\]", r"[\1]", ans)
+    # The METHOD paragraph is the edition's defined last element: anything
+    # after its line is explorer chrome the markers above didn't know.
+    lines = ans.split("\n")
+    for n, l in enumerate(lines):
+        if l.startswith("METHOD"):
+            ans = "\n".join(lines[: n + 1])
+            break
     return ans.strip(), seat, runtime
 
 def grade(ans):
