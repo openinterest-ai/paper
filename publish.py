@@ -74,15 +74,24 @@ def grade(ans):
 
 def linkify(escaped):
     """Render bracketed source URLs as numbered references (same URL, same
-    number) and return (body, sources_block). The on-page sha256 still
-    covers the verbatim plain text with full URLs; the page says so."""
+    number) and return (body, sources_block) — except inside the READING
+    LIST section, whose entries ARE links and keep their full URLs. The
+    on-page sha256 still covers the verbatim plain text; the page says so."""
     order = []
-    def sub(m):
+    def numbered(m):
         u = m.group(1)
         if u not in order:
             order.append(u)
         return f'<a href="{u}" target="_blank" rel="noreferrer" style="text-decoration:none">[{order.index(u) + 1}]</a>'
-    body = re.sub(r"\[(https?://[^\]]+)\]", sub, escaped)
+    full = lambda m: f'[<a href="{m.group(1)}" target="_blank" rel="noreferrer">{m.group(1)}</a>]'
+    i = escaped.find("READING LIST")
+    j = escaped.find("METHOD", i if i >= 0 else 0)
+    if 0 <= i < j:
+        body = (re.sub(r"\[(https?://[^\]]+)\]", numbered, escaped[:i])
+                + re.sub(r"\[(https?://[^\]]+)\]", full, escaped[i:j])
+                + re.sub(r"\[(https?://[^\]]+)\]", numbered, escaped[j:]))
+    else:
+        body = re.sub(r"\[(https?://[^\]]+)\]", numbered, escaped)
     rows = "\n".join(
         f'<div style="margin-top:4px">[{i + 1}] <a href="{u}" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">{u}</a></div>'
         for i, u in enumerate(order))
