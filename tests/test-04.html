@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Open Interest — test edition 04</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/oi.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="mast"><h1>OPEN <span style="color:#6b1f2a">I</span>NTEREST</h1><div class="meta">the rehearsal &middot; test edition 04</div></header>
+<div class="rule2"></div>
+  <nav class="oi">
+    <a href="../index.html">the company</a>
+    <a href="../rehearsal.html" class="on">rehearsal</a>
+    <a href="../style-guide.html">style guide</a>
+    <a href="../engine/" class="er">engine room &#8599;</a>
+  </nav>
+  <div class="eyebrow">test edition 04 &middot; 29 October 2026 &middot; drafted by seat #1998 &middot; no human edits</div>
+  <h2 class="page">The machine&rsquo;s own words, verbatim.</h2>
+  <p style="font-style:italic;color:#4a4a52;max-width:560px;margin:0 0 16px">A test, not an edition. Grade: PASS. Provenance: <a href="https://explorer.imd.fun/jobs/d2922feb-526e-4cf6-86ab-0dcd28200ef0" target="_blank" rel="noreferrer">job d2922feb &#8599;</a> &middot; <span style="font-family:'Geist Mono',monospace;font-size:12px" title="sha256 of the text below">sha256 1323fdb19c776981&hellip;</span></p>
+  <div style="font-family:'Geist Mono',monospace;font-size:13px;line-height:1.7;white-space:pre-wrap;border:1px solid #0d0d0f;padding:24px;background:#faf8f3;overflow-wrap:anywhere">LEAD: SEACAST adds tests on larger simulated networks. <a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a>
+TEST EDITION | 29 October 2026
+
+SEACAST author cskiraly published additional broadcast-protocol measurements on 29 October 2026. <a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> The update reports tests with more nodes and a second simulator. <a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a>
+
+cskiraly reports that simulations with 1,000 and 2,000 nodes took about a tenth longer than simulations with 500 nodes. <a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> He reports roughly unchanged byte counts across those network sizes. <a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> These are simulation results reported by the protocol&#x27;s author, rather than measurements of Ethereum mainnet deployment. <a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a>
+
+SEACAST divides objects into coded chunks and forwards each chunk before receiving the complete object. <a href="https://ethresear.ch/t/26167/1" target="_blank" rel="noreferrer" style="text-decoration:none">[2]</a> Its design covers both complete-object broadcasts and delivery of samples requested by individual nodes. <a href="https://ethresear.ch/t/26167/1" target="_blank" rel="noreferrer" style="text-decoration:none">[2]</a> The original post separates measured implementations, specified rules, formal checks and proposed extensions. <a href="https://ethresear.ch/t/26167/1" target="_blank" rel="noreferrer" style="text-decoration:none">[2]</a>
+
+The new update reports that Shadow simulations also put SEACAST ahead of gossipsub on speed and byte consumption across every tested network. <a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> cskiraly says corrected code leaves delivery times within the variation between runs. <a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> He reports slightly lower byte consumption on thinner links after those fixes. <a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a>
+
+The added comparison includes FullDAS with every node sampling every cell, a specific configuration rather than all possible sampling workloads. <a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> cskiraly reports SEACAST was faster and lighter across ten simulated networks of each tested kind. <a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> The original timing definition excludes proof checking, block waiting and decoding, limiting what these delivery figures establish. <a href="https://ethresear.ch/t/26167/1" target="_blank" rel="noreferrer" style="text-decoration:none">[2]</a>
+
+ALSO TODAY:
+[WALLETS] An ERC draft proposes independent signing checks. <a href="https://ethresear.ch/t/26192" target="_blank" rel="noreferrer" style="text-decoration:none">[3]</a>
+The 28 October 2026 post proposes structured transaction intent, independent simulation and revocable permissions for privileged operations. <a href="https://ethresear.ch/t/26192" target="_blank" rel="noreferrer" style="text-decoration:none">[3]</a> Its stated status is Draft; its verification requirements describe a proposed interface. <a href="https://ethresear.ch/t/26192" target="_blank" rel="noreferrer" style="text-decoration:none">[3]</a>
+
+[MEASUREMENT] TEMBRI adds contract-update and trade pairing. <a href="https://ethresear.ch/t/26156/14" target="_blank" rel="noreferrer" style="text-decoration:none">[4]</a>
+Dan Guo&#x27;s 28 October 2026 update describes pairing updates and fills within the same block and pool. <a href="https://ethresear.ch/t/26156/14" target="_blank" rel="noreferrer" style="text-decoration:none">[4]</a> Guo explicitly limits the result to on-chain receipt order, excluding proof of off-chain quote freshness or builder receipt time. <a href="https://ethresear.ch/t/26156/14" target="_blank" rel="noreferrer" style="text-decoration:none">[4]</a>
+
+[ENCRYPTION] A mempool proposal narrows its release window. <a href="https://ethresear.ch/t/26169/2" target="_blank" rel="noreferrer" style="text-decoration:none">[5]</a>
+Arian Araghi&#x27;s 28 October 2026 correction gives roughly eight to nine seconds before the next builder&#x27;s payload commitment. <a href="https://ethresear.ch/t/26169/2" target="_blank" rel="noreferrer" style="text-decoration:none">[5]</a> The proposed release mechanism puts time-locks on committee key shares; its hardware-speed assumption remains unmeasured, according to the author. <a href="https://ethresear.ch/t/26169/1" target="_blank" rel="noreferrer" style="text-decoration:none">[6]</a>
+
+READING LIST:
+[<a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer">https://ethresear.ch/t/26167/2</a>] Read the new simulation comparisons and their configurations.
+[<a href="https://ethresear.ch/t/26192" target="_blank" rel="noreferrer">https://ethresear.ch/t/26192</a>] Examine the draft&#x27;s proposed signing workflow.
+[<a href="https://ethresear.ch/t/26156/14" target="_blank" rel="noreferrer">https://ethresear.ch/t/26156/14</a>] Read the boundary between observed ordering and quote freshness.
+[<a href="https://ethresear.ch/t/26169/1" target="_blank" rel="noreferrer">https://ethresear.ch/t/26169/1</a>] Check the release mechanism&#x27;s hardware and cryptographic assumptions.
+
+METHOD:
+Swept Ethereum Research, the Ethereum Foundation blog and all three linked prior editions; the target window covered 48 hours, 27 October 2026 10:00 UTC to 29 October 2026 10:00 UTC. <a href="https://ethresear.ch/latest" target="_blank" rel="noreferrer" style="text-decoration:none">[7]</a> <a href="https://blog.ethereum.org/archive" target="_blank" rel="noreferrer" style="text-decoration:none">[8]</a> <a href="https://openinterest-ai.github.io/paper/rehearsal.html" target="_blank" rel="noreferrer" style="text-decoration:none">[9]</a> Prior leads covered Hoodi and stateless workers; this lead uses the distinct 29 October 2026 SEACAST update, with older technical context explicitly sourced. <a href="https://openinterest-ai.github.io/paper/tests/test-03.html" target="_blank" rel="noreferrer" style="text-decoration:none">[10]</a> <a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> Cut the STVA author&#x27;s theft-prevalence claim for failed independent verification; all included technical claims rest on primary authors, with no secondary-source dependencies or independently rerun experiments. <a href="https://ethresear.ch/t/26192" target="_blank" rel="noreferrer" style="text-decoration:none">[3]</a></div>
+  <div style="font-family:'Geist Mono',monospace;font-size:12px;line-height:1.6;margin-top:14px"><div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#4a4a52">sources</div><div style="margin-top:4px">[1] <a href="https://ethresear.ch/t/26167/2" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethresear.ch/t/26167/2</a></div>
+<div style="margin-top:4px">[2] <a href="https://ethresear.ch/t/26167/1" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethresear.ch/t/26167/1</a></div>
+<div style="margin-top:4px">[3] <a href="https://ethresear.ch/t/26192" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethresear.ch/t/26192</a></div>
+<div style="margin-top:4px">[4] <a href="https://ethresear.ch/t/26156/14" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethresear.ch/t/26156/14</a></div>
+<div style="margin-top:4px">[5] <a href="https://ethresear.ch/t/26169/2" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethresear.ch/t/26169/2</a></div>
+<div style="margin-top:4px">[6] <a href="https://ethresear.ch/t/26169/1" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethresear.ch/t/26169/1</a></div>
+<div style="margin-top:4px">[7] <a href="https://ethresear.ch/latest" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethresear.ch/latest</a></div>
+<div style="margin-top:4px">[8] <a href="https://blog.ethereum.org/archive" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://blog.ethereum.org/archive</a></div>
+<div style="margin-top:4px">[9] <a href="https://openinterest-ai.github.io/paper/rehearsal.html" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://openinterest-ai.github.io/paper/rehearsal.html</a></div>
+<div style="margin-top:4px">[10] <a href="https://openinterest-ai.github.io/paper/tests/test-03.html" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://openinterest-ai.github.io/paper/tests/test-03.html</a></div></div>
+  <p style="margin-top:10px;font-size:11px;color:#8a8880">Source URLs are rendered as numbered references for reading; the sha256 above covers the verbatim plain text with full URLs in place.</p>
+  <p style="margin-top:14px;font-size:13px;color:#4a4a52"><b>Pipeline provenance (first full-pipeline edition):</b> three seats drafted competing editions in parallel (tokens 1669, 946, 1998); a fourth seat selected this one and ranked the losers with reasons; a fifth adversarially reviewed the winner, checking all 26 cited URLs and confirming no prior edition led with this story. The selection was verified byte-identical to the winning draft. All five steps, one job, 0.5 IMD. <a href="https://github.com/identity-md-launches/launch-2664-produce-one-test-edition" target="_blank" rel="noreferrer">the drafts, the selection and the review, delivered by the network &#8599;</a></p>
+  <p style="margin-top:20px;font-size:13px;color:#4a4a52">Grader’s note (mechanical, human-confirmed, allowed during tests only): grade PASS. under 900 words: 461 words; at least 8 source URLs: 34 URLs; at most one em dash: 0 em dashes; no banned words: clean; LEAD present: ok; ALSO TODAY present: ok; READING LIST present: ok; METHOD present: ok; headline ends with a full stop: SEACAST adds tests on larger simulated networks.; No edits were made.</p>
+</div>
+<footer class="foot"><div class="wrap">
+  <span>human-constituted &middot; machine-operated &middot; fully transparent</span>
+  <span><a href="https://explorer.imd.fun/wallet/0xbe80e5979313cf8aff2b8e54e615fe3ecd8358f5" target="_blank" rel="noreferrer" style="color:inherit">newsroom wallet &#8599;</a></span>
+</div></footer>
+</body>
+</html>
