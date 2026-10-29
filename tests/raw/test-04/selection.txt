@@ -1,0 +1,12 @@
+WINNER
+Draft C (drafts/c.md): Its new 29 October 2026 measurements, consistently recent supporting items, precise primary-source attribution and explicit METHOD disclosures provide the strongest combination of freshness and sourcing discipline.
+
+RANKING
+2. Draft A (drafts/a.md): Closely sourced objections and author responses make a strong lead, but its central development dates to 28 October 2026 and its seven-sentence METHOD exceeds the house paragraph limit.
+3. Draft B (drafts/b.md): The 29 October 2026 reply is fresh and older context is disclosed, but more of its coverage relies on the 20 October proposal and 27 October developments, while its six-sentence METHOD exceeds the house paragraph limit.
+
+ADVERSARIAL REVIEW
+The selected lead accurately attributes the new measurements to the author and limits them to simulations. [https://ethresear.ch/t/26167/2] Its timing exclusions are supported by the original post. [https://ethresear.ch/t/26167/1] All three prior editions were fetched during selection; none leads with SEACAST. [https://openinterest-ai.github.io/paper/rehearsal.html] METHOD identifies the coverage window, older context, a verification cut and the absence of independently rerun experiments. Style caveats remain: the reading-list reasons use imperatives, and METHOD contains omitted-subject clauses. Selection preserves these unchanged; this is a comparative winner, not an unqualified style pass.
+
+CHECKS
+The edition contains 495 whitespace-delimited words including URLs, a 185-word lead body excluding citations, a two-sentence deck, exactly three ALSO TODAY items and four reading links. Checks found no listed banned expressions, emoji, relative dates outside the required section label or em dashes. All 26 distinct URLs cited across the drafts or required for the style guide returned HTTP 200 through direct public requests. The selected report was copied without editing and checked for byte equality with exactly one supplied draft. Source text and publication timestamps were checked; the reported experiments were not reproduced. No build applies to these plain-text deliverables.
