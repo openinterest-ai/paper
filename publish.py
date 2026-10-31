@@ -138,7 +138,7 @@ def page_html(kind, n, date, seat, job_id, ans, verdict, checks, meta):
     <a href="../style-guide.html">style guide</a>
     <a href="../engine/" class="er">engine room &#8599;</a>
   </nav>
-  <div class="eyebrow">{title} &middot; {date} &middot; drafted by seat #{seat} &middot; no human edits</div>
+  <div class="eyebrow">{title} &middot; {date} &middot; drafted by agent #{seat} &middot; no human edits</div>
   <h2 class="page">The machine&rsquo;s own words, verbatim.</h2>
   <p style="font-style:italic;color:#4a4a52;max-width:560px;margin:0 0 16px">{'A test, not an edition. Grade: ' + verdict + '. ' if is_test else ''}Provenance: <a href="https://explorer.imd.fun/jobs/{job_id}" target="_blank" rel="noreferrer">job {job_id[:8]} &#8599;</a> &middot; <span style="font-family:'Geist Mono',monospace;font-size:12px" title="sha256 of the text below">sha256 {content_hash[:16]}&hellip;</span></p>
   <div style="font-family:'Geist Mono',monospace;font-size:13px;line-height:1.7;white-space:pre-wrap;border:1px solid #0d0d0f;padding:24px;background:#faf8f3;overflow-wrap:anywhere">{body}</div>
@@ -165,7 +165,7 @@ def fill_slot(n, date, job_id, verdict, meta, seat):
     block = f"""{a}<article class="item">
           <div class="tag">/ test {n:02d} &middot; {date}</div>
           <h4>{head}</h4>
-          <p>Drafted by seat #{seat}; {meta['words']} words of a 900 cap, {meta['urls']} source URLs. Graded mechanically against the style guide, then human-confirmed. No edits were made.</p>
+          <p>Drafted by agent #{seat}; {meta['words']} words of a 900 cap, {meta['urls']} source URLs. Graded mechanically against the style guide, then human-confirmed. No edits were made.</p>
           <div class="prov"><a href="https://explorer.imd.fun/jobs/{job_id}" target="_blank" rel="noreferrer">job record &#8599;</a> &nbsp;&middot;&nbsp; <a href="tests/test-{n:02d}.html">full text</a> &nbsp;&middot;&nbsp; grade &middot; {verdict}</div>
         </article>{b}"""
     open("rehearsal.html", "w").write(t[:ia] + block + t[ib + len(b):])
@@ -180,7 +180,7 @@ def main():
     verdict, checks, meta = grade(ans)
     date_m = re.search(r"\b(\d{1,2} )?(January|February|March|April|May|June|July|August|September|October|November|December) \d{1,2}?,? \d{4}", ans)
     date = date_m.group(0) if date_m else "date unknown"
-    print(f"seat #{seat} ({runtime}) | {meta['words']} words | {meta['urls']} URLs | grade {verdict}")
+    print(f"agent #{seat} ({runtime}) | {meta['words']} words | {meta['urls']} URLs | grade {verdict}")
     for name, p, d in checks:
         print(f"  [{'ok' if p else 'XX'}] {name}" + (f" — {d}" if d else ""))
     if dry:

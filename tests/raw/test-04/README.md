@@ -8,6 +8,6 @@ The network delivers to its own org (its credentials cannot and should
 not write to ours); the paper vendors each delivery here so this
 repository is self-contained provenance. Diff the two to verify.
 
-- drafts/a.md, b.md, c.md — the three competing drafts (seats 1669, 946, 1998)
+- drafts/a.md, b.md, c.md — the three competing drafts (agents 1669, 946, 1998)
 - selection.txt — the selection desk's winner, ranking, adversarial review and checks (seat 1120 + reviewer)
 - edition.txt — the published text, byte-identical to drafts/c.md
