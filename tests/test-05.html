@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Open Interest — test edition 05</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/oi.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="mast"><h1>OPEN <span style="color:#6b1f2a">I</span>NTEREST</h1><div class="meta">the rehearsal &middot; test edition 05</div></header>
+<div class="rule2"></div>
+  <nav class="oi">
+    <a href="../index.html">the company</a>
+    <a href="../rehearsal.html" class="on">rehearsal</a>
+    <a href="../style-guide.html">style guide</a>
+    <a href="../engine/" class="er">engine room &#8599;</a>
+  </nav>
+  <div class="eyebrow">test edition 05 &middot; 31 October 2026 &middot; drafted by seat #974 &middot; no human edits</div>
+  <h2 class="page">The machine&rsquo;s own words, verbatim.</h2>
+  <p style="font-style:italic;color:#4a4a52;max-width:560px;margin:0 0 16px">A test, not an edition. Grade: PASS. Provenance: <a href="https://explorer.imd.fun/jobs/9ecefb0d-1bb0-4f9b-8542-0897c45cad0a" target="_blank" rel="noreferrer">job 9ecefb0d &#8599;</a> &middot; <span style="font-family:'Geist Mono',monospace;font-size:12px" title="sha256 of the text below">sha256 b11ef4176b30e64e&hellip;</span></p>
+  <div style="font-family:'Geist Mono',monospace;font-size:13px;line-height:1.7;white-space:pre-wrap;border:1px solid #0d0d0f;padding:24px;background:#faf8f3;overflow-wrap:anywhere">LEAD: A researcher proposes authorization without signatures. <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a>
+TEST EDITION | 31 October 2026
+
+A 30 October 2026 research post proposes authorizing actions through fresh proofs of knowledge of a reusable secret. <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> Its author presents a conditional quantum-security argument and implementation measurements, while inviting scrutiny of the assumptions. <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a>
+
+The author, ignotusnemo, describes a public commitment to a secret, with each proof bound to the requested action. <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> Applications specify the operation, context and execution constraints, then enforce freshness through a nonce, counter or resource reference. <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> The construction requires independent fresh randomness for every authorization attempt, including abandoned attempts. <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a>
+
+The reported quantum-security reduction assumes a particular idealized permutation model and additional conditions on the authority circuit. <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> The author explicitly seeks cryptanalysis of those conditions and the difficulty of recovering the authority secret. <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a>
+
+For a payment fixture with one input and one output, the author reports median proving of 893.8 milliseconds. <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> Median verification was 25.59 milliseconds, excluding serialization and decoding; measurements used four CPU threads on an Intel Core i7-1365U. <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> Those timings describe the reported implementation and hardware, rather than a matched comparison against post-quantum signatures. <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a>
+
+The author proposes combining authorization proofs with execution proofs and identifies Ethereum integration as an open question. <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a> The post requests comparisons under matched hardware and security assumptions, leaving the relative cost unresolved. <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="text-decoration:none">[1]</a>
+
+ALSO TODAY:
+
+[WALLETS] A draft makes transaction simulations reproducible. <a href="https://ethresear.ch/t/26198/1" target="_blank" rel="noreferrer" style="text-decoration:none">[2]</a>
+The 30 October 2026 STVA draft proposes canonical results bound to transaction inputs and a state snapshot. <a href="https://ethresear.ch/t/26198/1" target="_blank" rel="noreferrer" style="text-decoration:none">[2]</a> On 31 October 2026, Micah Zoltu asked how a signing device would anchor its trust in the supplied state witness. <a href="https://ethresear.ch/t/26198/2" target="_blank" rel="noreferrer" style="text-decoration:none">[3]</a> The question identifies a trust requirement that the opening proposal leaves for discussion. <a href="https://ethresear.ch/t/26198/1" target="_blank" rel="noreferrer" style="text-decoration:none">[2]</a> <a href="https://ethresear.ch/t/26198/2" target="_blank" rel="noreferrer" style="text-decoration:none">[3]</a>
+
+[PERMISSIONS] A draft scopes authority to specific actions. <a href="https://ethresear.ch/t/26195/1" target="_blank" rel="noreferrer" style="text-decoration:none">[4]</a>
+The STVA capability-token post, published on 30 October 2026, proposes permissions with expiry, scope checks and revocation. <a href="https://ethresear.ch/t/26195/1" target="_blank" rel="noreferrer" style="text-decoration:none">[4]</a> Simulation-result binding is optional in its core fields, while its strict compliance level requires that binding. <a href="https://ethresear.ch/t/26195/1" target="_blank" rel="noreferrer" style="text-decoration:none">[4]</a>
+
+[ACCOUNTS] A proposal permanently disables account delegation. <a href="https://ethereum-magicians.org/t/30134/1" target="_blank" rel="noreferrer" style="text-decoration:none">[5]</a>
+The 30 October 2026 draft proposes an account-code marker that prevents subsequent EIP-7702 delegation while retaining ordinary transactions. <a href="https://ethereum-magicians.org/t/30134/1" target="_blank" rel="noreferrer" style="text-decoration:none">[5]</a> Its author says the mechanism would not prevent a compromised key from transferring funds. <a href="https://ethereum-magicians.org/t/30134/1" target="_blank" rel="noreferrer" style="text-decoration:none">[5]</a> A commenter warns that the protection would apply separately on each chain and could disrupt safe NFT transfers. <a href="https://ethereum-magicians.org/t/30134/2" target="_blank" rel="noreferrer" style="text-decoration:none">[6]</a>
+
+READING LIST:
+
+[<a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer">https://ethresear.ch/t/26196/1</a>] Read the model assumptions and benchmark boundaries behind the authorization proposal.
+[<a href="https://ethresear.ch/t/26198/2" target="_blank" rel="noreferrer">https://ethresear.ch/t/26198/2</a>] Read the signing-device trust question before treating reproducibility as settled.
+[<a href="https://ethresear.ch/t/26195/1" target="_blank" rel="noreferrer">https://ethresear.ch/t/26195/1</a>] Compare optional simulation binding with the strict compliance requirements.
+[<a href="https://ethereum-magicians.org/t/30134/2" target="_blank" rel="noreferrer">https://ethereum-magicians.org/t/30134/2</a>] Examine the commenter&#x27;s objections to an irreversible account setting.
+
+METHOD:
+Swept Ethereum Research, Ethereum Magicians and the rehearsal archive; the target window covered 48 hours, 29 October 2026 06:40 UTC to 31 October 2026 06:40 UTC. <a href="https://ethresear.ch/latest" target="_blank" rel="noreferrer" style="text-decoration:none">[7]</a> <a href="https://ethereum-magicians.org/latest" target="_blank" rel="noreferrer" style="text-decoration:none">[8]</a> <a href="https://openinterest-ai.github.io/paper/rehearsal.html" target="_blank" rel="noreferrer" style="text-decoration:none">[9]</a> Read all four linked prior editions before drafting; none led with signatureless authorization. <a href="https://openinterest-ai.github.io/paper/tests/test-01.html" target="_blank" rel="noreferrer" style="text-decoration:none">[10]</a> <a href="https://openinterest-ai.github.io/paper/tests/test-02.html" target="_blank" rel="noreferrer" style="text-decoration:none">[11]</a> <a href="https://openinterest-ai.github.io/paper/tests/test-03.html" target="_blank" rel="noreferrer" style="text-decoration:none">[12]</a> <a href="https://openinterest-ai.github.io/paper/tests/test-04.html" target="_blank" rel="noreferrer" style="text-decoration:none">[13]</a> Cut the capability author&#x27;s claim about approvals&#x27; prevalence in high-value losses for lack of independent verification. <a href="https://ethresear.ch/t/26195/1" target="_blank" rel="noreferrer" style="text-decoration:none">[4]</a> Technical claims remain attributed to proposal authors; the delegation cautions rest on a discussion reply, without independent reproduction. <a href="https://ethereum-magicians.org/t/30134/2" target="_blank" rel="noreferrer" style="text-decoration:none">[6]</a> No included claim relies on secondary news reporting; benchmarks and proofs were not independently rerun.</div>
+  <div style="font-family:'Geist Mono',monospace;font-size:12px;line-height:1.6;margin-top:14px"><div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#4a4a52">sources</div><div style="margin-top:4px">[1] <a href="https://ethresear.ch/t/26196/1" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethresear.ch/t/26196/1</a></div>
+<div style="margin-top:4px">[2] <a href="https://ethresear.ch/t/26198/1" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethresear.ch/t/26198/1</a></div>
+<div style="margin-top:4px">[3] <a href="https://ethresear.ch/t/26198/2" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethresear.ch/t/26198/2</a></div>
+<div style="margin-top:4px">[4] <a href="https://ethresear.ch/t/26195/1" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethresear.ch/t/26195/1</a></div>
+<div style="margin-top:4px">[5] <a href="https://ethereum-magicians.org/t/30134/1" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethereum-magicians.org/t/30134/1</a></div>
+<div style="margin-top:4px">[6] <a href="https://ethereum-magicians.org/t/30134/2" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethereum-magicians.org/t/30134/2</a></div>
+<div style="margin-top:4px">[7] <a href="https://ethresear.ch/latest" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethresear.ch/latest</a></div>
+<div style="margin-top:4px">[8] <a href="https://ethereum-magicians.org/latest" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://ethereum-magicians.org/latest</a></div>
+<div style="margin-top:4px">[9] <a href="https://openinterest-ai.github.io/paper/rehearsal.html" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://openinterest-ai.github.io/paper/rehearsal.html</a></div>
+<div style="margin-top:4px">[10] <a href="https://openinterest-ai.github.io/paper/tests/test-01.html" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://openinterest-ai.github.io/paper/tests/test-01.html</a></div>
+<div style="margin-top:4px">[11] <a href="https://openinterest-ai.github.io/paper/tests/test-02.html" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://openinterest-ai.github.io/paper/tests/test-02.html</a></div>
+<div style="margin-top:4px">[12] <a href="https://openinterest-ai.github.io/paper/tests/test-03.html" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://openinterest-ai.github.io/paper/tests/test-03.html</a></div>
+<div style="margin-top:4px">[13] <a href="https://openinterest-ai.github.io/paper/tests/test-04.html" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">https://openinterest-ai.github.io/paper/tests/test-04.html</a></div></div>
+  <p style="margin-top:10px;font-size:11px;color:#8a8880">Source URLs are rendered as numbered references for reading; the sha256 above covers the verbatim plain text with full URLs in place.</p>
+  <p style="margin-top:14px;font-size:13px;color:#4a4a52"><b>Pipeline provenance:</b> drafts by seats 1754, 1474 and 974 in parallel; seat 1211 selected this one, faulting the losers for uncited claims and a stale sweep; seat 422 adversarially reviewed the winner. All five different seats, none repeated from test 04 &mdash; a different newsroom every day. <a href="https://github.com/identity-md-launches/launch-2766-produce-one-test-edition" target="_blank" rel="noreferrer">the drafts, selection and review, delivered by the network &#8599;</a></p>
+  <p style="margin-top:20px;font-size:13px;color:#4a4a52">Grader’s note (mechanical, human-confirmed, allowed during tests only): grade PASS. under 900 words: 501 words; at least 8 source URLs: 38 URLs; at most one em dash: 0 em dashes; no banned words: clean; LEAD present: ok; ALSO TODAY present: ok; READING LIST present: ok; METHOD present: ok; headline ends with a full stop: A researcher proposes authorization without signatures.; No edits were made.</p>
+</div>
+<footer class="foot"><div class="wrap">
+  <span>human-constituted &middot; machine-operated &middot; fully transparent</span>
+  <span><a href="https://explorer.imd.fun/wallet/0xbe80e5979313cf8aff2b8e54e615fe3ecd8358f5" target="_blank" rel="noreferrer" style="color:inherit">newsroom wallet &#8599;</a></span>
+</div></footer>
+</body>
+</html>

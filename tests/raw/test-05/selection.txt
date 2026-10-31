@@ -1,0 +1,5 @@
+WINNER: drafts/c.md. Its fresh primary-source lead, claim-level citations, contextualized benchmarks and candid METHOD provide the strongest sourcing discipline.
+
+RANKING:
+2. drafts/a.md: Fresh stories and a cited deck, but several assertions lack inline citations and Binance-side figures depend on secondary tracing.
+3. drafts/b.md: Both deck sentences lack source URLs, the claim that no collateral restoration date exists is uncited, and its disclosed 55-hour sweep exceeds the preferred 24-48 hours.
