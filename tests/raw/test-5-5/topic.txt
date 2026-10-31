@@ -1,0 +1,10 @@
+WINNER
+Pitch A: Who keeps Ethereum’s receipts?
+
+Consequence and sourceability favour A: Geth documents receipt pruning and history retrieval, giving the feature a concrete test of access to evidence. [https://geth.ethereum.org/docs/fundamentals/historypruning] [https://geth.ethereum.org/docs/fundamentals/downloadera]
+Eth Docker’s 22 October 2026 release supplies freshness through its clearer warning about roughly five months of retained history. [https://github.com/ethstaker/eth-docker/releases/tag/v26.10.1]
+For the under-covered criterion, I favour its preservation-cost argument over B’s regulatory overview and C’s already-reported dispute; reliable independent retrieval remains unproven.
+
+RANKING
+2. Pitch C: Who owns bitcoin's gains in Britain's largest seizure. Consequential and fresh through the 12 October 2026 judgment, with a primary legal source. Its surplus angle offers depth beyond coverage attributed to Decrypt. Ownership remains unresolved under Chinese law. [https://caselaw.nationalarchives.gov.uk/ewhc/kb/2026/2509] [https://decrypt.co/380818/uk-moves-closer-to-keeping-5b-bitcoin-haul-after-high-court-ruling]
+3. Pitch B: The stablecoin rulebook arrives, and the largest issuer is not obviously inside it. Consequence and freshness depend on the claimed 23 October 2026 rule. Sourceability ranks last because the author read only metadata and abstract. Its proposed coverage gap remains unconfirmed, weakening the under-covered case. [https://www.federalregister.gov/documents/2026/10/23/2026-21706/implementing-the-guiding-and-establishing-national-innovation-for-us-stablecoins-act-for-the]

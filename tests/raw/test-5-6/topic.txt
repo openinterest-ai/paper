@@ -1,0 +1,20 @@
+OPEN INTEREST, WEEKEND FEATURE (TEST 5.6): TOPIC VOTE
+Vote recorded 31 October 2026.
+
+WINNER: Pitch B, "Ethereum's past needs a maintenance budget."
+
+Justification: Pitch B is the most sourceable pitch, and the most under-covered. Every claim rests on an open primary document. Its news peg checks out: the 28 September 2026 commit cut EIP-4444's HISTORY_PRUNE_EPOCHS from 33,024 to 14,299 epochs, 43% of the old window, and the proposal is still Draft [https://github.com/ethereum/EIPs/commit/f951d789d5e2f65ce8ac8994f7e0f4f4affdec43] [https://eips.ethereum.org/EIPS/eip-4444]. Its consequence is structural. EIP-4444 states that preservation incentives and availability monitoring are out of scope, so access to old records becomes a public duty that nobody has funded. The pitch carries its own strongest objection in Matt Garnett's recorded words, and the rehearsal archive has no lead on the subject [https://blog.ethereum.org/2025/07/08/partial-history-exp] [https://openinterest-ai.github.io/paper/rehearsal.html].
+
+RANKING OF THE LOSERS
+
+2. Pitch A, "Ethereum's past needs a maintenance budget": the argument and sources match B and check out, but its peg is weaker. The 20 August 2026 Eth Docker release is one client-packaging change, and it predates the specification change B cites [https://github.com/ethstaker/eth-docker/releases/tag/v26.8.1]. A also has no named counterargument or decentralised-retrieval alternative to test the thesis against.
+
+3. Pitch C, "The keys held. The approvals did not.": it is the freshest and most consequential pitch, but it loses on sourceability and under-coverage. The Binance theft on 29 October 2026 is two days old, Binance calls its own explanation preliminary, and the TraderTraitor link for Bitget and Binance is an analytics-firm assessment; the FBI has named the group only for Bybit [https://www.ic3.gov/PSA/2025/PSA250226]. Chainalysis's post does not name EIP-7702, so that mechanism claim depends on Wikipedia's account of a Binance chief executive's statement, and the Bitget method is sourced only to Wikipedia [https://www.chainalysis.com/blog/binance-exploit-latest-findings-and-response/] [https://en.wikipedia.org/wiki/2026_Binance_hack] [https://en.wikipedia.org/wiki/Bitget]. The largest crypto theft on record is also the most-covered story of the week, so a document-driven feature of 2,500 words or more would rest on moving facts.
+
+VERIFICATION NOTES (vote record, not for publication)
+- EIP-4444 commit f951d78: author and commit date 2026-09-28T21:07:57Z, per GitHub's API; the message reads "Update HISTORY_PRUNE_EPOCHS to 14,299 epochs."
+- EIP-4444 page: status Draft, HISTORY_PRUNE_EPOCHS 14299, incentives and monitoring "out-of-scope."
+- Eth Docker v26.8.1: published 2026-08-20T05:20:44Z; it sets Reth, Besu and Erigon rolling expiry to 33,024 epochs, about five months.
+- Chainalysis Binance post: dated 30 October 2026; it gives about $6.4bn stolen and about $2.8bn frozen, but the time of the frozen figure is an unfilled "[time]" placeholder; it does not mention EIP-7702.
+- Rehearsal archive: leads cover Hoodi (tests 01 and 02), stateless computation (03), SEACAST (04) and signatureless authorization (05); none covers history preservation or an exchange theft.
+- Selection only. No elements from A or C are merged into B.

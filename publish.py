@@ -200,5 +200,81 @@ def main():
         print("TODO when the x402 payer lands: anchor the hash, then re-host.")
     print("review the page, then commit and push yourself: publishing stays deliberate.")
 
+
+def grade_feature(ans):
+    """Mechanical checks for the weekend feature register."""
+    checks, ok = [], True
+    def c(name, passed, detail=""):
+        nonlocal ok
+        ok = ok and passed
+        checks.append((name, passed, detail))
+    body_words = len(re.sub(r"\[https?://[^\]]+\]", "", ans).split())
+    total_words = len(ans.split())
+    words = body_words
+    c("2,500-4,000 words", 2500 <= total_words <= 4000 or 2500 <= body_words <= 4000,
+      f"{body_words} excl. citations / {total_words} incl.")
+    urls = re.findall(r"https?://[^\]\s]+", ans)
+    c("at least 12 source URLs", len(urls) >= 12, f"{len(urls)} URLs")
+    em = ans.count("\u2014")
+    c("em dashes within section ration", em <= 7, f"{em} em dashes (<=7)")
+    low = ans.lower()
+    hits = [b for b in BANNED if b in low]
+    c("no banned words", not hits, ", ".join(hits) if hits else "clean")
+    for s in ["SOURCES", "METHOD"]:
+        c(f"{s} present", s in ans)
+    lines = [l.strip() for l in ans.split("\n") if l.strip()]
+    first = lines[0]
+    if first.upper() == "HEADLINE" and len(lines) > 1:
+        first = lines[1]
+    headline = re.sub(r"\s*\[https?://[^\]]+\]\s*$", "", first).strip()
+    c("headline ends with a full stop", headline.endswith("."), headline[:70])
+    return ("PASS" if ok else "FAIL"), checks, {"words": words, "urls": len(urls), "headline": headline}
+
+def page_feature(label, date, agent, job_id, ans, verdict, checks, meta, extra_html=""):
+    """Long-form page: same bones as a test page, magazine meta."""
+    title = f"weekend feature \u00b7 test {label}"
+    content_hash = hashlib.sha256(ans.encode()).hexdigest()
+    body, sources = linkify(html_mod.escape(ans))
+    detail = " ".join(f"{name}: {d or ('ok' if p else 'FAIL')};" for name, p, d in checks)
+    note = (f'<p style="margin-top:20px;font-size:13px;color:#4a4a52">Grader\u2019s note '
+            f'(mechanical, human-confirmed, allowed during tests only): grade {verdict}. '
+            f'{detail} No edits were made.</p>')
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Open Interest \u2014 {title}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/oi.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="mast"><h1>OPEN <span style="color:#6b1f2a">I</span>NTEREST</h1><div class="meta">the rehearsal &middot; {title}</div></header>
+<div class="rule2"></div>
+  <nav class="oi">
+    <a href="../index.html">the company</a>
+    <a href="../rehearsal.html" class="on">rehearsal</a>
+    <a href="../style-guide.html">style guide</a>
+    <a href="../engine/" class="er">engine room &#8599;</a>
+  </nav>
+  <div class="eyebrow">{title} &middot; {date} &middot; written by agent #{agent} &middot; topic chosen by vote &middot; no human edits</div>
+  <h2 class="page">The machine&rsquo;s own words, verbatim.</h2>
+  <p style="font-style:italic;color:#4a4a52;max-width:560px;margin:0 0 16px">A test, not an edition. Grade: {verdict}. Provenance: <a href="https://explorer.imd.fun/jobs/{job_id}" target="_blank" rel="noreferrer">job {job_id[:8]} &#8599;</a> &middot; <span style="font-family:'Geist Mono',monospace;font-size:12px" title="sha256 of the text below">sha256 {content_hash[:16]}&hellip;</span></p>
+  <div style="font-family:'Geist Mono',monospace;font-size:13px;line-height:1.75;white-space:pre-wrap;border:1px solid #0d0d0f;padding:28px;background:#faf8f3;overflow-wrap:anywhere">{body}</div>
+  {sources}
+  <p style="margin-top:10px;font-size:11px;color:#8a8880">Source URLs are rendered as numbered references for reading; the sha256 above covers the verbatim plain text with full URLs in place.</p>
+  {extra_html}
+  {note}
+</div>
+<footer class="foot"><div class="wrap">
+  <span>human-constituted &middot; machine-operated &middot; fully transparent</span>
+  <span><a href="https://explorer.imd.fun/wallet/{WALLET}" target="_blank" rel="noreferrer" style="color:inherit">newsroom wallet &#8599;</a></span>
+</div></footer>
+</body>
+</html>
+""", content_hash
+
+
 if __name__ == "__main__":
     main()
