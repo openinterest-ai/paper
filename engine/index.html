@@ -119,14 +119,11 @@
   let d=null;
   try{d=await (await fetch('../data.json?x='+Date.now())).json()}catch(e){try{d=await (await fetch('/data.json?x='+Date.now())).json()}catch(e2){}}
   const wire=document.getElementById('wire');
-  if(wire&&d&&d.jobs){
-    const lines=[];
-    for(const j of d.jobs){
-      const day=(j.createdAt||'').slice(0,10);
-      const done=j.state==='completed';
-      lines.push(`<span style="color:#6f6d66">${day}</span>  <span style="color:#c25663">job ${j.short}</span>  <span style="color:${done?'#e8e6dd':'#c25663'}">${j.label} &middot; ${j.state}${done?' \u2713':''}</span>`);
-    }
-    lines.push(`<span style="color:#6f6d66">${(d.updated||'').slice(0,10)}</span>  <span style="color:#c25663">bake</span>  <span style="color:#6f6d66">data.json refreshed &middot; ${d.jobs.length} jobs on the ledger</span>`);
+  if(wire&&d&&(d.wire||d.jobs)){
+    const COL={t:'#6f6d66',ok:'#7fb069',hi:'#e8e6dd',rs:'#c25663'};
+    const lines=(d.wire||[]).map(e=>
+      `<span style="color:#6f6d66">${e.t}</span>  <span style="color:#c25663">${e.src}</span>  <span style="color:${COL[e.c]||'#a8a69e'}">${e.m}</span>`);
+    lines.push(`<span style="color:#6f6d66">${(d.updated||'').slice(0,16).replace('T',' ')}</span>  <span style="color:#c25663">bake</span>  <span style="color:#6f6d66">data.json refreshed &middot; ${(d.jobs||[]).length} jobs on the ledger</span>`);
     let i=Math.max(0,lines.length-6);
     function add(){
       const el=document.createElement('div');

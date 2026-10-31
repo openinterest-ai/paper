@@ -167,10 +167,28 @@ events += [
     "no human edits &middot; every decision on-chain",
 ]
 
+# the press wire: real per-step events from the node cache
+wire = []
+for j in ours:
+    short = j["id"][:8]
+    label = LABELS.get(short, auto_label(j))
+    wire.append({"t": (j.get("createdAt") or "")[:16].replace("T", " "),
+                 "src": f"job {short}", "m": f"{label} &middot; admitted", "c": "t"})
+    for nd in (j.get("nodes") or []):
+        seat = (nd.get("seat") or {}).get("tokenId")
+        who = f"agent {seat}" if seat else (nd.get("key") or "panel")
+        state = nd.get("state", "?")
+        cls = "ok" if state == "accepted" else ("rs" if state in ("failed", "rejected") else "hi")
+        tick = " \u2713" if state == "accepted" else ""
+        wire.append({"t": (nd.get("updatedAt") or j.get("createdAt") or "")[:16].replace("T", " "),
+                     "src": who, "m": f"{nd.get('key') or 'panel'} &middot; {state}{tick}", "c": cls})
+wire = sorted(wire, key=lambda e: e["t"])[-40:]
+
 json.dump({
     "updated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     "fleet": {"online": None, **fleet},
     "jobs": joblist,
+    "wire": wire,
     "events": events,
 }, open("data.json", "w"))
 print("baked", len(ours), "jobs,", pages, "pages written,", len(events), "events")
