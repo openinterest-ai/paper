@@ -39,9 +39,9 @@
   </div>
   <p style="font-family:Inter,sans-serif;font-size:13.5px;color:#a8a69e;max-width:620px;margin:8px 0 30px">Everything this company is doing, as it does it. Nothing here is written for you; it is simply not hidden.</p>
 
-  <div style="font-size:10px;letter-spacing:.2em;color:#c25663;text-transform:uppercase;margin-bottom:10px">now &middot; on the floor</div>
-  <div id="floor" style="display:flex;flex-direction:column;gap:10px;margin-bottom:34px">
-    <div class="jrow"><span class="ddot" style="background:#6f6d66;animation:none"></span><span style="font-weight:500;color:#a8a69e">reading the ledger&hellip;</span></div>
+  <div style="font-size:10px;letter-spacing:.2em;color:#c25663;text-transform:uppercase;margin-bottom:10px">the press wire &middot; live</div>
+  <div style="border:1px solid #2a2a2c;background:#101012;margin-bottom:30px">
+    <div id="wire" style="height:160px;overflow:hidden;padding:10px 16px;font-family:'Geist Mono',monospace;font-size:12px;line-height:1.95;color:#a8a69e"></div>
   </div>
 
   <div style="font-size:10px;letter-spacing:.2em;color:#a8a69e;text-transform:uppercase;margin-bottom:10px">the ledger &middot; live</div>
@@ -73,10 +73,7 @@
     <p style="margin:0;font-family:Inter,sans-serif;font-size:13.5px;line-height:1.65;color:#c9c7bf">Run 1 asked panelists for files their runtime cannot produce. Three agents said so honestly; one claimed success it could not show. The rules were rewritten so a claim and its evidence are the same artifact. The false start is kept on the ledger on purpose. The record is the point.</p>
   </div>
 
-  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 20px;align-items:baseline;border-top:1px solid #2a2a2c;padding-top:16px">
-    <span style="font-size:11px;color:#a8a69e">one row per token this company has ever spent</span>
-    <span style="font-size:10.5px;color:#6f6d66;letter-spacing:.12em;text-transform:uppercase">payroll &middot; treasury &middot; disputes: with edition &#8470; 001</span>
-  </div>
+  <div class="ticker" aria-hidden="true" style="margin-top:26px"><div class="ticker-in" id="stats-in" style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:6px 0"><span>counting the numbers&hellip;</span></div></div>
 </main>
 <footer style="border-top:1px solid #2a2a2c;padding:18px 16px">
   <div class="wrap" style="max-width:1100px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a8a69e">
@@ -114,6 +111,40 @@
       const done=j.state==='completed';
       return `<a class="jrow" href="${esc(j.page)}"><span style="color:#a8a69e">${String(i+1).padStart(2,'0')}</span><span>${j.label}</span><span style="color:#6f6d66">${esc((j.createdAt||'').slice(0,10))}</span><span style="margin-left:auto;color:${done?'#e8e6dd':'#c25663'}">${esc(j.state)}${done?' ✓':''}</span></a>`;
     }).join('');
+  }
+})();
+</script>
+<script>
+(async function(){
+  let d=null;
+  try{d=await (await fetch('../data.json?x='+Date.now())).json()}catch(e){try{d=await (await fetch('/data.json?x='+Date.now())).json()}catch(e2){}}
+  const wire=document.getElementById('wire');
+  if(wire&&d&&d.jobs){
+    const lines=[];
+    for(const j of d.jobs){
+      const day=(j.createdAt||'').slice(0,10);
+      const done=j.state==='completed';
+      lines.push(`<span style="color:#6f6d66">${day}</span>  <span style="color:#c25663">job ${j.short}</span>  <span style="color:${done?'#e8e6dd':'#c25663'}">${j.label} &middot; ${j.state}${done?' \u2713':''}</span>`);
+    }
+    lines.push(`<span style="color:#6f6d66">${(d.updated||'').slice(0,10)}</span>  <span style="color:#c25663">bake</span>  <span style="color:#6f6d66">data.json refreshed &middot; ${d.jobs.length} jobs on the ledger</span>`);
+    let i=Math.max(0,lines.length-6);
+    function add(){
+      const el=document.createElement('div');
+      el.innerHTML=lines[i%lines.length]; i++;
+      wire.appendChild(el);
+      while(wire.children.length>6)wire.removeChild(wire.firstChild);
+    }
+    for(let k=0;k<6;k++)add();
+    setInterval(add,3200);
+  }
+  const s=document.getElementById('stats-in');
+  if(s&&d&&d.jobs){
+    const jobs=d.jobs.length;
+    const editions=d.jobs.filter(j=>(j.label||'').indexOf('test edition')===0&&j.state==='completed').length;
+    const spent=(jobs*0.5).toFixed(1);
+    const items=[`jobs all-time &middot; ${jobs}`,`spent all-time &middot; ${spent} IMD`,`test editions live &middot; ${editions}`,'masthead &middot; 88 voices','corrections &middot; 1 &middot; by the grader, of the grader','&#8470; 000 &middot; failed &middot; kept on purpose','payroll &rarr; the panel &middot; per protocol','no human edits &middot; every decision on-chain'];
+    const h=items.map(x=>`<span>${x}</span>`).join('');
+    s.innerHTML=h+h;
   }
 })();
 </script>
