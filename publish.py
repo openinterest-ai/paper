@@ -63,21 +63,36 @@ def grade(ans):
         nonlocal ok
         ok = ok and passed
         checks.append((name, passed, detail))
+    # Format v2 (tests 06+) tags its items; v1 editions have no tags.
+    v2 = "[NEWS]" in ans
+    cap = 1700 if v2 else 900
     words = len(re.sub(r"\[https?://[^\]]+\]", "", ans).split())
-    c("under 900 words", words < 900, f"{words} words")
+    c(f"under {cap:,} words", words < cap, f"{words} words")
     urls = re.findall(r"https?://[^\]\s]+", ans)
     c("at least 8 source URLs", len(urls) >= 8, f"{len(urls)} URLs")
     em = ans.count("—")
-    c("at most one em dash", em <= 1, f"{em} em dashes")
+    if v2:
+        for tag, want in (("[NEWS]", 3), ("[TECH]", 2), ("[CULTURE]", 2)):
+            n = ans.count(tag)
+            c(f"{tag} x{want}", n == want, f"{n} tagged")
+        # one em dash per story; v2 has 8 stories (LEAD + 3 + 2 + 2)
+        c("em dashes within story ration", em <= 8, f"{em} em dashes (<=8)")
+        sections = ["LEAD", "READING LIST", "METHOD"]
+    else:
+        c("at most one em dash", em <= 1, f"{em} em dashes")
+        sections = ["LEAD", "ALSO TODAY", "READING LIST", "METHOD"]
     low = ans.lower()
     hits = [b for b in BANNED if b in low]
     c("no banned words", not hits, ", ".join(hits) if hits else "clean")
-    for s in ["LEAD", "ALSO TODAY", "READING LIST", "METHOD"]:
+    for s in sections:
         c(f"{s} present", s in ans)
-    first = ans.split("\n", 1)[0].replace("LEAD:", "").strip()
+    # The headline is the text after LEAD:, inline or on the next line
+    # (delivery-repo editions may open with a banner line before LEAD:).
+    m_head = re.search(r"LEAD:\s*(\S.*)", ans)
+    first = m_head.group(1).strip() if m_head else ans.split("\n", 1)[0].strip()
     headline = re.sub(r"\s*\[https?://[^\]]+\]\s*$", "", first).strip()
     c("headline ends with a full stop", headline.endswith("."), headline[:60])
-    return ("PASS" if ok else "FAIL"), checks, {"words": words, "urls": len(urls), "headline": headline}
+    return ("PASS" if ok else "FAIL"), checks, {"words": words, "urls": len(urls), "headline": headline, "cap": cap}
 
 def linkify(escaped):
     """Render bracketed source URLs as numbered references (same URL, same
@@ -165,7 +180,7 @@ def fill_slot(n, date, job_id, verdict, meta, seat):
     block = f"""{a}<article class="item">
           <div class="tag">/ test {n:02d} &middot; {date}</div>
           <h4>{head}</h4>
-          <p>Drafted by agent #{seat}; {meta['words']} words of a 900 cap, {meta['urls']} source URLs. Graded mechanically against the style guide, then human-confirmed. No edits were made.</p>
+          <p>Drafted by agent #{seat}; {meta['words']} words of a {meta.get('cap', 900)} cap, {meta['urls']} source URLs. Graded mechanically against the style guide, then human-confirmed. No edits were made.</p>
           <div class="prov"><a href="https://explorer.imd.fun/jobs/{job_id}" target="_blank" rel="noreferrer">job record &#8599;</a> &nbsp;&middot;&nbsp; <a href="tests/test-{n:02d}.html">full text</a> &nbsp;&middot;&nbsp; grade &middot; {verdict}</div>
         </article>{b}"""
     open("rehearsal.html", "w").write(t[:ia] + block + t[ib + len(b):])

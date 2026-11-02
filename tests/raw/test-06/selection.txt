@@ -1,0 +1,6 @@
+WINNER: draft c, because it is the only draft that meets the spec's exact shape (three NEWS, two TECH, two CULTURE, each 3-4 sentences, a 246-word lead). Its event lead and NEWS items rest on primary sources: Binance's own notices, the Justice Department release and Bitquery's investigation with a Core Scan transaction. Its METHOD discloses its cuts and its secondary reliance.
+
+RANKING:
+1. c (winner).
+2. b: Strongest news reporting, but on re-review its CULTURE item reports Compound Proposal 619 as pending and "outcome unverified" when the guardian cancelled it on 31 October 2026 (comp.xyz topic 8221). It cites a secondary outlet where primaries exist. It attributes a Bitquery $202,386 figure to a KuCoin page that does not contain it, dates the Name.com hijack 31 October instead of 30 October, misquotes Symbiosis, and runs all three NEWS items at 5 sentences.
+3. a: Sound lead and honest METHOD, but its NEWS items run 5-6 sentences, its SEC item rests on one secondary outlet with no SEC release, and its CULTURE items recycle the Binance story.
