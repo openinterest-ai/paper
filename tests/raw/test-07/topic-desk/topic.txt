@@ -1,0 +1,39 @@
+TOPIC DESK: 7 November 2026
+
+TALLY
+Judge j1: C first; full ranking C > B > A. Source: ballots/j1.md.
+Judge j2: C first; full ranking C > B > A. Source: ballots/j2.md.
+Judge j3 (chair): C first; full ranking C > A > B. Source: ballots/j3.md.
+
+WINNER
+Pitch C: Ethereum’s censorship guarantee has an eligibility test.
+
+MAJORITY COMPUTATION
+C receives 3 of 3 first-choice votes (100%); A receives 0; B receives 0.
+A majority requires more than half of three votes, therefore at least two.
+C wins unanimously with three votes. The sum-of-ranks tiebreak is not needed.
+For audit, C totals 1 + 1 + 1 = 3; B totals 2 + 2 + 3 = 7; A totals 3 + 3 + 2 = 8.
+
+PROCESS AND WRITING-DESK LIMITS
+The chair wrote ballots/j3.md after reading the pitches and opening their cited sources, before opening either other ballot.
+The independent ballot remains unchanged after consultation of j1 and j2.
+The tally records editorial choices, not proof of the winning thesis.
+The winning feature must preserve the distinction between draft eligibility rules and deployed censorship resistance.
+EIP-8369 remains informational and requires a future consensus extension. Which applications qualify remains a reporting question. [https://eips.ethereum.org/EIPS/eip-8369]
+The feature register governs the eventual long form, including its documented opening, counterargument and third-person voice. [https://raw.githubusercontent.com/openinterest-ai/paper/main/style-guide.html]
+
+WINNING PITCH: VERBATIM COPY OF pitches/c.md
+
+Ethereum’s censorship guarantee has an eligibility test
+
+Thomas Thiery’s draft EIP-8369 draws a boundary: transactions outside its two profiles receive no enforced inclusion. It is informational, requiring a future consensus extension [https://eips.ethereum.org/EIPS/eip-8369].
+
+The proposed feature argues that Ethereum’s censorship resistance will depend on wallet design, not merely validator honesty. That is an inference from the eligibility rules, not evidence of censorship already occurring. The consequence concerns which programmable wallets and privacy tools can compel inclusion rather than depend on willing builders.
+
+The timing is concrete. Ethereum.org’s Hegotá roadmap, updated 16 October 2026, schedules inclusion lists and frame transactions, while leaving supporting proposals unsettled [https://ethereum.org/roadmap/hegota/]. The Ethereum Foundation’s Protocol cluster says their interaction must be tested together; its 7 September priorities put implementation as early as late 2026 [https://blog.ethereum.org/2026/09/07/protocol-priorities].
+
+The narrative would follow Thiery’s specifications from promise to exception. EIP-7805 describes committees constraining builders, with omissions permitted for invalid transactions or insufficient gas [https://eips.ethereum.org/EIPS/eip-7805]. EIP-8272, Recent Roots for Frame Transactions, supplies a mechanism for checking recent application state, including privacy commitments [https://eips.ethereum.org/EIPS/eip-8272].
+
+The strongest objection deserves space: bounded verification makes enforcement affordable, as EIP-8369 explains. The feature’s distinctive reporting target is the eligibility boundary beneath the upgrade announcement. Readers would learn why acceptance into a transaction pool and enforceable inclusion differ. Which applications will qualify remains unanswered; draft rules cannot establish deployed performance.
+
+All five named sources are open primary documents, opened and checked. No secondary reporting is used.
