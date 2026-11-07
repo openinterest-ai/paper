@@ -124,8 +124,8 @@ def linkify(escaped):
 def page_html(kind, n, date, seat, job_id, ans, verdict, checks, meta):
     is_test = kind == "test"
     title = f"test edition {n:02d}" if is_test else f"edition № {n:03d}"
-    crumb = (f'<a href="../rehearsal.html" class="on">rehearsal</a>' if is_test
-             else f'<a href="../editions/" class="on">editions</a>')
+    crumb = (f'<a href="../rehearsal.html" class="on" aria-current="page">rehearsal</a>' if is_test
+             else f'<a href="../editions/" class="on" aria-current="page">editions</a>')
     note = ""
     if is_test:
         detail = " ".join(f"{name}: {d or ('ok' if p else 'FAIL')};" for name, p, d in checks)
@@ -158,7 +158,7 @@ def page_html(kind, n, date, seat, job_id, ans, verdict, checks, meta):
   <p style="font-style:italic;color:#4a4a52;max-width:560px;margin:0 0 16px">{'A test, not an edition. Grade: ' + verdict + '. ' if is_test else ''}Provenance: <a href="https://explorer.imd.fun/jobs/{job_id}" target="_blank" rel="noreferrer">job {job_id[:8]} &#8599;</a> &middot; <span style="font-family:'Geist Mono',monospace;font-size:12px" title="sha256 of the text below">sha256 {content_hash[:16]}&hellip;</span></p>
   <div style="font-family:'Geist Mono',monospace;font-size:13px;line-height:1.7;white-space:pre-wrap;border:1px solid #0d0d0f;padding:24px;background:#faf8f3;overflow-wrap:anywhere">{body}</div>
   {sources}
-  <p style="margin-top:10px;font-size:11px;color:#8a8880">Source URLs are rendered as numbered references for reading; the sha256 above covers the verbatim plain text with full URLs in place.</p>
+  <p style="margin-top:10px;font-size:12px;color:#6a6a70">Source URLs are rendered as numbered references for reading; the sha256 above covers the verbatim plain text with full URLs in place.</p>
   {note}
 </div>
 <footer class="foot"><div class="wrap">
@@ -269,7 +269,7 @@ def page_feature(label, date, agent, job_id, ans, verdict, checks, meta, extra_h
 <div class="rule2"></div>
   <nav class="oi">
     <a href="../index.html">the company</a>
-    <a href="../rehearsal.html" class="on">rehearsal</a>
+    <a href="../rehearsal.html" class="on" aria-current="page">rehearsal</a>
     <a href="../style-guide.html">style guide</a>
     <a href="../engine/" class="er">engine room &#8599;</a>
   </nav>
@@ -278,7 +278,7 @@ def page_feature(label, date, agent, job_id, ans, verdict, checks, meta, extra_h
   <p style="font-style:italic;color:#4a4a52;max-width:560px;margin:0 0 16px">A test, not an edition. Grade: {verdict}. Provenance: <a href="https://explorer.imd.fun/jobs/{job_id}" target="_blank" rel="noreferrer">job {job_id[:8]} &#8599;</a> &middot; <span style="font-family:'Geist Mono',monospace;font-size:12px" title="sha256 of the text below">sha256 {content_hash[:16]}&hellip;</span></p>
   <div style="font-family:'Geist Mono',monospace;font-size:13px;line-height:1.75;white-space:pre-wrap;border:1px solid #0d0d0f;padding:28px;background:#faf8f3;overflow-wrap:anywhere">{body}</div>
   {sources}
-  <p style="margin-top:10px;font-size:11px;color:#8a8880">Source URLs are rendered as numbered references for reading; the sha256 above covers the verbatim plain text with full URLs in place.</p>
+  <p style="margin-top:10px;font-size:12px;color:#6a6a70">Source URLs are rendered as numbered references for reading; the sha256 above covers the verbatim plain text with full URLs in place.</p>
   {extra_html}
   {note}
 </div>
@@ -393,7 +393,7 @@ def page_feature_typeset(label, date, ans, verdict, checks, facts):
 <div class="rule2"></div>
   <nav class="oi">
     <a href="../index.html">the company</a>
-    <a href="../rehearsal.html" class="on">rehearsal</a>
+    <a href="../rehearsal.html" class="on" aria-current="page">rehearsal</a>
     <a href="../style-guide.html">style guide</a>
     <a href="../engine/" class="er">engine room &#8599;</a>
   </nav>
