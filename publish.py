@@ -366,6 +366,7 @@ def page_feature_typeset(label, date, ans, verdict, checks, facts):
     topic_link = ""
     if facts.get("job_topic"):
         topic_link = f'<span><a href="https://explorer.imd.fun/jobs/{facts["job_topic"]}" target="_blank" rel="noreferrer">topic desk {facts["job_topic"][:8]} &#8599;</a></span>'
+    method_html = typeset(method)
     detail = " ".join(f"{name}: {d or ('ok' if p else 'FAIL')};" for name, p, d in checks)
     src_rows = "\n".join(
         f'<div style="margin-top:4px">[{k + 1}] <a href="{u}" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">{u}</a></div>'
@@ -419,7 +420,7 @@ def page_feature_typeset(label, date, ans, verdict, checks, facts):
       </div>
       {verdict_card}<div class="card railcard">
         <h3>/ method</h3>
-        <p style="font-size:13px;color:#4a4a52;line-height:1.6;margin:0">{typeset(method)}</p>
+        <p style="font-size:13px;color:#4a4a52;line-height:1.6;margin:0">{method_html}</p>
       </div>
       <div class="card burg railcard">
         <h3>/ provenance</h3>
@@ -526,10 +527,15 @@ def page_test_typeset(n, date, ans, verdict, checks, meta, facts):
         f'<span style="font-size:13px;color:#4a4a52">{html_mod.escape(why)}</span></p>'
         for u, why in reading)
 
+    news_html = render_items(news_txt, "NEWS", "News")
+    tech_html = render_items(tech_txt, "TECH", "Tech")
+    cult_html = render_items(cult_txt, "CULTURE", "Culture")
+    method_html = typeset(method_txt)
     pipeline_html = "\n        ".join(
         f'<p style="font-size:13px;color:#4a4a52;line-height:1.6;margin:0{" 0 8px" if k < len(facts["pipeline_paras"]) - 1 else ""}">{p}</p>'
         for k, p in enumerate(facts["pipeline_paras"]))
     detail = " ".join(f"{name}: {d or ('ok' if p else 'FAIL')};" for name, p, d in checks)
+    # the index is built LAST, once every section has been typeset
     src_rows = "\n".join(
         f'<div style="margin-top:4px">[{k + 1}] <a href="{u}" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">{u}</a></div>'
         for k, u in enumerate(order))
@@ -570,9 +576,9 @@ def page_test_typeset(n, date, ans, verdict, checks, meta, facts):
   <div class="cols">
     <div class="main-col">
       {lead_body_html}
-      {render_items(news_txt, "NEWS", "News")}
-      {render_items(tech_txt, "TECH", "Tech")}
-      {render_items(cult_txt, "CULTURE", "Culture")}
+      {news_html}
+      {tech_html}
+      {cult_html}
     </div>
     <aside class="rail-col">
       <div class="card railcard">
@@ -585,7 +591,7 @@ def page_test_typeset(n, date, ans, verdict, checks, meta, facts):
       </div>
       <div class="card railcard">
         <h3>/ method</h3>
-        <p style="font-size:13px;color:#4a4a52;line-height:1.6;margin:0">{typeset(method_txt)}</p>
+        <p style="font-size:13px;color:#4a4a52;line-height:1.6;margin:0">{method_html}</p>
       </div>
       <div class="card burg railcard">
         <h3>/ provenance</h3>
