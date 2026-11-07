@@ -291,5 +291,158 @@ def page_feature(label, date, agent, job_id, ans, verdict, checks, meta, extra_h
 """, content_hash
 
 
+def page_feature_typeset(label, date, ans, verdict, checks, facts):
+    """The typeset weekend-feature page (design shipped with test 07,
+    2026-11-07: edition-mockup language — burgundy lead, crossheads,
+    rail cards, citation-index foot). ans is the verbatim feature text
+    (HEADLINE / STANDFIRST / body with crossheads / SOURCES / METHOD);
+    rendering adds nothing, the sha256 covers the plain text. facts is
+    the per-run editorial record:
+      writer, job_writing, job_topic (or None), eyebrow_mid, tag_extra,
+      desks_paras (list of card paragraphs), verdict_quote + verdict_note
+      ("" omits the card), record_href, artifacts_href, artifacts_label,
+      banner ("" for live pages). Returns (page, content_hash)."""
+    raw = ans.strip()
+    content_hash = hashlib.sha256(raw.encode()).hexdigest()
+    cites = len(re.findall(r"\[https?://", raw))
+
+    order = []
+    def ref(m):
+        u = m.group(1)
+        if u not in order:
+            order.append(u)
+        return f'<a class="ref" href="{u}" target="_blank" rel="noreferrer">[{order.index(u) + 1}]</a>'
+    def typeset(text):
+        return re.sub(r"\[(https?://[^\]]+)\]", ref, html_mod.escape(text))
+
+    def cut(name, nxt):
+        i = raw.find(name)
+        j = raw.find(nxt, i) if nxt else len(raw)
+        if i < 0:
+            sys.exit(f"section {name} not found")
+        return raw[i + len(name):j].strip()
+
+    headline = cut("HEADLINE", "STANDFIRST").strip()
+    stand = cut("STANDFIRST", None)
+    sp = stand.split("\n\n", 1)
+    standfirst, body = sp[0], (sp[1] if len(sp) > 1 else "")
+    i = body.rfind("SOURCES")
+    j = body.rfind("METHOD")
+    method = body[j + len("METHOD"):].strip()
+    sources_block = body[i + len("SOURCES"):j].strip()
+    body = body[:i].strip()
+
+    standfirst_html = typeset(standfirst)
+    out = []
+    for p in [p.strip() for p in body.split("\n\n") if p.strip()]:
+        if "[http" not in p and len(p) < 80 and "\n" not in p:
+            head_txt = re.sub(r"^#+\s*", "", p).rstrip(".")
+            out.append(f'<p class="sect" style="margin-top:34px">{html_mod.escape(head_txt)}</p>')
+        else:
+            out.append(f'<p style="margin:0 0 15px;font-size:15.5px;line-height:1.68;max-width:680px">{typeset(p)}</p>')
+    body_html = "\n      ".join(out)
+
+    def srcrow(l):
+        m = re.match(r"(.*?)\s*\[(https?://[^\]]+)\]\s*$", l)
+        if not m:
+            return f'<p style="margin:0 0 12px;font-size:13px;color:#4a4a52">{typeset(l)}</p>'
+        name, u = m.group(1).strip(), m.group(2)
+        return (f'<p style="margin:0 0 12px"><a href="{u}" target="_blank" rel="noreferrer" '
+                f'style="overflow-wrap:anywhere;font-size:12.5px">{u}</a><br>'
+                f'<span style="font-size:13px;color:#4a4a52">{html_mod.escape(name)}</span></p>')
+    named_html = "".join(srcrow(l) for l in sources_block.split("\n") if l.strip())
+
+    desks_html = "\n        ".join(
+        f'<p style="font-size:13px;color:#4a4a52;line-height:1.6;margin:0{" 0 8px" if k < len(facts["desks_paras"]) - 1 else ""}">{p}</p>'
+        for k, p in enumerate(facts["desks_paras"]))
+    verdict_card = ""
+    if facts.get("verdict_quote"):
+        verdict_card = f'''<div class="card burg railcard">
+        <h3>/ the audit&rsquo;s verdict</h3>
+        <p style="font-size:13px;color:#0d0d0f;line-height:1.6;margin:0 0 8px">{facts["verdict_quote"]}</p>
+        <p style="font-size:13px;color:#0d0d0f;margin:0">{facts["verdict_note"]}</p>
+      </div>
+      '''
+    topic_link = ""
+    if facts.get("job_topic"):
+        topic_link = f'<span><a href="https://explorer.imd.fun/jobs/{facts["job_topic"]}" target="_blank" rel="noreferrer">topic desk {facts["job_topic"][:8]} &#8599;</a></span>'
+    detail = " ".join(f"{name}: {d or ('ok' if p else 'FAIL')};" for name, p, d in checks)
+    src_rows = "\n".join(
+        f'<div style="margin-top:4px">[{k + 1}] <a href="{u}" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">{u}</a></div>'
+        for k, u in enumerate(order))
+
+    page = f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Open Interest — test {label} · the weekend feature</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/oi.css">
+<style>
+  .ref {{ text-decoration: none; font-size: .72em; vertical-align: super; letter-spacing: 0 }}
+  .lead .ref {{ color: #f0e3e3; opacity: .85 }}
+  .railcard h3 {{ margin: 0 0 9px; font-family: Anton, sans-serif; font-weight: 400; font-size: 15px; letter-spacing: .05em; text-transform: uppercase }}
+  .main-col {{ flex-basis: 500px }}
+</style>
+</head>
+<body>
+{facts.get("banner", "")}
+<div class="wrap">
+  <header class="mast"><h1>OPEN <span style="color:#6b1f2a">I</span>NTEREST</h1><div class="meta">the rehearsal &middot; test {label} &middot; the weekend feature</div></header>
+<div class="rule2"></div>
+  <nav class="oi">
+    <a href="../index.html">the company</a>
+    <a href="../rehearsal.html" class="on">rehearsal</a>
+    <a href="../style-guide.html">style guide</a>
+    <a href="../engine/" class="er">engine room &#8599;</a>
+  </nav>
+  <div class="eyebrow" style="margin-top:20px">test {label} &middot; weekend feature &middot; {date} &middot; written by agent #{facts["writer"]} &middot; {facts["eyebrow_mid"]} &middot; no human edits</div>
+  <div class="lead" style="margin-top:14px">
+    <div class="tag">/ weekend feature &middot; a test, not an edition &middot; grade {verdict}{facts.get("tag_extra", "")}</div>
+    <h2>{html_mod.escape(headline)}</h2>
+    <p style="font-size:16px;max-width:640px">{standfirst_html}</p>
+    <div class="rail"><span><a href="https://explorer.imd.fun/jobs/{facts["job_writing"]}" target="_blank" rel="noreferrer">writing desk {facts["job_writing"][:8]} &#8599;</a></span>{topic_link}<span>sha256 {content_hash[:16]}&hellip;</span><span>{cites} citations</span></div>
+  </div>
+  <div class="cols">
+    <div class="main-col">
+      {body_html}
+    </div>
+    <aside class="rail-col">
+      <div class="card railcard">
+        <h3>/ sources, as the writer filed them</h3>
+        {named_html}
+      </div>
+      <div class="card railcard">
+        <h3>/ the two desks</h3>
+        {desks_html}
+      </div>
+      {verdict_card}<div class="card railcard">
+        <h3>/ method</h3>
+        <p style="font-size:13px;color:#4a4a52;line-height:1.6;margin:0">{typeset(method)}</p>
+      </div>
+      <div class="card burg railcard">
+        <h3>/ provenance</h3>
+        <p style="font-size:13px;color:#0d0d0f;margin:0 0 8px">This page is a typeset rendering. The record is the verbatim plain text the agents delivered; the hash covers it, and the rendering adds nothing.</p>
+        <p class="mono" style="font-size:11px;margin:0;overflow-wrap:anywhere">sha256 {content_hash}<br><a href="{facts["record_href"]}">the verbatim record</a> &middot; <a href="{facts["artifacts_href"]}">{facts["artifacts_label"]}</a></p>
+      </div>
+    </aside>
+  </div>
+  <p style="margin-top:26px;font-size:13px;color:#4a4a52">Grader&rsquo;s note (mechanical, human-confirmed, allowed during tests only): grade {verdict}. {detail} No edits were made.</p>
+  <div class="mono" style="font-size:12px;line-height:1.6;margin-top:18px">
+    <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#4a4a52">citation index</div>
+    {src_rows}
+  </div>
+</div>
+<footer class="foot"><div class="wrap">
+  <span>human-constituted &middot; machine-operated &middot; fully transparent</span>
+  <span><a href="https://explorer.imd.fun/wallet/{WALLET}" target="_blank" rel="noreferrer" style="color:inherit">newsroom wallet &#8599;</a></span>
+</div></footer>
+</body>
+</html>
+"""
+    return page, content_hash
+
+
 if __name__ == "__main__":
     main()
