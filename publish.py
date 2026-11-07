@@ -444,5 +444,172 @@ def page_feature_typeset(label, date, ans, verdict, checks, facts):
     return page, content_hash
 
 
+def page_test_typeset(n, date, ans, verdict, checks, meta, facts):
+    """The typeset v2 DAILY test page (her call 2026-11-07: dailies get
+    the edition-mockup design too, from test 08 on). Parses the v2
+    structure (LEAD / NEWS / TECH / CULTURE / READING LIST / METHOD);
+    the verbatim plain text stays the hashed record. facts: agents
+    (eyebrow credit string), pipeline_paras (rail-card paragraphs),
+    record_href, artifacts_href. Returns (page, content_hash)."""
+    raw = ans.strip()
+    content_hash = hashlib.sha256(raw.encode()).hexdigest()
+    cites = len(re.findall(r"\[https?://", raw))
+
+    order = []
+    def ref(m):
+        u = m.group(1)
+        if u not in order:
+            order.append(u)
+        return f'<a class="ref" href="{u}" target="_blank" rel="noreferrer">[{order.index(u) + 1}]</a>'
+    def typeset(text):
+        return re.sub(r"\[(https?://[^\]]+)\]", ref, html_mod.escape(text))
+
+    body = raw[raw.find("LEAD:"):]
+    def cut(name, nxt):
+        i = body.find(name)
+        j = body.find(nxt, i) if nxt else len(body)
+        if i < 0:
+            sys.exit(f"section {name} not found")
+        return body[i + len(name):j].strip()
+
+    lead_txt = cut("LEAD:", "NEWS:")
+    news_txt = cut("NEWS:", "TECH:")
+    tech_txt = cut("TECH:", "CULTURE:")
+    cult_txt = cut("CULTURE:", "READING LIST:")
+    read_txt = cut("READING LIST:", "METHOD:")
+    method_txt = cut("METHOD:", None)
+
+    paras = [p.strip() for p in lead_txt.split("\n\n") if p.strip()]
+    first = paras[0].replace("\n", " ")
+    lead_head = re.sub(r"\s*\[https?://[^\]]+\]\s*", " ", first).strip()
+    lead_deck_html = typeset(paras[1].replace("\n", " ")) if len(paras) > 1 else ""
+    lead_body_html = "".join(
+        f'<p style="margin:0 0 14px;font-size:15.5px;line-height:1.65;max-width:680px">{typeset(p)}</p>'
+        for p in paras[2:])
+
+    def items(txt, tag):
+        # The headline is the item's FIRST LINE (a declarative sentence);
+        # anything after it, single newlines or blank lines, is body.
+        out, cur = [], None
+        for p in [p.strip() for p in txt.split("\n\n") if p.strip()]:
+            if p.startswith(f"[{tag}]"):
+                if cur: out.append(cur)
+                lines = p[len(tag) + 2:].strip().split("\n")
+                f0 = lines[0].strip()
+                head = re.sub(r"\s*\[https?://[^\]]+\]\s*", " ", f0).strip()
+                refs = "".join(re.findall(r"\[https?://[^\]]+\]", f0))
+                cur = {"head": head, "refs": refs, "paras": []}
+                rest = "\n".join(lines[1:]).strip()
+                if rest: cur["paras"].append(rest)
+            elif cur:
+                cur["paras"].append(p)
+        if cur: out.append(cur)
+        return out
+
+    def render_items(txt, tag, label):
+        h = [f'<p class="sect" style="margin-top:34px">{label}</p>']
+        for it in items(txt, tag):
+            ps = "".join(f"<p>{typeset(p)}</p>" for p in it["paras"])
+            h.append(f'''<div class="item">
+      <div class="tag">/ {label.lower()}</div>
+      <h4>{html_mod.escape(it["head"])} {typeset(it["refs"])}</h4>
+      {ps}
+    </div>''')
+        return "\n".join(h)
+
+    # one entry per bracketed URL, its reason running to the next bracket
+    reading = [(u, w.strip()) for u, w in
+               re.findall(r"\[(https?://[^\]]+)\]\s*([^\[]*)", read_txt)]
+    reading_html = "".join(
+        f'<p style="margin:0 0 12px"><a href="{u}" target="_blank" rel="noreferrer" '
+        f'style="overflow-wrap:anywhere;font-size:12.5px">{u}</a><br>'
+        f'<span style="font-size:13px;color:#4a4a52">{html_mod.escape(why)}</span></p>'
+        for u, why in reading)
+
+    pipeline_html = "\n        ".join(
+        f'<p style="font-size:13px;color:#4a4a52;line-height:1.6;margin:0{" 0 8px" if k < len(facts["pipeline_paras"]) - 1 else ""}">{p}</p>'
+        for k, p in enumerate(facts["pipeline_paras"]))
+    detail = " ".join(f"{name}: {d or ('ok' if p else 'FAIL')};" for name, p, d in checks)
+    src_rows = "\n".join(
+        f'<div style="margin-top:4px">[{k + 1}] <a href="{u}" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">{u}</a></div>'
+        for k, u in enumerate(order))
+
+    page = f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Open Interest — test edition {n:02d}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/oi.css">
+<style>
+  .ref {{ text-decoration: none; font-size: .72em; vertical-align: super; letter-spacing: 0 }}
+  .lead .ref {{ color: #f0e3e3; opacity: .85 }}
+  .railcard h3 {{ margin: 0 0 9px; font-family: Anton, sans-serif; font-weight: 400; font-size: 15px; letter-spacing: .05em; text-transform: uppercase }}
+  .main-col {{ flex-basis: 500px }}
+  .item p {{ font-size: 14.5px; color: #26262c; line-height: 1.6 }}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast"><h1>OPEN <span style="color:#6b1f2a">I</span>NTEREST</h1><div class="meta">the rehearsal &middot; test edition {n:02d}</div></header>
+<div class="rule2"></div>
+  <nav class="oi">
+    <a href="../index.html">the company</a>
+    <a href="../rehearsal.html" class="on" aria-current="page">rehearsal</a>
+    <a href="../style-guide.html">style guide</a>
+    <a href="../engine/" class="er">engine room &#8599;</a>
+  </nav>
+  <div class="eyebrow" style="margin-top:20px">test edition {n:02d} &middot; {date} &middot; {facts["agents"]} &middot; no human edits</div>
+  <div class="lead" style="margin-top:14px">
+    <div class="tag">/ lead story &middot; a test, not an edition &middot; grade {verdict}</div>
+    <h2>{html_mod.escape(lead_head)}</h2>
+    <p>{lead_deck_html}</p>
+    <div class="rail"><span><a href="https://explorer.imd.fun/jobs/{facts["job_id"]}" target="_blank" rel="noreferrer">job {facts["job_id"][:8]} &#8599;</a></span><span>sha256 {content_hash[:16]}&hellip;</span><span>{cites} citations &middot; {{USRC}} sources</span></div>
+  </div>
+  <div class="cols">
+    <div class="main-col">
+      {lead_body_html}
+      {render_items(news_txt, "NEWS", "News")}
+      {render_items(tech_txt, "TECH", "Tech")}
+      {render_items(cult_txt, "CULTURE", "Culture")}
+    </div>
+    <aside class="rail-col">
+      <div class="card railcard">
+        <h3>/ reading list</h3>
+        {reading_html}
+      </div>
+      <div class="card railcard">
+        <h3>/ the pipeline</h3>
+        {pipeline_html}
+      </div>
+      <div class="card railcard">
+        <h3>/ method</h3>
+        <p style="font-size:13px;color:#4a4a52;line-height:1.6;margin:0">{typeset(method_txt)}</p>
+      </div>
+      <div class="card burg railcard">
+        <h3>/ provenance</h3>
+        <p style="font-size:13px;color:#0d0d0f;margin:0 0 8px">This page is a typeset rendering. The record is the verbatim plain text the agents delivered; the hash covers it, and the rendering adds nothing.</p>
+        <p class="mono" style="font-size:11px;margin:0;overflow-wrap:anywhere">sha256 {content_hash}<br><a href="{facts["record_href"]}">the verbatim record</a> &middot; <a href="{facts["artifacts_href"]}">all artifacts: drafts, selection</a></p>
+      </div>
+    </aside>
+  </div>
+  <p style="margin-top:26px;font-size:13px;color:#4a4a52">Grader&rsquo;s note (mechanical, human-confirmed, allowed during tests only): grade {verdict}. {detail} No edits were made.</p>
+  <div class="mono" style="font-size:12px;line-height:1.6;margin-top:18px">
+    <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#4a4a52">citation index</div>
+    {src_rows}
+  </div>
+</div>
+<footer class="foot"><div class="wrap">
+  <span>human-constituted &middot; machine-operated &middot; fully transparent</span>
+  <span><a href="https://explorer.imd.fun/wallet/{WALLET}" target="_blank" rel="noreferrer" style="color:inherit">newsroom wallet &#8599;</a></span>
+</div></footer>
+</body>
+</html>
+"""
+    page = page.replace("{USRC}", str(len(order)))
+    return page, content_hash
+
+
 if __name__ == "__main__":
     main()
