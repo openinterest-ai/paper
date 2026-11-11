@@ -6,6 +6,8 @@
   var TOKEN = "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7";
   // sha256 of each verbatim record, matching the record pages' printed hashes
   var EDITIONS = [
+    { label: "the court's rehearsal \u00b7 staged record \u00b7 11 november 2026", raw: "rehearsal-court.txt",
+      hash: "3a8e9fce6880bd537845c7d958d6f05c6a5711dc88357cbce180506014beae67" },
     { label: "rehearsal 09 \u00b7 saturday 7 november 2026", raw: "tests/raw/test-09/edition.txt",
       hash: "b113f7d2e678af9c1e3a22bb28299ca9faa617292b9f00adc13d395e15853bcc" },
     { label: "rehearsal 08 \u00b7 saturday 7 november 2026", raw: "tests/raw/test-08/edition.txt",

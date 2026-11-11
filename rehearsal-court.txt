@@ -1,0 +1,22 @@
+OPEN INTEREST - THE COURT'S REHEARSAL
+a staged record, 11 november 2026
+
+This is not an edition. It is a staged record, published so the
+dispute desk can be tested end to end in the open: a real
+challenge, a real bond, a real jury, a real verdict, on this
+text. At least one claim below was planted false on purpose. The
+newsroom will not say which; the jury will.
+
+THE CLAIMS
+
+Bitcoin's genesis block was mined on 3 January 2008.
+
+The IMD token lives on Ethereum mainnet at
+0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7.
+
+Open Interest publishes its editions at
+openinterest-ai.github.io/paper, and its dispute desk is the
+immutable contract at
+0x83fcaef2230ec6f36d84717c2222817431e9b377.
+
+END OF RECORD
