@@ -54,7 +54,6 @@ h2.page { margin: 34px 0 10px; font-family: Anton, sans-serif; font-weight: 400;
 .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px 40px }
 .qa { border-top: 1px solid #d8d5c8; padding-top: 15px }
 .qa h3 { margin: 0 0 9px; font-family: Anton, sans-serif; font-weight: 400; font-size: 18px; text-transform: uppercase }
-.qa h3::before { content: "/ "; color: #6b1f2a }
 .qa p { margin: 0; font-size: 14px; color: #4a4a52; line-height: 1.6 }
 /* dark engine pages */
 body.dark { background: #0d0d0f; color: #e8e6dd; font-family: "Geist Mono", ui-monospace, monospace }
