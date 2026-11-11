@@ -102,8 +102,14 @@ only:
   nothing leaves except bounty payments at settlement.
 - `setBond(uint256)` / `setBountyMultiplier(uint256)` /
   `setOracleFee(uint256)` / `setRubric(bytes32 hash, string uri)` /
-  `setRecordURI(string uri)` — owner only, future filings only,
-  each emits a public event (the disclosure trail).
+  `setRecordURI(string uri)` / `setIntake(address)` — owner only,
+  future filings only, each emits a public event (the disclosure
+  trail). setIntake restored 2026-11-11 on the network's own
+  documented advice ("keep the intake address settable in your
+  contract" — versions land at new addresses). Each challenge
+  LOCKS the intake address it was filed through; its callbacks
+  validate against that address, so an intake change never
+  touches an open challenge's settlement path.
 - `setPaused(bool)` — owner only; blocks NEW filings only. Open
   challenges always settle.
 - There is NO: verdict override, escrow touch, pool withdrawal,
@@ -123,10 +129,11 @@ the oracle body, not the rubric: the rubric stays at v0.1. Panel: **size 5, quor
 confirmation 2026-11-11 — the court sits larger than the
 newsroom's panels).
 Answer form: UPHELD/REJECTED plus the short reason the rubric
-requires. The job body pins the exact oracle-body JSON once the
-network's oracle schema is confirmed against live docs at build
-time — the builder must fetch and conform to the current schema,
-not to this file's paraphrase of it.
+requires. Contract builders work offline (network rule,
+confirmed 2026-11-11): the exact oracle-body template and the
+Intake interface are PASTED into the job objective from the live
+docs at job-assembly time; the builder conforms to the pasted
+text and fetches nothing.
 
 ## 8. Events — the site renders from these, permanently
 
