@@ -107,10 +107,26 @@
   }
   const led=document.getElementById('autoledger');
   if(led){
-    led.innerHTML=d.jobs.map((j,i)=>{
-      const done=j.state==='completed';
-      return `<a class="jrow" href="${esc(j.page)}"><span style="color:#a8a69e">${String(i+1).padStart(2,'0')}</span><span>${j.label}</span><span style="color:#6f6d66">${esc((j.createdAt||'').slice(0,10))}</span><span style="margin-left:auto;color:${done?'#e8e6dd':'#c25663'}">${esc(j.state)}${done?' ✓':''}</span></a>`;
-    }).join('');
+    const rows=d.jobs.map((j,i)=>({j,n:i+1})).reverse(); // newest first; a job keeps its ledger number
+    const PER=10;let page=0;
+    const render=()=>{
+      const from=page*PER,to=Math.min(from+PER,rows.length);
+      let h=rows.slice(from,to).map(({j,n})=>{
+        const done=j.state==='completed';
+        return `<a class="jrow" href="${esc(j.page)}"><span style="color:#a8a69e">${String(n).padStart(2,'0')}</span><span>${j.label}</span><span style="color:#6f6d66">${esc((j.createdAt||'').slice(0,10))}</span><span style="margin-left:auto;color:${done?'#e8e6dd':'#c25663'}">${esc(j.state)}${done?' ✓':''}</span></a>`;
+      }).join('');
+      if(rows.length>PER){
+        h+=`<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:9px;border-top:1px solid #2a2a2c;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase">`+
+           `<span id="led-newer" style="color:${page>0?'#a8a69e':'#3a3a3c'};cursor:${page>0?'pointer':'default'}">&#8592; newer</span>`+
+           `<span style="color:#6f6d66">${from+1}&ndash;${to} of ${rows.length}</span>`+
+           `<span id="led-older" style="color:${to<rows.length?'#a8a69e':'#3a3a3c'};cursor:${to<rows.length?'pointer':'default'}">older &#8594;</span></div>`;
+      }
+      led.innerHTML=h;
+      const nw=document.getElementById('led-newer'),ol=document.getElementById('led-older');
+      if(nw)nw.onclick=()=>{if(page>0){page--;render();}};
+      if(ol)ol.onclick=()=>{if((page+1)*PER<rows.length){page++;render();}};
+    };
+    render();
   }
 })();
 </script>
