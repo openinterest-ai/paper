@@ -29,7 +29,7 @@ nav.oi .on { color: #6b1f2a; font-weight: 500 } nav.oi .er { margin-left: auto; 
 .lead { background: #6b1f2a; color: #f2efe8; border-radius: 2px; padding: clamp(24px,4vw,44px); margin-top: 28px }
 .lead .tag { font-family: "Geist Mono", monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; opacity: .85; margin-bottom: 16px }
 .lead h2 { margin: 0 0 14px; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(38px,7vw,70px); line-height: .9; text-transform: uppercase; max-width: 860px }
-.lead p { margin: 0; font-size: 17px; max-width: 580px; opacity: .92 }
+.lead p { margin: 0; font-size: 17px; max-width: 680px; opacity: .92 }
 .lead .rail { margin-top: 24px; padding-top: 13px; border-top: 1px solid rgba(242,239,232,.3); font-family: "Geist Mono", monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; opacity: .9; display: flex; flex-wrap: wrap; gap: 6px 22px }
 .lead .rail a { color: #f2efe8 }
 .cols { display: flex; flex-wrap: wrap; gap: 36px; margin-top: 36px }
@@ -104,7 +104,7 @@ nav.oi .ext { color: #6a6a70 } nav.oi .ext:hover { color: #0d0d0f }
 .railcard h3 { margin: 0 0 9px; font-family: Anton, sans-serif; font-weight: 400; font-size: 15px;
   letter-spacing: .05em; text-transform: uppercase }
 .main-col { flex-basis: 500px }
-.item p { font-size: 14.5px; color: #26262c; line-height: 1.6 }
+.item p { font-size: 14.5px; color: #26262c; line-height: 1.6; max-width: 680px }
 .record { display: flex; flex-wrap: wrap; gap: 10px 36px; padding: 14px 0 4px;
   font-family: "Geist Mono", monospace; font-size: 12px; color: #26262c }
 .record b { display: block; font-family: Anton, sans-serif; font-weight: 400; font-size: 26px;
@@ -127,7 +127,7 @@ nav.oi .ext { color: #6a6a70 } nav.oi .ext:hover { color: #0d0d0f }
   text-transform: uppercase; color: #0d0d0f }
 .ed-main h3 a { color: inherit; text-decoration: none }
 .ed-main h3 a:hover { color: #6b1f2a }
-.ed-stats { font-size: 13px; color: #4a4a52; line-height: 1.5 }
+.ed-stats { font-size: 13px; color: #4a4a52; line-height: 1.5; max-width: 680px }
 .ed-prov { margin-top: 7px; font-size: 11px; color: #6a6a70; overflow-wrap: anywhere }
 .ed-prov a { color: #6b1f2a }
 .ed-mark { flex: 0 0 auto; display: flex; align-items: center; gap: 7px; padding-top: 4px;
@@ -153,7 +153,7 @@ nav.oi .ext { color: #6a6a70 } nav.oi .ext:hover { color: #0d0d0f }
 .months a.cur { color: #6b1f2a; border-bottom: 2px solid #6b1f2a }
 .months .off { color: #c6c1b1 }
 .arch-note { margin-top: 26px; font-family: "Geist Mono", monospace; font-size: 11.5px;
-  line-height: 1.7; color: #6a6a70; max-width: 640px }
+  line-height: 1.7; color: #6a6a70; max-width: 680px }
 .m-head h2 { margin: 26px 0 10px; font-family: Anton, sans-serif; font-weight: 400;
   font-size: clamp(30px, 5.4vw, 48px); line-height: 1.05; letter-spacing: .01em;
   text-transform: uppercase; color: #0d0d0f }
@@ -165,7 +165,7 @@ nav.oi .ext { color: #6a6a70 } nav.oi .ext:hover { color: #0d0d0f }
 .o-role { flex: 0 0 132px; font-family: Anton, sans-serif; font-size: 17px; letter-spacing: .04em;
   text-transform: uppercase; color: #6b1f2a; padding-top: 2px }
 .o-who h4 { margin: 0 0 5px; font-size: 15px; font-weight: 600; color: #0d0d0f }
-.o-who p { margin: 0; font-size: 14px; line-height: 1.6; color: #26262c; max-width: 620px }
+.o-who p { margin: 0; font-size: 14px; line-height: 1.6; color: #26262c; max-width: 680px }
 .todaybar { background: #6b1f2a; color: #f3efe2; border-radius: 2px; padding: 15px 17px; margin-top: 20px;
   display: flex; flex-wrap: wrap; gap: 8px 26px; align-items: baseline; font-family: "Geist Mono", monospace }
 .todaybar .t-lab { font-size: 10.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: #e2b9b9 }
