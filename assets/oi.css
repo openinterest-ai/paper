@@ -303,8 +303,10 @@ nav.oi .ext { color: #6a6a70 } nav.oi .ext:hover { color: #0d0d0f }
              line-height: 1.7; color: #6a6a70 }
 
 /* --- topbar wallet connect + secondary cta --- */
-.wconnect { cursor: pointer; text-decoration: underline; text-underline-offset: 3px }
-.wconnect:hover { color: #fff }
+.wconnect { cursor: pointer; display: inline-block; border: 1px solid rgba(242,239,232,.55);
+            border-radius: 2px; padding: 3px 10px; margin: -4px 0; user-select: none }
+.wconnect:hover { background: #f2efe8; color: #0d0d0f; border-color: #f2efe8 }
+.wconnect:active { transform: translateY(1px) }
 .cta.ghost { background: transparent; color: #6b1f2a; border: 1.5px solid #6b1f2a;
              padding: 11.5px 20.5px; margin-left: 10px }
 .cta.ghost:hover { background: #6b1f2a; color: #f3efe2 }
