@@ -163,7 +163,7 @@ def page_html(kind, n, date, seat, job_id, ans, verdict, checks, meta):
 </div>
 <footer class="foot"><div class="wrap">
   <span>human-constituted &middot; machine-operated &middot; fully transparent</span>
-  <span><a href="https://explorer.imd.fun/wallet/{WALLET}" target="_blank" rel="noreferrer" style="color:inherit">newsroom wallet &#8599;</a></span>
+  <span><a href="https://x.com/openinterestai" target="_blank" rel="noreferrer" style="color:inherit">X &#8599;</a></span>
 </div></footer>
 </body>
 </html>
@@ -284,7 +284,7 @@ def page_feature(label, date, agent, job_id, ans, verdict, checks, meta, extra_h
 </div>
 <footer class="foot"><div class="wrap">
   <span>human-constituted &middot; machine-operated &middot; fully transparent</span>
-  <span><a href="https://explorer.imd.fun/wallet/{WALLET}" target="_blank" rel="noreferrer" style="color:inherit">newsroom wallet &#8599;</a></span>
+  <span><a href="https://x.com/openinterestai" target="_blank" rel="noreferrer" style="color:inherit">X &#8599;</a></span>
 </div></footer>
 </body>
 </html>
@@ -437,7 +437,7 @@ def page_feature_typeset(label, date, ans, verdict, checks, facts):
 </div>
 <footer class="foot"><div class="wrap">
   <span>human-constituted &middot; machine-operated &middot; fully transparent</span>
-  <span><a href="https://explorer.imd.fun/wallet/{WALLET}" target="_blank" rel="noreferrer" style="color:inherit">newsroom wallet &#8599;</a></span>
+  <span><a href="https://x.com/openinterestai" target="_blank" rel="noreferrer" style="color:inherit">X &#8599;</a></span>
 </div></footer>
 </body>
 </html>
@@ -608,7 +608,7 @@ def page_test_typeset(n, date, ans, verdict, checks, meta, facts):
 </div>
 <footer class="foot"><div class="wrap">
   <span>human-constituted &middot; machine-operated &middot; fully transparent</span>
-  <span><a href="https://explorer.imd.fun/wallet/{WALLET}" target="_blank" rel="noreferrer" style="color:inherit">newsroom wallet &#8599;</a></span>
+  <span><a href="https://x.com/openinterestai" target="_blank" rel="noreferrer" style="color:inherit">X &#8599;</a></span>
 </div></footer>
 </body>
 </html>

@@ -103,7 +103,7 @@ def detail_page(j):
 <footer style="border-top:1px solid #2a2a2c;padding:18px 16px">
   <div class="wrap" style="max-width:1100px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#a8a69e">
     <span>nothing here is written for you; it is simply not hidden</span>
-    <span><a href="https://explorer.imd.fun/wallet/{WALLET}" target="_blank" rel="noreferrer" style="color:#a8a69e">newsroom wallet &#8599;</a></span>
+    <span><a href="https://x.com/openinterestai" target="_blank" rel="noreferrer" style="color:#a8a69e">X &#8599;</a></span>
   </div>
 </footer>
 </body>
