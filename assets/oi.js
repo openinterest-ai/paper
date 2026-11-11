@@ -53,3 +53,29 @@ document.addEventListener('click', function (e) {
   document.body.appendChild(t);
   setTimeout(() => t.remove(), 3500);
 });
+
+// topbar wallet connect: the reader's own wallet, nothing stored anywhere
+(function () {
+  var el = document.getElementById('oi-connect');
+  if (!el) return;
+  function short(a) { return a.slice(0, 6) + '…' + a.slice(-4); }
+  function set(a) { el.textContent = a ? short(a) : 'connect wallet'; el.title = a || ''; }
+  function connect() {
+    if (!window.ethereum) {
+      el.textContent = 'no wallet found in this browser';
+      setTimeout(function () { set(null); }, 3000);
+      return;
+    }
+    window.ethereum.request({ method: 'eth_requestAccounts' })
+      .then(function (a) { set(a && a[0]); })
+      .catch(function () {});
+  }
+  el.addEventListener('click', connect);
+  el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); connect(); } });
+  if (window.ethereum) {
+    window.ethereum.request({ method: 'eth_accounts' })
+      .then(function (a) { if (a && a[0]) set(a[0]); })
+      .catch(function () {});
+    if (window.ethereum.on) window.ethereum.on('accountsChanged', function (a) { set(a && a[0]); });
+  }
+})();

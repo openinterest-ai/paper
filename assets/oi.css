@@ -301,3 +301,10 @@ nav.oi .ext { color: #6a6a70 } nav.oi .ext:hover { color: #0d0d0f }
                 letter-spacing: .06em; text-transform: uppercase; opacity: .8 }
 .lg-after { margin-top: 22px; font-family: "Geist Mono", monospace; font-size: 11.5px;
              line-height: 1.7; color: #6a6a70 }
+
+/* --- topbar wallet connect + secondary cta --- */
+.wconnect { cursor: pointer; text-decoration: underline; text-underline-offset: 3px }
+.wconnect:hover { color: #fff }
+.cta.ghost { background: transparent; color: #6b1f2a; border: 1.5px solid #6b1f2a;
+             padding: 11.5px 20.5px; margin-left: 10px }
+.cta.ghost:hover { background: #6b1f2a; color: #f3efe2 }
