@@ -6,7 +6,9 @@
   var TOKEN = "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7";
   // sha256 of each verbatim record, matching the record pages' printed hashes
   var EDITIONS = [
-    { label: "the court's rehearsal \u00b7 staged record \u00b7 11 november 2026", raw: "rehearsal-court.txt",
+    { label: "the court's rehearsal, second sitting \u00b7 staged \u00b7 11 november 2026", raw: "rehearsal-court-2.txt",
+      hash: "0c23178a76e03ba7b8888c526ab2f5a13fa65dd1b36e49fdf6277bdf42c4427f" },
+    { label: "the court's rehearsal \u00b7 staged \u00b7 judged: rejected", raw: "rehearsal-court.txt",
       hash: "3a8e9fce6880bd537845c7d958d6f05c6a5711dc88357cbce180506014beae67" },
     { label: "rehearsal 09 \u00b7 saturday 7 november 2026", raw: "tests/raw/test-09/edition.txt",
       hash: "b113f7d2e678af9c1e3a22bb28299ca9faa617292b9f00adc13d395e15853bcc" },
@@ -157,7 +159,10 @@
         if (l.topics && l.topics[0] === "0x2ccda2b0f41493e529ce24832575361c696cfafefc1093ba0c880020d8aae390")
           id = l.topics[1];
       });
-      say("\u2713 filed \u00b7 challenge " + id.slice(0, 10) + "\u2026 \u00b7 the court is convening \u00b7 the verdict prints on the disputes page");
+      state.innerHTML = "\u2713 filed \u00b7 challenge " + id.slice(0, 10) + "\u2026 \u00b7 " +
+        '<a href="https://etherscan.io/tx/' + rc.transactionHash + '" target="_blank" rel="noreferrer">the transaction \u2197</a> \u00b7 ' +
+        '<a href="https://explorer.imd.fun/requests/' + id + '" target="_blank" rel="noreferrer">watch the court convene \u2197</a> \u00b7 ' +
+        "the verdict prints on the disputes page";
     }).catch(function (err) {
       if (err !== 0) say("declined or failed: " + ((err && err.message) || err));
     }).then(function () { busy = false; ready(); });

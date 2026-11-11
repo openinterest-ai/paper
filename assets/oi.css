@@ -310,3 +310,6 @@ nav.oi .ext { color: #6a6a70 } nav.oi .ext:hover { color: #0d0d0f }
 .cta.ghost { background: transparent; color: #6b1f2a; border: 1.5px solid #6b1f2a;
              padding: 11.5px 20.5px; margin-left: 10px }
 .cta.ghost:hover { background: #6b1f2a; color: #f3efe2 }
+
+.stake a { color: #f3efe2; text-decoration: underline; text-underline-offset: 3px }
+.stake a:hover { color: #fff }

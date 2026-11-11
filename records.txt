@@ -1,0 +1,10 @@
+OPEN INTEREST - THE VERBATIM RECORDS
+every published record: sha256 of the stripped text, then its address.
+an edition's hash in a dispute names one of these exactly.
+
+0c23178a76e03ba7b8888c526ab2f5a13fa65dd1b36e49fdf6277bdf42c4427f  https://openinterest-ai.github.io/paper/rehearsal-court-2.txt  the court's rehearsal, second sitting (staged)
+3a8e9fce6880bd537845c7d958d6f05c6a5711dc88357cbce180506014beae67  https://openinterest-ai.github.io/paper/rehearsal-court.txt  the court's rehearsal (staged, judged: rejected)
+b113f7d2e678af9c1e3a22bb28299ca9faa617292b9f00adc13d395e15853bcc  https://openinterest-ai.github.io/paper/tests/raw/test-09/edition.txt  rehearsal 09
+f8a879152182451e8ae47de08be04dcd9dede99b8332b5d46b82dc59caf5a351  https://openinterest-ai.github.io/paper/tests/raw/test-08/edition.txt  rehearsal 08
+3b1c7a191eb858fb04e1a3687199e71c81a165696e0e5c249bd5d2692339d429  https://openinterest-ai.github.io/paper/tests/raw/test-07/polish/a.md  rehearsal 07
+0886aeb934c40b290088e9831bd4bb52bade83b2dca15f89f284efeff273edb0  https://openinterest-ai.github.io/paper/tests/raw/test-06/edition.txt  rehearsal 06

@@ -1,0 +1,23 @@
+OPEN INTEREST - THE COURT'S REHEARSAL, SECOND SITTING
+a staged record, 11 november 2026
+
+The first sitting taught the lesson it was staged to teach: the
+jury could not find the staged record from the site's front
+door, and the law reads an unlocatable claim against the bond.
+The record index at records.txt exists because of that verdict.
+This second sitting plants a fresh false claim in the open. The
+newsroom will not say which claim below is the plant; the jury
+will.
+
+THE CLAIMS
+
+The Merge, Ethereum's switch to proof of stake, happened on 15 September 2021.
+
+The IMD token lives on Ethereum mainnet at
+0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7.
+
+The dispute desk holding the bond for this challenge is the
+immutable contract at
+0x83fcaef2230ec6f36d84717c2222817431e9b377.
+
+END OF RECORD

@@ -27,7 +27,7 @@ HEAD = """<!doctype html>
 <title>{title}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/oi.css?v=3">
+<link rel="stylesheet" href="assets/oi.css?v=4">
 </head>
 <body>
 <div class="topbar">
@@ -294,14 +294,42 @@ def patch_company(entry):
     open(p, "w").write(t2)
 
 
+BASE = "https://openinterest-ai.github.io/paper/"
+# records published outside the editions manifest (staged, special sittings)
+EXTRA_RECORDS = [
+    ("rehearsal-court-2.txt", "the court's rehearsal, second sitting (staged)"),
+    ("rehearsal-court.txt", "the court's rehearsal (staged, judged: rejected)"),
+]
+
+
+def build_records(entries):
+    """records.txt: the canonical index of every verbatim record, so a
+    juror handed an editionHash can resolve it in one fetch from the root."""
+    lines = [
+        "OPEN INTEREST - THE VERBATIM RECORDS",
+        "every published record: sha256 of the stripped text, then its address.",
+        "an edition's hash in a dispute names one of these exactly.",
+        "",
+    ]
+    for path, label in EXTRA_RECORDS:
+        txt = open(os.path.join(HERE, path)).read().strip()
+        sha = hashlib.sha256(txt.encode()).hexdigest()
+        lines.append(f"{sha}  {BASE}{path}  {label}")
+    for e in entries:
+        txt, sha = read_raw(e)
+        lines.append(f"{sha}  {BASE}{e['raw']}  {e['label']}")
+    return "\n".join(lines) + "\n"
+
+
 def main():
     man = json.load(open(os.path.join(HERE, "editions.json")))
     entries = man["entries"]
     today = next(e for e in entries if e["kind"] == "daily")
     open(os.path.join(HERE, "index.html"), "w").write(build_today(today))
     open(os.path.join(HERE, "editions.html"), "w").write(build_editions(entries))
+    open(os.path.join(HERE, "records.txt"), "w").write(build_records(entries))
     patch_company(today)
-    print(f"built: today = {today['label']} | archive = {len(entries)} entries")
+    print(f"built: today = {today['label']} | archive = {len(entries)} entries | records.txt written")
 
 
 if __name__ == "__main__":
