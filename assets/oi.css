@@ -206,3 +206,98 @@ nav.oi .ext { color: #6a6a70 } nav.oi .ext:hover { color: #0d0d0f }
   .ticker-in { font-size: 11px; padding: 6px 0 }
   .ticker-in span { padding: 0 18px }
 }
+
+/* --- the dispute desk --- */
+.trial { display: inline-block; border: 1.5px solid #6b1f2a; color: #6b1f2a;
+          font-family: "Geist Mono", monospace; font-size: 10.5px; font-weight: 500;
+          letter-spacing: .16em; text-transform: uppercase; padding: 4px 9px; border-radius: 2px }
+.d-head { margin: 26px 0 0 }
+.d-head h2 { margin: 8px 0 10px; font-family: Anton, sans-serif; font-weight: 400;
+             font-size: clamp(30px, 5.4vw, 48px); line-height: 1.05; letter-spacing: .01em;
+             text-transform: uppercase; color: #0d0d0f }
+.d-head p { margin: 0; font-size: 16px; line-height: 1.65; color: #26262c; max-width: 680px }
+.cta { display: inline-block; margin-top: 18px; background: #6b1f2a; color: #f3efe2;
+        font-family: "Geist Mono", monospace; font-size: 12.5px; font-weight: 500;
+        letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+        padding: 13px 22px; border-radius: 2px }
+.cta:hover { background: #5d1a24; color: #f3efe2 }
+.d-head .cta-note { margin: 8px 0 0; font-family: "Geist Mono", monospace; font-size: 10.5px;
+             letter-spacing: .08em; text-transform: uppercase; color: #6a6a70 }
+.step { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid #e2ddd0 }
+.step:last-of-type { border-bottom: none }
+.step .no { flex: 0 0 34px; font-family: Anton, sans-serif; font-size: 26px; color: #6b1f2a; line-height: 1 }
+.step h4 { margin: 2px 0 6px; font-size: 15px; font-weight: 600; color: #0d0d0f }
+.step p { margin: 0; font-size: 14.5px; line-height: 1.6; color: #26262c; max-width: 680px }
+.law { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px }
+.law .card h4 { margin: 0 0 8px; font-family: "Geist Mono", monospace; font-size: 11px;
+                 letter-spacing: .14em; text-transform: uppercase; font-weight: 500 }
+.law ul { margin: 0; padding-left: 16px; font-size: 13.5px; line-height: 1.65; color: #26262c }
+.law li { margin-bottom: 5px }
+.law .yes h4 { color: #6b1f2a }
+.law .no4 h4 { color: #2e6b3a }
+.terms { font-family: "Geist Mono", monospace; font-size: 12px; line-height: 1.5 }
+.terms .tr { display: flex; justify-content: space-between; gap: 12px;
+             padding: 6px 0; border-bottom: 1px solid rgba(13,13,15,.14) }
+.terms .tr:last-child { border-bottom: none }
+.burg .terms .tr { border-bottom-color: rgba(243,239,226,.22) }
+.terms .k { color: inherit; opacity: .75 }
+.terms .v { font-weight: 500; text-align: right }
+.ledger-empty { border: 1px dashed #c6c1b1; border-radius: 2px; padding: 16px 14px;
+                 font-family: "Geist Mono", monospace; font-size: 11.5px; line-height: 1.7;
+                 color: #6a6a70; text-align: center }
+.ledger-empty b { display: block; font-size: 13px; letter-spacing: .1em;
+                   text-transform: uppercase; color: #2e6b3a; margin-bottom: 4px }
+.ledger-row { border-top: 1px solid #e2ddd0; padding: 9px 0; font-family: "Geist Mono", monospace;
+               font-size: 11px; line-height: 1.6; color: #26262c; overflow-wrap: anywhere }
+.ledger-row b { color: #6b1f2a; letter-spacing: .08em; text-transform: uppercase }
+/* --- lodge a dispute --- */
+.lg-wrap { max-width: 680px; margin: 0 auto }
+.lg-head h2 { margin: 26px 0 8px; font-family: Anton, sans-serif; font-weight: 400;
+               font-size: clamp(26px, 4.6vw, 38px); line-height: 1.07; letter-spacing: .01em;
+               text-transform: uppercase; color: #0d0d0f }
+.lg-head p { margin: 0 0 6px; font-size: 14.5px; line-height: 1.6; color: #26262c }
+.fstep { border: 1px solid #26262c; border-radius: 2px; background: #fbf8ec;
+          padding: 16px 16px 18px; margin-top: 18px }
+.fstep .fs-no { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px }
+.fstep .fs-no b { font-family: Anton, sans-serif; font-weight: 400; font-size: 19px; color: #6b1f2a }
+.fstep .fs-no span { font-family: "Geist Mono", monospace; font-size: 11px; font-weight: 500;
+                      letter-spacing: .14em; text-transform: uppercase; color: #0d0d0f }
+.flabel { display: block; font-family: "Geist Mono", monospace; font-size: 10.5px;
+           letter-spacing: .1em; text-transform: uppercase; color: #6a6a70; margin: 12px 0 5px }
+.fin, .fta, .fsel { width: 100%; box-sizing: border-box; background: #f3efe2;
+          border: 1px solid #26262c; border-radius: 2px; padding: 10px 11px;
+          font-family: "Geist Mono", monospace; font-size: 12.5px; color: #0d0d0f }
+.fta { min-height: 86px; line-height: 1.6; resize: vertical }
+.fin::placeholder, .fta::placeholder { color: #9a988f; opacity: 1 }
+.pending { display: inline-flex; align-items: center; gap: 7px; margin-top: 9px;
+            font-family: "Geist Mono", monospace; font-size: 10.5px;
+            letter-spacing: .1em; text-transform: uppercase; color: #9a988f }
+.fhint { margin: 6px 0 0; font-size: 12.5px; line-height: 1.55; color: #4a4a52 }
+.fmono { margin: 8px 0 0; font-family: "Geist Mono", monospace; font-size: 10.5px;
+          color: #6a6a70; overflow-wrap: anywhere }
+.ok-badge { display: inline-flex; align-items: center; gap: 7px; margin-top: 9px;
+             font-family: "Geist Mono", monospace; font-size: 10.5px; font-weight: 500;
+             letter-spacing: .1em; text-transform: uppercase; color: #2e6b3a }
+.bad-badge { display: inline-flex; align-items: center; gap: 7px; margin-top: 9px;
+             font-family: "Geist Mono", monospace; font-size: 10.5px; font-weight: 500;
+             letter-spacing: .1em; text-transform: uppercase; color: #6b1f2a }
+.optional { color: #9a988f; font-weight: 400; letter-spacing: .08em }
+.stake { background: #6b1f2a; color: #f3efe2; border: none }
+.stake .fs-no b, .stake .fs-no span { color: #f3efe2 }
+.stake .srow { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0;
+               border-bottom: 1px solid rgba(243,239,226,.22);
+               font-family: "Geist Mono", monospace; font-size: 12px }
+.stake .srow:last-of-type { border-bottom: none }
+.stake .srow .k { opacity: .75 }
+.stake .srow .v { font-weight: 500 }
+.cta-big { display: block; width: 100%; box-sizing: border-box; margin-top: 14px;
+            background: #f3efe2; color: #6b1f2a; text-align: center; text-decoration: none;
+            font-family: "Geist Mono", monospace; font-size: 13px; font-weight: 500;
+            letter-spacing: .14em; text-transform: uppercase;
+            padding: 14px 20px; border-radius: 2px; border: none; cursor: pointer }
+.cta-big:hover { background: #efeadb }
+.cta-big:disabled { opacity: .55; cursor: default }
+.stake .fine { margin: 10px 0 0; font-family: "Geist Mono", monospace; font-size: 10.5px;
+                letter-spacing: .06em; text-transform: uppercase; opacity: .8 }
+.lg-after { margin-top: 22px; font-family: "Geist Mono", monospace; font-size: 11.5px;
+             line-height: 1.7; color: #6a6a70 }

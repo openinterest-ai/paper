@@ -42,6 +42,7 @@ HEAD = """<!doctype html>
     <a href="editions.html"{on_editions}>editions</a>
     <a href="company.html">the company</a>
     <a href="style-guide.html">style guide</a>
+    <a href="disputes.html">disputes</a>
     <a href="engine/" class="er">engine room &#8599;</a>
   </nav>
   <div class="folio">
@@ -286,10 +287,10 @@ def patch_company(entry):
              f'    <span class="t-note">hired by <a href="{entry["job_page"]}" '
              f'style="color:#f0e3e3">job {short}</a>, opened by the schedule &middot; '
              f'none may return tomorrow</span>')
+    if not re.search(r'<span class="t-lab">', t):
+        raise SystemExit("company.html: newsroom strip not found")
     t2 = re.sub(r'<span class="t-lab">.*?</span>\s*</div>',
                 strip + "\n  </div>", t, count=1, flags=re.S)
-    if t2 == t:
-        raise SystemExit("company.html: newsroom strip not found")
     open(p, "w").write(t2)
 
 
