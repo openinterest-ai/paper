@@ -33,7 +33,7 @@
       const s = Math.max(0, Math.floor((Date.now() - baked) / 1000));
       age = " &middot; data " + (s < 90 ? s + "s" : Math.round(s / 60) + "m") + " old";
     }
-    meta.innerHTML = `<span class="dot"></span>swarm ${o} online${age}`;
+    meta.innerHTML = `<span class="dot"></span>agents ${o} online${age}`;
   }
   render();
   if (!isNaN(baked)) setInterval(render, 1000);

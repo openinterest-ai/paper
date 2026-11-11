@@ -91,3 +91,102 @@ nav.oi .ext { color: #6a6a70 } nav.oi .ext:hover { color: #0d0d0f }
 }
 
 .lead .rail a, .foot a { display: inline-block; padding: 10px 0; margin: -10px 0 }
+
+
+/* ---- launch chrome (2026-11-11): folio band + today/editions/company pages ---- */
+.folio { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px;
+  border-top: 1px solid #0d0d0f; border-bottom: 1px solid #0d0d0f; padding: 7px 0; margin-top: 10px;
+  font-family: "Geist Mono", monospace; font-size: 12px; letter-spacing: .08em;
+  text-transform: uppercase; color: #26262c }
+.folio b { font-weight: 500; color: #6b1f2a }
+.ref { text-decoration: none; font-size: .72em; vertical-align: super; letter-spacing: 0 }
+.lead .ref { color: #f0e3e3; opacity: .85 }
+.railcard h3 { margin: 0 0 9px; font-family: Anton, sans-serif; font-weight: 400; font-size: 15px;
+  letter-spacing: .05em; text-transform: uppercase }
+.main-col { flex-basis: 500px }
+.item p { font-size: 14.5px; color: #26262c; line-height: 1.6 }
+.record { display: flex; flex-wrap: wrap; gap: 10px 36px; padding: 14px 0 4px;
+  font-family: "Geist Mono", monospace; font-size: 12px; color: #26262c }
+.record b { display: block; font-family: Anton, sans-serif; font-weight: 400; font-size: 26px;
+  letter-spacing: .02em; color: #0d0d0f }
+.record .u { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #6a6a70 }
+.wk { margin-top: 30px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+  color: #6a6a70; font-family: "Geist Mono", monospace; border-bottom: 1px solid #d8d4c8; padding-bottom: 6px }
+.edrow { display: flex; gap: 22px; align-items: flex-start; padding: 18px 10px; margin: 0 -10px;
+  border-bottom: 1px solid #e2ddd0 }
+.edrow:hover { background: #efeadb }
+.ed-date { flex: 0 0 118px; font-family: "Geist Mono", monospace; font-size: 11.5px;
+  letter-spacing: .06em; text-transform: uppercase; color: #4a4a52; display: flex;
+  flex-direction: column; gap: 3px; padding-top: 3px }
+.ed-no { font-weight: 500; color: #6b1f2a }
+.ed-main { flex: 1 1 auto; min-width: 0 }
+.ed-main .tag { font-family: "Geist Mono", monospace; font-size: 10.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: #6b1f2a; margin-bottom: 7px }
+.ed-main h3 { margin: 0 0 8px; font-family: Anton, sans-serif; font-weight: 400;
+  font-size: clamp(20px, 3.2vw, 28px); line-height: 1.12; letter-spacing: .01em;
+  text-transform: uppercase; color: #0d0d0f }
+.ed-main h3 a { color: inherit; text-decoration: none }
+.ed-main h3 a:hover { color: #6b1f2a }
+.ed-stats { font-size: 13px; color: #4a4a52; line-height: 1.5 }
+.ed-prov { margin-top: 7px; font-size: 11px; color: #6a6a70; overflow-wrap: anywhere }
+.ed-prov a { color: #6b1f2a }
+.ed-mark { flex: 0 0 auto; display: flex; align-items: center; gap: 7px; padding-top: 4px;
+  font-family: "Geist Mono", monospace; font-size: 10.5px; letter-spacing: .1em;
+  text-transform: uppercase; color: #6a6a70; white-space: nowrap }
+.ed-mark .ok { color: #2e6b3a; font-size: 13px }
+.edrow.burg { background: #6b1f2a; border-bottom: none; border-radius: 2px; margin: 8px -10px; color: #f3efe2 }
+.edrow.burg:hover { background: #5d1a24 }
+.edrow.burg .ed-date, .edrow.burg .ed-stats { color: #d9c6c6 }
+.edrow.burg .ed-no { color: #f0e3e3 }
+.edrow.burg .ed-main h3 { color: #f3efe2 }
+.edrow.burg .ed-main .tag { color: #e2b9b9 }
+.edrow.burg .ed-prov { color: #d9c6c6 }
+.edrow.burg .ed-prov a { color: #f0e3e3 }
+.edrow.burg .ed-mark { color: #d9c6c6 }
+.edrow.burg .ed-mark .ok { color: #9fd3a8 }
+.months { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin-top: 26px;
+  padding: 9px 0; border-top: 1px solid #d8d4c8; border-bottom: 1px solid #d8d4c8;
+  font-family: "Geist Mono", monospace; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase }
+.months .yr { color: #0d0d0f; font-weight: 500; margin-right: 6px }
+.months a { color: #26262c; text-decoration: none; padding: 2px 0 }
+.months a:hover { color: #6b1f2a }
+.months a.cur { color: #6b1f2a; border-bottom: 2px solid #6b1f2a }
+.months .off { color: #c6c1b1 }
+.arch-note { margin-top: 26px; font-family: "Geist Mono", monospace; font-size: 11.5px;
+  line-height: 1.7; color: #6a6a70; max-width: 640px }
+.m-head h2 { margin: 26px 0 10px; font-family: Anton, sans-serif; font-weight: 400;
+  font-size: clamp(30px, 5.4vw, 48px); line-height: 1.05; letter-spacing: .01em;
+  text-transform: uppercase; color: #0d0d0f }
+.m-head p { margin: 0; font-size: 16px; line-height: 1.65; color: #26262c; max-width: 680px }
+.sect2 { margin: 36px 0 6px; font-family: "Geist Mono", monospace; font-size: 11px;
+  letter-spacing: .16em; text-transform: uppercase; color: #6b1f2a; font-weight: 500 }
+.office { display: flex; gap: 22px; padding: 16px 0; border-bottom: 1px solid #e2ddd0; align-items: flex-start }
+.office:last-of-type { border-bottom: none }
+.o-role { flex: 0 0 132px; font-family: Anton, sans-serif; font-size: 17px; letter-spacing: .04em;
+  text-transform: uppercase; color: #6b1f2a; padding-top: 2px }
+.o-who h4 { margin: 0 0 5px; font-size: 15px; font-weight: 600; color: #0d0d0f }
+.o-who p { margin: 0; font-size: 14px; line-height: 1.6; color: #26262c; max-width: 620px }
+.todaybar { background: #6b1f2a; color: #f3efe2; border-radius: 2px; padding: 15px 17px; margin-top: 20px;
+  display: flex; flex-wrap: wrap; gap: 8px 26px; align-items: baseline; font-family: "Geist Mono", monospace }
+.todaybar .t-lab { font-size: 10.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: #e2b9b9 }
+.todaybar .t-ag { font-size: 12.5px }
+.todaybar .t-ag a { color: #f0e3e3 }
+.todaybar .t-note { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: #d9c6c6 }
+.r-note { margin: 10px 0 0; font-size: 14px; line-height: 1.65; color: #26262c; max-width: 680px }
+.r-audit { margin: 14px 0 0; font-family: "Geist Mono", monospace; font-size: 11.5px; line-height: 1.7;
+  color: #6a6a70; max-width: 680px }
+.r-audit a { color: #6b1f2a }
+.desk { margin-top: 22px }
+.desk h4 { margin: 0 0 8px; font-family: Anton, sans-serif; font-weight: 400; font-size: 16px;
+  letter-spacing: .05em; text-transform: uppercase; color: #0d0d0f; border-bottom: 1px solid #d8d4c8; padding-bottom: 5px }
+.desk .dcount { color: #9a988f; font-size: 13px }
+.voices { margin: 0; font-family: "Geist Mono", monospace; font-size: 12px; line-height: 2.05 }
+.voice { white-space: nowrap; margin-right: 18px }
+.voice a { color: #26262c; text-decoration: none; border-bottom: 1px solid #c6c1b1 }
+.voice a:hover { color: #6b1f2a; border-bottom-color: #6b1f2a }
+.vflag { font-size: 10px; color: #9a988f; letter-spacing: .04em }
+@media (max-width: 640px) {
+  .edrow { flex-wrap: wrap; gap: 10px 22px }
+  .ed-date { flex-basis: 100%; flex-direction: row; gap: 12px }
+  .ed-mark { padding-top: 0 }
+}
