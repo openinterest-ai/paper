@@ -1,0 +1,49 @@
+name: press
+# The printing press: finds the day's completed, schedule-opened edition job,
+# grades it mechanically and typesets it verbatim (press.py can refuse, it
+# cannot edit), then commits. Two slots before noon UTC catch a slow newsroom;
+# a run with nothing new is a no-op. workflow_dispatch takes a job id for
+# rehearsals and a dry flag that writes nothing.
+on:
+  schedule:
+    - cron: "15 11 * * *"
+    - cron: "45 11 * * *"
+  workflow_dispatch:
+    inputs:
+      job_id:
+        description: "Publish this specific job id (blank: discover)"
+        required: false
+        default: ""
+      dry:
+        description: "Dry run: fetch and grade only, write nothing"
+        required: false
+        default: "false"
+permissions:
+  contents: write
+concurrency:
+  group: press
+  cancel-in-progress: false
+jobs:
+  press:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run the press
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.job_id }}" ]; then ARGS="--job ${{ github.event.inputs.job_id }}"; fi
+          if [ "${{ github.event.inputs.dry }}" = "true" ]; then ARGS="$ARGS --dry"; fi
+          python3 press.py $ARGS
+      - name: Commit if changed
+        run: |
+          git add editions.json editions index.html editions.html company.html records.txt
+          if ! git diff --cached --quiet; then
+            N=$(python3 -c "import json;print(json.load(open('editions.json'))['entries'][0]['label'])")
+            git config user.name "Open Interest"
+            git config user.email "newsroom@theopeninterest.eth"
+            git commit -m "$N, from the press"
+            git pull --rebase
+            git push
+          else
+            echo "nothing new off the press"
+          fi

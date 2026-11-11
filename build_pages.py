@@ -62,11 +62,14 @@ FOOT = """</div>
 """
 
 
-def chrome(title, active, folio):
-    return HEAD.format(
+def chrome(title, active, folio, base=""):
+    head = HEAD.format(
         title=title, folio=folio,
         on_today=' class="on" aria-current="page"' if active == "today" else "",
         on_editions=' class="on" aria-current="page"' if active == "editions" else "")
+    if base:
+        head = head.replace("<head>", f'<head>\n<base href="{base}">', 1)
+    return head
 
 
 def read_raw(entry):
@@ -95,6 +98,10 @@ def headline(entry, txt):
 
 # ---------------- today ----------------
 def build_today(entry):
+    return build_edition_page(entry, archive=False)
+
+
+def build_edition_page(entry, archive=False):
     raw, sha = read_raw(entry)
     cites = len(re.findall(r"\[https?://", raw))
 
@@ -189,7 +196,7 @@ def build_today(entry):
       </div>
       <div class="card burg railcard">
         <h3>the newsroom today</h3>
-        <p style="font-size:13px;color:#0d0d0f;line-height:1.6;margin:0 0 8px">Five agents made this rehearsal: three drafted in competition, one selected, one attacked the winner before you read it. None of them existed on this masthead yesterday; none may return tomorrow.{newsroom_tail}</p>
+        <p style="font-size:13px;color:#0d0d0f;line-height:1.6;margin:0 0 8px">Five agents made this {"edition" if entry["kind"] == "edition" else "rehearsal"}: three drafted in competition, one selected, one attacked the winner before you read it. None of them existed on this masthead yesterday; none may return tomorrow.{newsroom_tail}</p>
         <p class="mono" style="font-size:11px;margin:0"><a href="company.html">how the paper works</a> &middot; <a href="{entry["job_page"]}">the job, in full &#8599;</a></p>
       </div>
       <div class="card railcard">
@@ -208,7 +215,19 @@ def build_today(entry):
     {chr(10).join(f'<div style="margin-top:4px">[{k + 1}] <a href="{u}" target="_blank" rel="noreferrer" style="overflow-wrap:anywhere">{u}</a></div>' for k, u in enumerate(order))}
   </div>
 """
-    folio = f"""<span><b>{entry["label"]}</b> &middot; {entry["date"]}</span>
+    if archive:
+        folio = f"""<span><b>{entry["label"]}</b> &middot; {entry["date"]}</span>
+    <span>from the archive &middot; the record is permanent</span>
+    <span>every hash checkable</span>"""
+        depth = entry["page"].count("/")
+        return chrome(f"Open Interest — {entry['label']}", "editions", folio,
+                      base="../" * depth) + main + FOOT
+    if entry["kind"] == "edition":
+        folio = f"""<span><b>{entry["label"]}</b> &middot; {entry["date"]}</span>
+    <span>no human edits &middot; every claim disputable</span>
+    <span>the next edition by noon utc</span>"""
+    else:
+        folio = f"""<span><b>{entry["label"]}</b> &middot; {entry["date"]}</span>
     <span>a rehearsal, not an edition</span>
     <span>editions daily by noon utc at launch</span>"""
     return chrome("Open Interest", "today", folio) + main + FOOT
@@ -225,6 +244,7 @@ def build_editions(entries):
         tot_words += words; tot_cites += cites; tot_agents += e["agents_count"]
         burg = e["kind"] == "weekend"
         kicker = ("the weekend feature &middot; two desks &middot; a rehearsal" if burg
+                  else "the daily edition" if e["kind"] == "edition"
                   else "the daily brief &middot; a rehearsal")
         joblinks = " &middot; ".join(
             f'<a href="{EXPL}{jid}" target="_blank" rel="noreferrer">{jl} &#8599;</a>'
@@ -255,7 +275,7 @@ def build_editions(entries):
     <span>every rehearsal preserved verbatim</span>
     <span>every hash checkable</span>"""
     main = f"""  <div class="record">
-    <span><b>{len(entries)}</b><span class="u">rehearsals on record</span></span>
+    <span><b>{len(entries)}</b><span class="u">{"editions &amp; rehearsals" if any(e["kind"] == "edition" for e in entries) else "rehearsals"} on record</span></span>
     <span><b>{tot_words:,}</b><span class="u">words published</span></span>
     <span><b>{tot_cites}</b><span class="u">citations</span></span>
     <span><b>{tot_agents}</b><span class="u">agents employed</span></span>
@@ -268,8 +288,7 @@ def build_editions(entries):
   {weeks_html}
   <div class="arch-note">the archive is permanent. each entry links the typeset page, the
   verbatim plain text the agents delivered, and the job record on chain; the sha256 covers the
-  plain text and the rendering adds nothing. these are the dress rehearsals: numbered editions
-  begin at launch. the earlier press run, tests 01 through 5.6, is preserved in
+  plain text and the rendering adds nothing. {"numbered editions run daily; the dress rehearsals that preceded them are preserved beside them." if any(e["kind"] == "edition" for e in entries) else "these are the dress rehearsals: numbered editions begin at launch."} the earlier press run, tests 01 through 5.6, is preserved in
   <a href="rehearsal.html">the rehearsal record</a>; the paper&rsquo;s papers live in
   <a href="docs.html">docs &amp; changelog</a>.</div>
 """
@@ -324,10 +343,15 @@ def build_records(entries):
 def main():
     man = json.load(open(os.path.join(HERE, "editions.json")))
     entries = man["entries"]
-    today = next(e for e in entries if e["kind"] == "daily")
+    today = next(e for e in entries if e["kind"] in ("daily", "edition"))
     open(os.path.join(HERE, "index.html"), "w").write(build_today(today))
     open(os.path.join(HERE, "editions.html"), "w").write(build_editions(entries))
     open(os.path.join(HERE, "records.txt"), "w").write(build_records(entries))
+    for e in entries:
+        if e["kind"] == "edition":
+            p = os.path.join(HERE, e["page"])
+            os.makedirs(os.path.dirname(p), exist_ok=True)
+            open(p, "w").write(build_edition_page(e, archive=True))
     patch_company(today)
     print(f"built: today = {today['label']} | archive = {len(entries)} entries | records.txt written")
 
