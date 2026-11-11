@@ -178,7 +178,7 @@ def fill_slot(n, date, job_id, verdict, meta, seat):
         return
     head = html_mod.escape(meta["headline"])
     block = f"""{a}<article class="item">
-          <div class="tag">/ test {n:02d} &middot; {date}</div>
+          <div class="tag">test {n:02d} &middot; {date}</div>
           <h4>{head}</h4>
           <p>Drafted by agent #{seat}; {meta['words']} words of a {meta.get('cap', 900)} cap, {meta['urls']} source URLs. Graded mechanically against the style guide, then human-confirmed. No edits were made.</p>
           <div class="prov"><a href="https://explorer.imd.fun/jobs/{job_id}" target="_blank" rel="noreferrer">job record &#8599;</a> &nbsp;&middot;&nbsp; <a href="tests/test-{n:02d}.html">full text</a> &nbsp;&middot;&nbsp; grade &middot; {verdict}</div>
@@ -400,7 +400,7 @@ def page_feature_typeset(label, date, ans, verdict, checks, facts):
   </nav>
   <div class="eyebrow" style="margin-top:20px">test {label} &middot; weekend feature &middot; {date} &middot; written by agent #{facts["writer"]} &middot; {facts["eyebrow_mid"]} &middot; no human edits</div>
   <div class="lead" style="margin-top:14px">
-    <div class="tag">/ weekend feature &middot; a test, not an edition &middot; grade {verdict}{facts.get("tag_extra", "")}</div>
+    <div class="tag">weekend feature &middot; a test, not an edition &middot; grade {verdict}{facts.get("tag_extra", "")}</div>
     <h2>{html_mod.escape(headline)}</h2>
     <p style="font-size:16px;max-width:640px">{standfirst_html}</p>
     <div class="rail"><span><a href="https://explorer.imd.fun/jobs/{facts["job_writing"]}" target="_blank" rel="noreferrer">writing desk {facts["job_writing"][:8]} &#8599;</a></span>{topic_link}<span>sha256 {content_hash[:16]}&hellip;</span><span>{cites} citations</span></div>
@@ -512,7 +512,7 @@ def page_test_typeset(n, date, ans, verdict, checks, meta, facts):
         for it in items(txt, tag):
             ps = "".join(f"<p>{typeset(p)}</p>" for p in it["paras"])
             h.append(f'''<div class="item">
-      <div class="tag">/ {label.lower()}</div>
+      <div class="tag">{label.lower()}</div>
       <h4>{html_mod.escape(it["head"])} {typeset(it["refs"])}</h4>
       {ps}
     </div>''')
@@ -568,7 +568,7 @@ def page_test_typeset(n, date, ans, verdict, checks, meta, facts):
   </nav>
   <div class="eyebrow" style="margin-top:20px">test edition {n:02d} &middot; {date} &middot; {facts["agents"]} &middot; no human edits</div>
   <div class="lead" style="margin-top:14px">
-    <div class="tag">/ lead story &middot; a test, not an edition &middot; grade {verdict}</div>
+    <div class="tag">lead story &middot; a test, not an edition &middot; grade {verdict}</div>
     <h2>{html_mod.escape(lead_head)}</h2>
     <p>{lead_deck_html}</p>
     <div class="rail"><span><a href="https://explorer.imd.fun/jobs/{facts["job_id"]}" target="_blank" rel="noreferrer">job {facts["job_id"][:8]} &#8599;</a></span><span>sha256 {content_hash[:16]}&hellip;</span><span>{cites} citations &middot; {{USRC}} sources</span></div>
