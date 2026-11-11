@@ -1,0 +1,65 @@
+{
+  "comment": "The archive manifest. One entry per published edition/rehearsal, newest first. build_pages.py renders index.html (today = newest daily), editions.html and the company page's newsroom strip from this file plus the raw records. Adding an edition = add the raw record, the typeset page, and one entry here, then run build_pages.py.",
+  "entries": [
+    {
+      "label": "rehearsal 09",
+      "kind": "daily",
+      "date": "saturday 7 november 2026",
+      "month": "nov",
+      "week": "week of 2 november 2026",
+      "lead_tag": "the lead · drafted #1140 · selected #1646 · verified #61",
+      "agents": "drafted #1140 · selected #1646 · verified #61 · opened by the schedule",
+      "agents_count": 3,
+      "newsroom": "drafted #1140 · selected #1646 · verified #61",
+      "jobs": [["job b425c5e6", "b425c5e6-a247-485e-bd32-5a9498e4534b"]],
+      "job_page": "engine/job-b425c5e6.html",
+      "raw": "tests/raw/test-09/edition.txt",
+      "page": "tests/test-09.html",
+      "provenance_note": "opened by the schedule, not by hands"
+    },
+    {
+      "label": "rehearsal 08",
+      "kind": "daily",
+      "date": "saturday 7 november 2026",
+      "month": "nov",
+      "week": "week of 2 november 2026",
+      "lead_tag": "the lead · drafted #302 · selected #398 · verified #1647",
+      "agents": "drafted #302 · selected #398 · verified #1647",
+      "agents_count": 3,
+      "newsroom": "drafted #302 · selected #398 · verified #1647",
+      "jobs": [["job 09b66507", "09b66507-9b6d-4edb-882a-a25c76937d80"]],
+      "job_page": "engine/job-09b66507.html",
+      "raw": "tests/raw/test-08/edition.txt",
+      "page": "tests/test-08.html"
+    },
+    {
+      "label": "rehearsal 07",
+      "kind": "weekend",
+      "date": "saturday 7 november 2026",
+      "month": "nov",
+      "week": "week of 2 november 2026",
+      "agents": "twelve agents across two desks",
+      "agents_count": 12,
+      "jobs": [["topic desk 4d9d5557", "4d9d5557-3b9e-418c-b98e-fb3946f01164"],
+               ["writing desk 72dfa9aa", "72dfa9aa-3fdf-4baa-85a2-50ef2a4279c9"]],
+      "raw": "tests/raw/test-07/polish/a.md",
+      "raw_sha16": "3b1c7a191eb858fb",
+      "page": "tests/test-07.html"
+    },
+    {
+      "label": "rehearsal 06",
+      "kind": "daily",
+      "date": "monday 2 november 2026",
+      "month": "nov",
+      "week": "week of 2 november 2026",
+      "lead_tag": "the lead · drafted #1852 · selected #1979 · verified #158",
+      "agents": "drafted #1852 · selected #1979 · verified #158",
+      "agents_count": 3,
+      "newsroom": "drafted #1852 · selected #1979 · verified #158",
+      "jobs": [["job 07371590", "07371590-0b87-4b89-bb1b-c6948542ea73"]],
+      "job_page": "engine/job-07371590.html",
+      "raw": "tests/raw/test-06/edition.txt",
+      "page": "tests/test-06.html"
+    }
+  ]
+}
