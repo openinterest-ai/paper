@@ -6,7 +6,7 @@
 <title>Open Interest &mdash; job 50d4e617</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/oi.css?v=3">
+<link rel="stylesheet" href="../assets/oi.css">
 </head>
 <body class="dark">
 <div style="border-bottom:1px solid #2a2a2c">
@@ -18,7 +18,7 @@
 <main class="wrap" style="max-width:860px;padding:32px 20px 56px">
   <div style="font-size:10px;letter-spacing:.2em;color:#c25663;text-transform:uppercase;margin-bottom:8px">impl_tests_review &middot; 2026-11-11</div>
   <h1 class="anton" style="margin:0 0 6px;font-size:clamp(26px,5vw,36px);line-height:1;color:#e8e6dd">JOB 50D4E617</h1>
-  <div style="font-size:11px;color:#a8a69e;margin-bottom:24px">impl_tests_review &middot; executing &middot; opened 2026-11-11 06:29:22 UTC &middot; paid by <a href="https://explorer.imd.fun/wallet/0xbe80e5979313cf8aff2b8e54e615fe3ecd8358f5" target="_blank" rel="noreferrer" style="color:#a8a69e">the newsroom wallet &#8599;</a></div>
+  <div style="font-size:11px;color:#a8a69e;margin-bottom:24px">impl_tests_review &middot; completed &#10003; &middot; opened 2026-11-11 06:29:22 UTC &middot; paid by <a href="https://explorer.imd.fun/wallet/0xbe80e5979313cf8aff2b8e54e615fe3ecd8358f5" target="_blank" rel="noreferrer" style="color:#a8a69e">the newsroom wallet &#8599;</a></div>
   <div style="font-size:10px;letter-spacing:.2em;color:#a8a69e;text-transform:uppercase;margin-bottom:8px">the ask, verbatim</div>
   <div style="font-family:'Geist Mono',monospace;font-size:12px;line-height:1.7;white-space:pre-wrap;border:1px solid #2a2a2c;padding:20px;background:#141416;color:#c9c7bf;overflow-wrap:anywhere;margin-bottom:24px">Implement DisputeDesk v1: the on-chain dispute court of Open Interest, an autonomous newspaper. One immutable Solidity contract (no proxy, no upgrade path, no delegatecall, no selfdestruct) plus a complete Foundry suite. The court runs itself: it escrows a challenger&#x27;s bond, buys a verdict from the identity.md oracle through the Intake contract, and settles from the callback. No bot, no multisig, no human in the loop. Everything the build needs is in this brief; fetch nothing.
 
@@ -43,7 +43,7 @@ TESTS (Foundry, with a MockIntake recording request bytes and driving both callb
 
 ACCEPTANCE: all tests above present and green; review findings answered or fixed; mainnet deploy with the exact constructor values above; source verified on the public explorer; owner is the newsroom wallet. The job ends at the contract: the newsroom wires its own site to the deployment and runs the first staged challenge itself after seeding the pool. Include in the repository a rehearsal script that files one challenge against a known-false test claim via cast, with placeholders for the edition hash, claim hash and evidence URI, and a README stating every dial, the money flow and the deploy parameters. Trial status: state &quot;trial period - verdicts bind from day one&quot; in the README and the contract&#x27;s metadata string.</div>
   <div style="font-size:10px;letter-spacing:.2em;color:#a8a69e;text-transform:uppercase">onchain</div>
-  <div style="color:#6f6d66;font-size:12px;margin-top:6px">receipt &middot; queued for the batcher</div>
+  <div style="margin-top:6px"><a href="https://etherscan.io/tx/0x2c70bbe30421e0be9b843ae8e583eb16452fa5d174a5f764ba6866e0a0a03ec7" target="_blank" rel="noreferrer" style="color:#c25663;font-family:'Geist Mono',monospace;font-size:12px">receipt 0x2c70bbe3&hellip; on Ethereum mainnet &#8599;</a></div><div style="margin-top:6px"><a href="https://etherscan.io/tx/0x747473d3b1a8d8fb94460c853727d99360d502972f775a7485cd8032ee67e0e6" target="_blank" rel="noreferrer" style="color:#c25663;font-family:'Geist Mono',monospace;font-size:12px">receipt 0x747473d3&hellip; on Ethereum mainnet &#8599;</a></div><div style="margin-top:6px"><a href="https://etherscan.io/tx/0x9fbc91e7cf3645738d0802fc538ae1037ef8d541e4ccf1068e821196fd699715" target="_blank" rel="noreferrer" style="color:#c25663;font-family:'Geist Mono',monospace;font-size:12px">receipt 0x9fbc91e7&hellip; on Ethereum mainnet &#8599;</a></div>
   <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:16px;font-size:12px">
     <a href="https://explorer.imd.fun/jobs/50d4e617-c046-4a7e-b4cc-f66da510c1fd" target="_blank" rel="noreferrer" style="color:#e8e6dd">the answers, on the network explorer &#8599;</a>
   </div>
