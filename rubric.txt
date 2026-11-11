@@ -1,0 +1,86 @@
+# The court's rubric — v0.1
+
+## The question
+
+Is the identified claim in the edition at `editionHash` materially
+wrong, per the cited evidence? Answer UPHELD or REJECTED, with a
+short reason that names the evidence you relied on.
+
+## Definitions
+
+- **The edition** is the verbatim plain text whose sha256 equals
+  `editionHash`, as published in the paper's public record. No other
+  copy or paraphrase of the edition is the edition.
+- **The claim** is the exact quoted passage whose hash equals
+  `claimHash`. First locate it, byte for byte, in the edition. If it
+  does not appear, REJECT: the challenge is malformed.
+- **The claim's sources** are the bracketed URLs attached to the
+  claim in the edition's text.
+- **The challenger's evidence** is the material at `evidenceURI`.
+
+## A claim is MATERIALLY WRONG when the open record shows any of:
+
+1. **The fact fails.** A number, date, name, place, amount, or event
+   in the claim is wrong, and a correct reader would come away
+   believing something that did not happen, or missing something
+   that did.
+2. **The citation does not carry the claim.** The claim's own cited
+   source does not contain, and does not support, what the claim
+   says it does.
+3. **Allegation dressed as fact.** The claim states as settled fact
+   what its source only alleges, estimates, or attributes to
+   another party, without the attribution the edition's own rules
+   require.
+4. **The source is not what the edition says it is.** A cited
+   document is fabricated, altered, misdated, or attributed to the
+   wrong author or institution.
+
+## A claim is NOT materially wrong for any of these reasons alone:
+
+1. **Faithful citation of a source that was itself wrong.** The
+   edition claims "X, per source Y." If Y says X, the claim stands.
+   The paper reports the record; it does not warrant the record.
+2. **Attributed opinion or analysis.** "She argues," "he estimates,"
+   "the report concludes" are checkable only as attribution: did
+   they argue, estimate, conclude it. Whether they were right is
+   not this court's question.
+3. **Disclosed uncertainty.** Where the edition stated a range,
+   named a conflict between sources, or disclosed in METHOD that a
+   claim rests on secondary reporting, the disclosure is part of
+   the claim and is read with it.
+4. **Later events.** The claim is judged against the open record as
+   it stood on the edition's date. What became true or known
+   afterward does not reach back.
+5. **Selection, emphasis, tone, or style.** What the edition chose
+   to cover, lead with, or omit is editorial judgment, not fact.
+6. **Immaterial slips.** An error that does not change what a
+   reader believes happened — a typographical slip with the meaning
+   intact — is for the correction note, not the court.
+
+## Procedure, in order
+
+1. Fetch the edition's verbatim record; confirm its sha256 equals
+   `editionHash`. Locate the exact quoted claim; confirm its hash
+   equals `claimHash`. Either check failing → REJECT as malformed,
+   stating which.
+2. Open the claim's own cited sources. Open the challenger's
+   evidence. Prefer primary documents; treat secondary reporting as
+   the edition's rules do — attributed, never decisive on its own
+   against a primary source.
+3. Test the claim against the four grounds above, then against the
+   six defenses. Cite what you opened.
+4. Answer. UPHELD requires that the open record, on balance, shows
+   the claim materially wrong. If the record is genuinely
+   conflicting, unverifiable, or silent, REJECT: the bond carries
+   the burden of proof, and a tie goes to the text.
+
+## Form of the verdict
+
+One line: UPHELD or REJECTED. Then no more than one short paragraph:
+the ground or defense that decided it, and the specific evidence —
+URL, document, transaction — it rests on. The verdict publishes
+beside the edition, permanently, whichever way it goes.
+
+---
+*Rubric v0.1 · trial period · the bond, bounty, and this text change
+only with public notice · the version in force at filing governs.*
