@@ -48,7 +48,7 @@ HEAD = """<!doctype html>
   <div class="folio">
     {folio}
   </div>
-  <div class="ticker" aria-hidden="true"><div class="ticker-in"><span>loading the wire&hellip;</span></div></div>
+  <div class="ticker" aria-hidden="true"><div class="ticker-in">{ticker}</div></div>
 """
 
 FOOT = """</div>
@@ -62,9 +62,20 @@ FOOT = """</div>
 """
 
 
+def baked_ticker():
+    """The last baked wire, as static spans: the ticker reads even when
+    the live fetch never lands. oi.js replaces it when it does."""
+    try:
+        ev = json.load(open(os.path.join(HERE, "data.json")))["events"][:8]
+    except Exception:
+        ev = ["no human edits &middot; every decision on-chain"]
+    spans = "".join(f"<span>{e}</span>" for e in ev)
+    return spans + spans
+
+
 def chrome(title, active, folio, base=""):
     head = HEAD.format(
-        title=title, folio=folio,
+        title=title, folio=folio, ticker=baked_ticker(),
         on_today=' class="on" aria-current="page"' if active == "today" else "",
         on_editions=' class="on" aria-current="page"' if active == "editions" else "")
     if base:
@@ -81,9 +92,19 @@ def read_raw(entry):
     return txt, sha
 
 
+OWN = ("openinterest.news", "openinterest-ai.github.io",
+       "raw.githubusercontent.com/openinterest-ai", "explorer.imd.fun")
+
+
+def external(urls):
+    """Sources are counted external-only: citing our own record is
+    provenance, not sourcing, and the number must not oversell."""
+    return [u for u in urls if not any(d in u for d in OWN)]
+
+
 def stats(txt):
     cites = len(re.findall(r"\[https?://", txt))
-    srcs = len(set(re.findall(r"\[(https?://[^\]]+)\]", txt)))
+    srcs = len(set(external(re.findall(r"\[(https?://[^\]]+)\]", txt))))
     words = len(re.sub(r"\[https?://[^\]]+\]", "", txt).split())
     return cites, srcs, words
 
@@ -179,10 +200,10 @@ def build_edition_page(entry, archive=False):
                      if entry.get("provenance_note") else "")
 
     main = f"""  <div class="lead" style="margin-top:18px">
-    <div class="tag">{entry["lead_tag"]}</div>
+    <div class="tag" title="the numbers are seat tokenIds on the identity.md network; every seat is hired for one edition and may never return">{entry["lead_tag"]}</div>
     <h2>{html.escape(lead_head)}</h2>
     <p>{lead_deck}</p>
-    <div class="rail"><span><a href="{EXPL}{job_id}" target="_blank" rel="noreferrer">{job_label} &#8599;</a></span><span>sha256 {sha[:16]}&hellip;</span><span>{cites} citations &middot; {len(order)} sources</span>{prov_extra}</div>
+    <div class="rail"><span><a href="{EXPL}{job_id}" target="_blank" rel="noreferrer">{job_label} &#8599;</a></span><span>sha256 {sha[:16]}&hellip;</span><span>{cites} citations &middot; {len(set(external(order)))} external sources</span>{prov_extra}</div>
   </div>
   <div class="cols">
     <div class="main-col">
@@ -255,7 +276,7 @@ def build_editions(entries):
       <div class="ed-main">
         <div class="tag">{kicker}</div>
         <h3><a href="{e["page"]}">{html.escape(headline(e, raw))}</a></h3>
-        <div class="ed-stats">{words:,} words &middot; {cites} citations &middot; {srcs} sources &middot; {e["agents"]}</div>
+        <div class="ed-stats">{words:,} words &middot; {cites} citations &middot; {srcs} external sources &middot; {e["agents"]}</div>
         <div class="ed-prov mono">{joblinks} &middot; sha256 {sha[:16]}&hellip;</div>
       </div>
       <div class="ed-mark"><span class="ok">&#10003;</span><span>no corrections</span></div>
