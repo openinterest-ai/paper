@@ -36,7 +36,7 @@ jobs:
           python3 press.py $ARGS
       - name: Commit if changed
         run: |
-          git add editions.json editions index.html editions.html company.html records.txt
+          git add -A
           if ! git diff --cached --quiet; then
             N=$(python3 -c "import json;print(json.load(open('editions.json'))['entries'][0]['label'])")
             git config user.name "Open Interest"
