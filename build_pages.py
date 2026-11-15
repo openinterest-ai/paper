@@ -313,7 +313,7 @@ def patch_company(entry):
     open(p, "w").write(t2)
 
 
-BASE = "https://openinterest-ai.github.io/paper/"
+BASE = "https://openinterest.news/"
 # records published outside the editions manifest (staged, special sittings)
 EXTRA_RECORDS = [
     ("rehearsal-court-2.txt", "the court's rehearsal, second sitting (staged)"),
