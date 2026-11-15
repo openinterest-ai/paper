@@ -37,7 +37,24 @@ def published_job_ids(man):
     return {jid for e in man["entries"] for _, jid in e["jobs"]}
 
 
-def discover(man):
+def schedule_opened_ids():
+    """Job ids opened by the newsroom's own paid schedules: the schedule
+    run records are the authoritative provenance (the job detail's
+    createdBy field is not populated, learned 2026-11-15 at № 001)."""
+    ids = set()
+    try:
+        for s in get(f"{API}/schedules?owner={WALLET}").get("schedules", []):
+            full = get(f"{API}/schedules/{s['id']}")
+            for r in full.get("latest") or []:
+                rid = (r.get("result") or {}).get("id")
+                if rid and (r.get("result") or {}).get("kind") != "oracle":
+                    ids.add(rid)
+    except Exception as e:
+        print("schedule lookup:", e)
+    return ids
+
+
+def discover(man, sched_ids):
     """Today's publishable job: completed, schedule-opened, paid by the
     newsroom wallet, not yet in the manifest. The public list carries no
     payer, so candidates are narrowed by state, freshness and the paper's
@@ -49,9 +66,11 @@ def discover(man):
              - datetime.timedelta(hours=36)).isoformat()
     recent = get(f"{API}/jobs").get("jobs", [])
     for j in recent:
+        # the list's objective snippet is truncated, so the paper's name
+        # cannot be filtered on here; schedule membership is authoritative
         if (j["id"] in done or j.get("state") != "completed"
                 or (j.get("createdAt") or "") < fresh
-                or "open interest" not in (j.get("objective") or "").lower()):
+                or j["id"] not in sched_ids):
             continue
         time.sleep(1)
         try:
@@ -59,8 +78,7 @@ def discover(man):
         except Exception as e:
             print(f"  ({j['id'][:8]}: {e}; skipping)")
             continue
-        if ((full.get("paidBy") or "").lower() == WALLET
-                and full.get("createdBy") == "schedule"):
+        if (full.get("paidBy") or "").lower() == WALLET:
             return full
     return None
 
@@ -82,20 +100,28 @@ def fetch_answer_from_delivery(job_id):
         sys.exit("no repository delivery on the result; the press cannot fetch the answer")
     base = (d["repoUrl"].replace("https://github.com/", "https://raw.githubusercontent.com/")
             .removesuffix(".git") + "/" + d["commit"])
-    try:
-        return fetch_text(f"{base}/artifacts/edition.txt").strip(), None
-    except Exception:
-        pass
-    sel = fetch_text(f"{base}/selection.txt")
-    m = re.search(r"WINNER:\s*(\S+)", sel)
-    if not m:
-        sys.exit("selection.txt names no WINNER; the press refuses to guess")
-    path = m.group(1).strip()
-    letter_m = re.search(r"draft[s]?/([a-z])\.md|draft[_-]([a-z])", path)
+    # the winner, for the credit line, from the selection's own words
+    # (seats phrase it freely: "WINNER: drafts/c.md - ..." or
+    # "WINNER: Draft B wins because ...")
     winner = None
-    if letter_m:
-        winner = "draft_" + (letter_m.group(1) or letter_m.group(2))
-    return fetch_text(f"{base}/{path}").strip(), winner
+    try:
+        sel = fetch_text(f"{base}/selection.txt")
+        first = sel.split("\n", 1)[0]
+        m = (re.search(r"drafts?/([a-z])\.md", first, re.I)
+             or re.search(r"[Dd]raft[ _-]([A-Za-z])\b", first))
+        if m:
+            winner = "draft_" + m.group(1).lower()
+    except Exception:
+        sel = None
+    # the edition text itself: canonical integrated artifact first
+    for path in ("artifacts/edition.txt", "edition.txt"):
+        try:
+            return fetch_text(f"{base}/{path}").strip(), winner
+        except Exception:
+            continue
+    if winner:
+        return fetch_text(f"{base}/drafts/{winner[-1]}.md").strip(), winner
+    sys.exit("no edition artifact found in the delivery; the press refuses to guess")
 
 
 def credits(job, winner_node):
@@ -143,6 +169,7 @@ def main():
     job_id = args[args.index("--job") + 1] if "--job" in args else None
 
     man = manifest()
+    sched_ids = schedule_opened_ids()
     if job_id:
         if job_id in published_job_ids(man):
             sys.exit(f"job {job_id[:8]} is already in the manifest")
@@ -150,7 +177,7 @@ def main():
         if job.get("state") != "completed":
             sys.exit(f"job {job_id[:8]} is {job.get('state')}, not completed")
     else:
-        job = discover(man)
+        job = discover(man, sched_ids)
         if not job:
             print("nothing to publish: no new completed schedule-opened job")
             return
@@ -179,7 +206,7 @@ def main():
     page_path = f"editions/{n:03d}.html"
     import hashlib
     sha = hashlib.sha256(ans.encode()).hexdigest()
-    from_schedule = job.get("createdBy") == "schedule"
+    from_schedule = job_id in sched_ids
     entry = {
         "label": f"edition № {n:03d}",
         "kind": "edition",
