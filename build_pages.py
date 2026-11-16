@@ -196,11 +196,15 @@ def build_edition_page(entry, archive=False):
     </div>''')
     sections_html = "\n".join(sect_html)
 
+    # one entry per line, as "[URL] note" (№ 001) or "URL - note" (№ 002)
+    read_entries = [m.groups() for line in read_txt.splitlines()
+                    if (m := re.match(r"\[?(https?://[^\]\s]+)\]?\s*(?:[-–]\s+)?(\S.*)?$",
+                                      line.strip()))]
     reading_html = "".join(
         f'<p style="margin:0 0 12px"><a href="{u}" target="_blank" rel="noreferrer" '
         f'style="overflow-wrap:anywhere;font-size:12.5px">{u}</a><br>'
-        f'<span style="font-size:13px;color:#4a4a52">{html.escape(w.strip())}</span></p>'
-        for u, w in re.findall(r"\[(https?://[^\]]+)\]\s*([^\[]*)", read_txt))
+        f'<span style="font-size:13px;color:#4a4a52">{html.escape((w or "").strip())}</span></p>'
+        for u, w in read_entries)
     method_html = typeset(method_txt)
 
     job_label, job_id = entry["jobs"][0]
