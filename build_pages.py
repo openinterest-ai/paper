@@ -113,7 +113,7 @@ def headline(entry, txt):
     if entry["kind"] == "weekend":
         m = re.search(r"HEADLINE\s*\n+(\S.*)", txt)
     else:
-        m = re.search(r"LEAD:\s*(\S.*)", txt)
+        m = re.search(r"^LEAD\b:?\s*(\S.*)", txt, re.M)
     return re.sub(r"\s*\[https?://[^\]]+\]\s*", " ", m.group(1)).strip()
 
 
@@ -135,18 +135,29 @@ def build_edition_page(entry, archive=False):
     def typeset(text):
         return re.sub(r"\[(https?://[^\]]+)\]", ref, html.escape(text))
 
-    body = raw[raw.find("LEAD:"):]
-    def cut(name, nxt):
-        i = body.find(name)
-        j = body.find(nxt, i) if nxt else len(body)
-        return body[i + len(name):j].strip()
+    # a section header is the name at a line start, with a colon (№ 001)
+    # or alone on its line (№ 002); both arrive from the swarm
+    def mark(name):
+        return rf"(?m)^{name}(?::|[ \t]*$)"
+    m_lead = re.search(mark("LEAD"), raw)
+    body = raw[m_lead.start():] if m_lead else raw
 
-    lead_txt = cut("LEAD:", "NEWS:")
-    sections = [("News", "NEWS", cut("NEWS:", "TECH:")),
-                ("Tech", "TECH", cut("TECH:", "CULTURE:")),
-                ("Culture", "CULTURE", cut("CULTURE:", "READING LIST:"))]
-    read_txt = cut("READING LIST:", "METHOD:")
-    method_txt = cut("METHOD:", None)
+    def cut(name, nxt):
+        m = re.search(mark(name), body)
+        i = m.end() if m else 0
+        if nxt:
+            m2 = re.search(mark(nxt), body[i:])
+            j = i + m2.start() if m2 else len(body)
+        else:
+            j = len(body)
+        return body[i:j].strip()
+
+    lead_txt = cut("LEAD", "NEWS")
+    sections = [("News", "NEWS", cut("NEWS", "TECH")),
+                ("Tech", "TECH", cut("TECH", "CULTURE")),
+                ("Culture", "CULTURE", cut("CULTURE", "READING LIST"))]
+    read_txt = cut("READING LIST", "METHOD")
+    method_txt = cut("METHOD", None)
 
     paras = [p.strip() for p in lead_txt.split("\n\n") if p.strip()]
     first = paras[0].replace("\n", " ")

@@ -86,9 +86,10 @@ def grade(ans):
     c("no banned words", not hits, ", ".join(hits) if hits else "clean")
     for s in sections:
         c(f"{s} present", s in ans)
-    # The headline is the text after LEAD:, inline or on the next line
-    # (delivery-repo editions may open with a banner line before LEAD:).
-    m_head = re.search(r"LEAD:\s*(\S.*)", ans)
+    # The headline is the text after LEAD, inline or on a following line;
+    # the colon is optional (№ 002's swarm wrote a bare "LEAD" section line,
+    # learned 2026-11-16) and editions may open with a banner line first.
+    m_head = re.search(r"^LEAD\b:?\s*(\S.*)", ans, re.M)
     first = m_head.group(1).strip() if m_head else ans.split("\n", 1)[0].strip()
     headline = re.sub(r"\s*\[https?://[^\]]+\]\s*$", "", first).strip()
     c("headline ends with a full stop", headline.endswith("."), headline[:60])

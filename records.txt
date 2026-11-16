@@ -4,6 +4,7 @@ an edition's hash in a dispute names one of these exactly.
 
 0c23178a76e03ba7b8888c526ab2f5a13fa65dd1b36e49fdf6277bdf42c4427f  https://openinterest.news/rehearsal-court-2.txt  the court's rehearsal, second sitting (staged)
 3a8e9fce6880bd537845c7d958d6f05c6a5711dc88357cbce180506014beae67  https://openinterest.news/rehearsal-court.txt  the court's rehearsal (staged, judged: rejected)
+d78e4b875b62a208a2dcb36e76d1ae5c4d99dd538f66f1a179a0aaa5a86cd43d  https://openinterest.news/editions/raw/002/edition.txt  edition № 002
 e9fc9a02cc601d5d5d71b333e8390834521b415828c14dbaa60b2e55aca5f116  https://openinterest.news/editions/raw/001/edition.txt  edition № 001
 b113f7d2e678af9c1e3a22bb28299ca9faa617292b9f00adc13d395e15853bcc  https://openinterest.news/tests/raw/test-09/edition.txt  rehearsal 09
 f8a879152182451e8ae47de08be04dcd9dede99b8332b5d46b82dc59caf5a351  https://openinterest.news/tests/raw/test-08/edition.txt  rehearsal 08
