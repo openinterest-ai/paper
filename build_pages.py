@@ -349,6 +349,29 @@ def patch_company(entry):
     open(p, "w").write(t2)
 
 
+def patch_lodge(entries):
+    """Bake published editions into the lodge picker: lodge.js prepends
+    window.OI_EDITIONS to its static rehearsal list, so each new edition
+    becomes challengeable the moment the press publishes it."""
+    rows = []
+    for e in entries:
+        if e["kind"] != "edition":
+            continue
+        _, sha = read_raw(e)
+        rows.append({"label": f"{e['label']} · {e['date']}",
+                     "raw": e["raw"], "hash": sha})
+    tag = ("<script>window.OI_EDITIONS=" +
+           json.dumps(rows, ensure_ascii=False) + ";</script>")
+    p = os.path.join(HERE, "lodge.html")
+    t = open(p).read()
+    if "window.OI_EDITIONS=" in t:
+        t = re.sub(r"<script>window\.OI_EDITIONS=.*?;</script>", tag, t, count=1)
+    else:
+        t = t.replace('<script src="assets/lodge.js',
+                      tag + '\n<script src="assets/lodge.js', 1)
+    open(p, "w").write(t)
+
+
 BASE = "https://openinterest.news/"
 # records published outside the editions manifest (staged, special sittings)
 EXTRA_RECORDS = [
@@ -389,6 +412,7 @@ def main():
             os.makedirs(os.path.dirname(p), exist_ok=True)
             open(p, "w").write(build_edition_page(e, archive=True))
     patch_company(today)
+    patch_lodge(entries)
     print(f"built: today = {today['label']} | archive = {len(entries)} entries | records.txt written")
 
 

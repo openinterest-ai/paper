@@ -4,8 +4,9 @@
 (function () {
   var DESK = "0x83fcaef2230ec6f36d84717c2222817431e9b377";
   var TOKEN = "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7";
-  // sha256 of each verbatim record, matching the record pages' printed hashes
-  var EDITIONS = [
+  // sha256 of each verbatim record, matching the record pages' printed hashes;
+  // published editions arrive baked into the page as window.OI_EDITIONS
+  var EDITIONS = (window.OI_EDITIONS || []).concat([
     { label: "the court's rehearsal, second sitting \u00b7 staged \u00b7 11 november 2026", raw: "rehearsal-court-2.txt",
       hash: "0c23178a76e03ba7b8888c526ab2f5a13fa65dd1b36e49fdf6277bdf42c4427f" },
     { label: "the court's rehearsal \u00b7 staged \u00b7 judged: rejected", raw: "rehearsal-court.txt",
@@ -18,7 +19,7 @@
       hash: "3b1c7a191eb858fb04e1a3687199e71c81a165696e0e5c249bd5d2692339d429" },
     { label: "rehearsal 06 \u00b7 monday 2 november 2026", raw: "tests/raw/test-06/edition.txt",
       hash: "0886aeb934c40b290088e9831bd4bb52bade83b2dca15f89f284efeff273edb0" },
-  ];
+  ]);
   var $ = function (id) { return document.getElementById(id); };
   var sel = $("ed"), ta = $("cl"), ev = $("ev"), evh = $("evh"),
       btn = $("file"), state = $("fstate");
