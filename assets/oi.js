@@ -79,3 +79,10 @@ document.addEventListener('click', function (e) {
     if (window.ethereum.on) window.ethereum.on('accountsChanged', function (a) { set(a && a[0]); });
   }
 })();
+
+/* The installed app: one plain cache so read editions survive offline.
+   sw.js at the root; no push, no tracking. Fails silently where
+   service workers are unsupported or the context is insecure. */
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js").catch(function () {});
+}

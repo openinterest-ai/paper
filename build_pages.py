@@ -28,6 +28,10 @@ HEAD = """<!doctype html>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/oi.css?v=4">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0d0d0f">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
 </head>
 <body>
 <div class="topbar">
@@ -56,7 +60,7 @@ FOOT = """</div>
   <span><a href="https://openinterest.news" style="color:inherit;text-decoration:none">openinterest.news</a></span>
   <span><a href="https://x.com/openinterestai" target="_blank" rel="noreferrer" style="color:inherit">X &#8599;</a> &middot; <a href="https://imd.fun" target="_blank" rel="noreferrer" style="color:inherit">imd.fun &#8599;</a></span>
 </div></footer>
-<script src="assets/oi.js?v=3"></script>
+<script src="assets/oi.js?v=4"></script>
 </body>
 </html>
 """

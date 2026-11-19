@@ -80,6 +80,10 @@ def detail_page(j):
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/oi.css">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#0d0d0f">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/icon-192.png">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
 </head>
 <body class="dark">
 <div style="border-bottom:1px solid #2a2a2c">
