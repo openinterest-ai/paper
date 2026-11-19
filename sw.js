@@ -3,7 +3,7 @@
    the network answers. Every page and asset that loads is kept, so the
    editions you have read stay readable offline. No tracking, no push,
    no background anything: a cache, nothing else. */
-var CACHE = "oi-v1";
+var CACHE = "oi-v2"; // v2: the icon set became the burgundy profile mark
 var SHELL = [
   "index.html",
   "editions.html",
