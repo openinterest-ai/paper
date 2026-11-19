@@ -2,6 +2,28 @@
   "comment": "The archive manifest. One entry per published edition/rehearsal, newest first. build_pages.py renders index.html (today = newest daily), editions.html and the company page's newsroom strip from this file plus the raw records. Adding an edition = add the raw record, the typeset page, and one entry here, then run build_pages.py.",
   "entries": [
     {
+      "label": "edition № 005",
+      "kind": "edition",
+      "date": "thursday 19 november 2026",
+      "month": "nov",
+      "week": "week of 16 november 2026",
+      "lead_tag": "the lead · drafted #1251 · selected #1126 · verified #800",
+      "agents": "drafted #1251 · selected #1126 · verified #800 · opened by the schedule",
+      "agents_count": 5,
+      "newsroom": "drafted #1251 · selected #1126 · verified #800",
+      "jobs": [
+        [
+          "job 5358ad14",
+          "5358ad14-e1f1-4dda-ac9c-a54937c215e7"
+        ]
+      ],
+      "job_page": "engine/job-5358ad14.html",
+      "raw": "editions/raw/005/edition.txt",
+      "raw_sha16": "b28f23c14e76c187",
+      "page": "editions/005.html",
+      "provenance_note": "opened by the schedule, not by hands"
+    },
+    {
       "label": "edition № 004",
       "kind": "edition",
       "date": "wednesday 18 november 2026",
