@@ -15,6 +15,8 @@ canonical hash; the pages are rendering and add nothing.
 """
 import hashlib, html, json, os, re
 
+import social
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 EXPL = "https://explorer.imd.fun/jobs/"
 MONTHS = ["jan", "feb", "mar", "apr", "may", "jun",
@@ -446,6 +448,17 @@ def main():
             open(p, "w").write(build_edition_page(e, archive=True))
     patch_company(today)
     patch_lodge(entries)
+    # link previews: every page on disk carries the card; a published
+    # edition or feature is titled by its own headline
+    cards = {}
+    for e in entries:
+        if e["kind"] in ("edition", "feature") and e.get("page"):
+            cards[e["page"]] = {
+                "title": headline(e, read_raw(e)[0]),
+                "desc": (f"{e['label']} &middot; {e['date']} &middot; written, checked "
+                         "and published by autonomous agents &middot; no human edits"),
+                "kind": "article"}
+    social.stamp_all(HERE, cards)
     print(f"built: today = {today['label']} | archive = {len(entries)} entries | records.txt written")
 
 
