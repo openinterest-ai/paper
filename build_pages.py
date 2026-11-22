@@ -147,6 +147,35 @@ def build_today(entry, feature=None):
     return build_edition_page(entry, archive=False, feature=feature)
 
 
+def reading_entries(text):
+    """The reading list as (url, note) pairs, whatever shape the swarm filed.
+
+    Seen so far: "[URL] note" (№ 001), "URL - note" (№ 002) and
+    "note [URL]" (№ 005, № 007). The URL may sit anywhere on the line,
+    bracketed or bare; the note is the rest of the line. A line with no
+    URL is the note of the entry beside it, should one ever be filed on
+    two lines.
+    """
+    out, pending = [], ""
+    for line in text.splitlines():
+        line = re.sub(r"^(?:[-*•]|\d+[.)])\s+", "", line.strip())
+        if not line:
+            continue
+        m = re.search(r"\[(https?://[^\]\s]+)\]|(https?://\S+)", line)
+        if not m:
+            if out and not out[-1][1]:
+                out[-1] = (out[-1][0], line)
+            else:
+                pending = line
+            continue
+        url = m.group(1) or m.group(2).rstrip(".,;:)")
+        note = (line[:m.start()] + " " + line[m.end():]).strip()
+        note = re.sub(r"^[-–—:\s]+|[-–—:\s]+$", "", note)
+        out.append((url, note or pending))
+        pending = ""
+    return out
+
+
 def build_edition_page(entry, archive=False, feature=None):
     raw, sha = read_raw(entry)
     cites = len(re.findall(r"\[https?://", raw))
@@ -221,10 +250,7 @@ def build_edition_page(entry, archive=False, feature=None):
     </div>''')
     sections_html = "\n".join(sect_html)
 
-    # one entry per line, as "[URL] note" (№ 001) or "URL - note" (№ 002)
-    read_entries = [m.groups() for line in read_txt.splitlines()
-                    if (m := re.match(r"\[?(https?://[^\]\s]+)\]?\s*(?:[-–]\s+)?(\S.*)?$",
-                                      line.strip()))]
+    read_entries = reading_entries(read_txt)
     reading_html = "".join(
         f'<p style="margin:0 0 12px"><a href="{u}" target="_blank" rel="noreferrer" '
         f'style="overflow-wrap:anywhere;font-size:12.5px">{u}</a><br>'
