@@ -114,19 +114,38 @@ def stats(txt):
 
 
 def headline(entry, txt):
-    if entry["kind"] == "weekend":
+    if entry["kind"] in ("weekend", "feature"):
         m = re.search(r"HEADLINE\s*\n+(\S.*)", txt)
     else:
         m = re.search(r"^LEAD\b:?\s*(\S.*)", txt, re.M)
     return re.sub(r"\s*\[https?://[^\]]+\]\s*", " ", m.group(1)).strip()
 
 
+def feature_band(entry):
+    """The weekend-feature band on the front page: ink to the lead's
+    burgundy, one click target, everything in it from the record."""
+    raw, _ = read_raw(entry)
+    head = headline(entry, raw)
+    dek = ""
+    m = re.search(r"(?m)^STANDFIRST(?::|[ \t]*$)", raw)
+    if m:
+        p1 = raw[m.end():].strip().split("\n\n")[0].replace("\n", " ")
+        dek = re.sub(r"\s*\[https?://[^\]]+\]\s*", " ", p1).strip()
+    return f'''  <a href="{entry["page"]}" style="display:block;background:#0d0d0f;color:#f2efe8;border-radius:2px;padding:clamp(20px,3.2vw,34px);margin-top:14px;text-decoration:none">
+    <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px"><span style="color:#e8b8be">the weekend feature</span> <span style="opacity:.85">&middot; {entry["label"]} &middot; the long read</span></div>
+    <h2 style="margin:0 0 12px;font-family:Anton,sans-serif;font-weight:400;font-size:clamp(26px,4.6vw,46px);line-height:.95;text-transform:uppercase;max-width:860px">{html.escape(head)}</h2>
+    <p style="margin:0;font-size:16px;max-width:680px;opacity:.9">{html.escape(dek)}</p>
+    <div style="margin-top:18px;padding-top:12px;border-top:1px solid rgba(242,239,232,.25);font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.9;display:flex;flex-wrap:wrap;gap:6px 22px"><span>pitched &times;3 &middot; judged blind &middot; drafted &times;3 &middot; polished &times;2 &middot; audited</span><span style="color:#e8b8be">read the feature &#8594;</span></div>
+  </a>
+'''
+
+
 # ---------------- today ----------------
-def build_today(entry):
-    return build_edition_page(entry, archive=False)
+def build_today(entry, feature=None):
+    return build_edition_page(entry, archive=False, feature=feature)
 
 
-def build_edition_page(entry, archive=False):
+def build_edition_page(entry, archive=False, feature=None):
     raw, sha = read_raw(entry)
     cites = len(re.findall(r"\[https?://", raw))
 
@@ -224,7 +243,7 @@ def build_edition_page(entry, archive=False):
     <p>{lead_deck}</p>
     <div class="rail"><span><a href="{EXPL}{job_id}" target="_blank" rel="noreferrer">{job_label} &#8599;</a></span><span>sha256 {sha[:16]}&hellip;</span><span>{cites} citations &middot; {len(set(external(order)))} external sources</span>{prov_extra}</div>
   </div>
-  <div class="cols">
+{feature_band(feature) if feature else ""}  <div class="cols">
     <div class="main-col">
       {lead_body}
       {sections_html}
@@ -263,7 +282,8 @@ def build_edition_page(entry, archive=False):
         return chrome(f"Open Interest — {entry['label']}", "editions", folio,
                       base="../" * depth) + main + FOOT
     if entry["kind"] == "edition":
-        folio = f"""<span><b>{entry["label"]}</b> &middot; {entry["date"]}</span>
+        plus = " &middot; <b>+ the weekend feature</b>" if feature else ""
+        folio = f"""<span><b>{entry["label"]}</b> &middot; {entry["date"]}{plus}</span>
     <span>no human edits &middot; every claim disputable</span>
     <span>the next edition by noon utc</span>"""
     else:
@@ -282,8 +302,9 @@ def build_editions(entries):
         raw, sha = read_raw(e)
         cites, srcs, words = stats(raw)
         tot_words += words; tot_cites += cites; tot_agents += e["agents_count"]
-        burg = e["kind"] == "weekend"
-        kicker = ("the weekend feature &middot; two desks &middot; a rehearsal" if burg
+        burg = e["kind"] in ("weekend", "feature")
+        kicker = ("the weekend feature &middot; two desks &middot; a rehearsal" if e["kind"] == "weekend"
+                  else "the weekend feature &middot; two desks &middot; the long read" if e["kind"] == "feature"
                   else "the daily edition" if e["kind"] == "edition"
                   else "the daily brief &middot; a rehearsal")
         joblinks = " &middot; ".join(
@@ -407,7 +428,15 @@ def main():
     man = json.load(open(os.path.join(HERE, "editions.json")))
     entries = man["entries"]
     today = next(e for e in entries if e["kind"] in ("daily", "edition"))
-    open(os.path.join(HERE, "index.html"), "w").write(build_today(today))
+    # the weekend feature holds the front page while at most one daily
+    # is newer than it: on the page saturday and sunday, off by monday
+    feat = None
+    fi = next((i for i, e in enumerate(entries) if e["kind"] == "feature"), None)
+    if fi is not None:
+        newer = sum(1 for e in entries[:fi] if e["kind"] in ("daily", "edition"))
+        if newer <= 1:
+            feat = entries[fi]
+    open(os.path.join(HERE, "index.html"), "w").write(build_today(today, feature=feat))
     open(os.path.join(HERE, "editions.html"), "w").write(build_editions(entries))
     open(os.path.join(HERE, "records.txt"), "w").write(build_records(entries))
     for e in entries:
