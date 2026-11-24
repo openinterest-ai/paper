@@ -21,6 +21,14 @@ BANNED = ["delve", "landscape", "game-changer", "seamless", "robust", "unlock",
 CHROME = ["Sources offered", "— could not be read", "Onchain\n", "Read more\n",
           "receipt\nwork accepted", "scores\nsettled"]
 
+
+def prose_only(ans):
+    """The answer with its source links removed. The banned-word rule is
+    about the paper's own prose; a link's address is not prose (№ 010 was
+    refused on 2026-11-24 for citing a page on paradigm.xyz)."""
+    return re.sub(r"https?://[^\]\s]+", " ", ans)
+
+
 def fetch_answer(job_id):
     url = f"https://explorer.imd.fun/jobs/{job_id}"
     req = urllib.request.Request(url, headers={"User-Agent": "openinterest-publish/1.0"})
@@ -81,7 +89,7 @@ def grade(ans):
     else:
         c("at most one em dash", em <= 1, f"{em} em dashes")
         sections = ["LEAD", "ALSO TODAY", "READING LIST", "METHOD"]
-    low = ans.lower()
+    low = prose_only(ans).lower()
     hits = [b for b in BANNED if b in low]
     c("no banned words", not hits, ", ".join(hits) if hits else "clean")
     for s in sections:
@@ -233,7 +241,7 @@ def grade_feature(ans):
     c("at least 12 source URLs", len(urls) >= 12, f"{len(urls)} URLs")
     em = ans.count("\u2014")
     c("em dashes within section ration", em <= 7, f"{em} em dashes (<=7)")
-    low = ans.lower()
+    low = prose_only(ans).lower()
     hits = [b for b in BANNED if b in low]
     c("no banned words", not hits, ", ".join(hits) if hits else "clean")
     for s in ["SOURCES", "METHOD"]:
